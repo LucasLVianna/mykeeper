@@ -30,7 +30,7 @@ async function buscar(id){
 
 // ----------------------------------------------
 // Fase 2
-document.getElementById("enviar").addEventListener("click", () => {
+document.getElementById("Alterar").addEventListener("click", () => {
     alterar();
 });
 

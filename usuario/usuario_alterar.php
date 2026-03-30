@@ -1,5 +1,5 @@
 <?php
-    include_once('conexao.php');
+    include_once('../php/conexao.php');
 
     $retorno = [
         'status'    => '',
@@ -44,6 +44,7 @@
 
     header("Content-type:application/json;charset:utf-8");
     echo json_encode($retorno);
+    exit;
 ?>
 <!DOCTYPE html>
 <html lang="en">

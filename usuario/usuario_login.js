@@ -1,21 +1,35 @@
-document.getElementById("enviar").addEventListener("click", () => {
+// Captura o evento de 'submit' do formulário inteiro
+document.getElementById("formLogin").addEventListener("submit", (event) => {
+    // ESSA É A MÁGICA: Impede o formulário de recarregar a página!
+    event.preventDefault(); 
     login();
 });
+
 async function login(){
     var email = document.getElementById("email").value;
     var senha = document.getElementById("senha").value;
+    
     const fd = new FormData();
     fd.append("email", email);
     fd.append("senha", senha);
-    const retorno = await fetch("usuario_login.php",{
+    
+    try {
+        const retorno = await fetch("usuario_login.php", {
             method: "POST",
             body: fd
+        });
+        
+        const resposta = await retorno.json();
+        
+        if(resposta.status == "ok"){
+            // Login deu certo, redireciona
+            window.location.href = "../dashboard/home";
+        }else{
+            // Login deu errado (senha incorreta, etc)
+            alert(resposta.mensagem || "Credenciais inválidas."); 
         }
-    );
-    const resposta = await retorno.json();
-    if(resposta.status == "ok"){
-        window.location.href = "../dashboard/home";
-    }else{
-        alert("Credenciais invalidas.");
+    } catch (erro) {
+        console.error("Erro na requisição:", erro);
+        alert("Ocorreu um erro ao tentar fazer login.");
     }
 }

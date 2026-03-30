@@ -1,5 +1,7 @@
-<php
-
+<?php
+    include_once('../php/conexao.php');
+    include('../php/valida_sessao.php');
+    
 
 ?>
 
@@ -28,9 +30,34 @@
                     <button id="comprasButtonLink">Compras</button>
                     <button id="receitasButtonLink">Receitas</button>
                     <button id="historicoButtonLink">Historico</button>
+                    <button id="logoff">Log Off</button>
                 </nav>
             </div>
         </aside>
     </body>
-
+        <script src="../js/valida_sessao.js">
+        </script>
+        <script>
+            document.getElementById("inicioButtonLink").addEventListener("click", () => {
+                window.location.href = '../dashboard/home.php';
+            });
+            document.getElementById("inventarioButtonLink").addEventListener("click", () => {
+                window.location.href = '../inventario/inventario.php';
+            });
+            document.getElementById("avencerButtonLink").addEventListener("click", () => {
+                window.location.href = '../avencer/avencer.php';
+            });
+            document.getElementById("comprasButtonLink").addEventListener("click", () => {
+                window.location.href = '../compras/compras.php';
+            });
+            document.getElementById("receitasButtonLink").addEventListener("click", () => {
+                window.location.href = '../receitas/receitas.php';
+            });
+            document.getElementById("historicoButtonLink").addEventListener("click", () => {
+                window.location.href = '../historico/historico.php';
+            });
+            document.getElementById("logoff").addEventListener("click", () => {
+                window.location.href = '../php/logoff.php';
+            });
+        </script>
     </html>
