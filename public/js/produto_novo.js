@@ -14,7 +14,7 @@ async function novo(){
     fd.append('categoria_produto', categoria_produto);
     fd.append('und_medida_produto', und_medida_produto);
 
-    const retorno = await fetch('../php/produto_novo_back.php', {
+    const retorno = await fetch('/mykeeper/src/Controllers/produto_novo_back.php', {
         method: 'POST',
         body: fd
     });
@@ -23,7 +23,7 @@ async function novo(){
 
     if(resposta.status == 'ok'){
         alert('SUCESSO! ' + resposta.mensagem);
-        window.location.href = "produto.php";
+        window.location.href = "/mykeeper/src/Views/produto.php";
     }else{
         alert('ERRO! ' + resposta.mensagem);
     }

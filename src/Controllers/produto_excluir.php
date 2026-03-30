@@ -1,5 +1,6 @@
 <?php
-    include_once('../../php/conexao.php');
+    include_once(__DIR__ . '/../../config/headers.php');
+    include_once(__DIR__ . '/../../config/conexao.php');
 
     //Configurando o padrão de retonro em todas as situações
     $retorno = [

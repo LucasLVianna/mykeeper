@@ -29,9 +29,5 @@
         </aside>
     </body>
 
-    <script>
-        document.getElementById('produtosButtonLink').addEventListener('click', () => {
-            window.location.href = '../produto_crud/interface/produto.php'
-        })
-    </script>
+    <script src="/mykeeper/public/js/home.js"></script>
     </html>
