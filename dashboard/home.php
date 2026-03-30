@@ -4,7 +4,7 @@
 ?>
 
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="en">    
 
     <head>
         <meta charset="UTF-8">
@@ -23,7 +23,8 @@
             <div>
                 <nav>
                     <button id="inicioButtonLink">Início</button>
-                    <button id="inventarioButtonLink"></button>
+                    <button id="inventarioButtonLink">Inventario</button>
+                    <button id="produtosButtonLink">Produtos registrados</button>
                     <button id="avencerButtonLink">A Vencer</button>
                     <button id="comprasButtonLink">Compras</button>
                     <button id="receitasButtonLink">Receitas</button>
@@ -33,4 +34,9 @@
         </aside>
     </body>
 
+    <script>
+        document.getElementById('produtosButtonLink').addEventListener('click', () => {
+            window.location.href = '../produto_crud/interface/produto.php'
+        })
+    </script>
     </html>
