@@ -1,10 +1,13 @@
 <?php
-$servidor = "127.0.0.1";
-$usuario = "root";
-$senha = "Dwu9qv85@d4rk1";
-$nome_banco = "mykeeper";
+// lendo o .env manualmente (PHP puro, sem Laravel)
+$env = parse_ini_file(__DIR__ . '/../.env');
 
-$conexao = new mysqli($servidor, $usuario, $senha, $nome_banco);
+$conexao = new mysqli(
+    $env['DB_HOST'],
+    $env['DB_USERNAME'],
+    $env['DB_PASSWORD'],
+    $env['DB_NAME']
+);
 
 if($conexao->connect_error){
     header("Content-type: application/json; charset=utf-8");

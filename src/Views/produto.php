@@ -32,6 +32,6 @@
             <button type="button" id="produto_novo" class="addvs">Adicionar Produto</button>
         </div>
     </section>
-    <script src="../js/produto.js"></script>
+    <script src="/mykeeper/public/js/produto.js"></script>
 </body>
 </html>

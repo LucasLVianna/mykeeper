@@ -1,5 +1,6 @@
 <?php
-    include_once('../../php/conexao.php');
+    include_once(__DIR__ . '/../../config/headers.php');
+    include_once(__DIR__ . '/../../config/conexao.php');
 
     $retorno = [
         'status' => '', //ok ou nok

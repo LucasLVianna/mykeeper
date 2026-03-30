@@ -1,8 +1,3 @@
-<php
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,6 +27,6 @@
         </form>
     </section>
 
-    <script src="../js/produto_alterar.js"></script>
+    <script src="/mykeeper/public/js/produto_alterar.js"></script>
 </body>
 </html>
