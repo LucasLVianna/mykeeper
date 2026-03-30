@@ -28,7 +28,7 @@ function preencherTabela(tabela){
             <td> ${tabela[i].id} </td>
             <td> ${tabela[i].nome_produto} </td>
             <td> ${tabela[i].categoria_produto} </td>
-            <td> R$ ${tabela[i].und_medida_produto} </td>
+            <td> ${tabela[i].und_medida_produto} </td>
             <td class="botoes"> 
             <button class = "btn-editar"><a href="produto_alterar.php?id=${tabela[i].id}">Editar</a></button>
             <button class = "btn-excluir"><a href="#" onclick="excluir(${tabela[i].id})">Excluir</a></button>
@@ -55,3 +55,11 @@ async function excluir(id){
 document.getElementById('produto_novo').addEventListener('click', ()=>{
     window.location.href = '../interface/produto_novo.php'
 })
+
+document.getElementById('inicioButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/dashboard/home.php';
+});
+
+document.getElementById('produtosButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/produto_crud/interface/produto.php';
+});
