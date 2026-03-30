@@ -1,13 +1,13 @@
 <?php
-    include_once('conexao.php');
+    if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])){
+        include_once('../php/conexao.php');
 
-    $retorno = [
-        'status'   => '',
-        'mensagem' => '',
-        'data'     => []
-    ];
+        $retorno = [
+            'status'   => '',
+            'mensagem' => '',
+            'data'     => []
+        ];
 
-    if(isset($_GET['id'])){
         $stmt = $conexao->prepare("DELETE FROM suporte WHERE id = ?");
         $stmt->bind_param("i", $_GET['id']);
         $stmt->execute();
@@ -25,16 +25,12 @@
                 'data'     => []
             ];
         }
+
         $stmt->close();
-    }else{
-        $retorno = [
-            'status'   => 'nok',
-            'mensagem' => 'É necessário informar um ID para exclusão.',
-            'data'     => []
-        ];
+        $conexao->close();
+
+        header("Content-type: application/json; charset=utf-8");
+        echo json_encode($retorno);
+        exit;
     }
-
-    $conexao->close();
-
-    header("Content-type:application/json;charset:utf-8");
-    echo json_encode($retorno);
+?>
