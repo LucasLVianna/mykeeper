@@ -1,6 +1,7 @@
 <?php
+    // Só executa se for POST
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        include_once('../php/conexao.php');
+        include_once('../php/conexao.php'); // conexão
 
         $retorno = [
             'status'   => '',
@@ -8,12 +9,14 @@
             'data'     => []
         ];
 
+        // Verifica se os dados vieram
         if(!isset($_POST['nome'], $_POST['email'], $_POST['senha'])){
             $retorno = [
                 'status'   => 'erro',
                 'mensagem' => 'Dados incompletos.',
                 'data'     => []
             ];
+
             header("Content-type: application/json; charset=utf-8");
             echo json_encode($retorno);
             exit;
@@ -23,9 +26,11 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
+        // Prepara o INSERT
         $stmt = $conexao->prepare("INSERT INTO suporte (nome, email, senha) VALUES (?, ?, ?)");
 
         if(!$stmt){
+            // Erro ao preparar
             $retorno = [
                 'status'   => 'erro',
                 'mensagem' => 'Erro na preparação da query.',
@@ -33,6 +38,8 @@
             ];
         }else{
             $stmt->bind_param("sss", $nome, $email, $senha);
+
+            // Executa inserção
             if($stmt->execute()){
                 $retorno = [
                     'status'   => 'ok',
@@ -46,11 +53,13 @@
                     'data'     => []
                 ];
             }
+
             $stmt->close();
         }
 
         $conexao->close();
 
+        // Retorna JSON
         header("Content-type: application/json; charset=utf-8");
         echo json_encode($retorno);
         exit;

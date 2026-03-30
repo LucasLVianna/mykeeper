@@ -1,6 +1,8 @@
+// quando a página carrega
 document.addEventListener("DOMContentLoaded", async () => {
     const id = new URLSearchParams(window.location.search).get('id');
-    if(!id) window.location.href = 'index.php';
+
+    if(!id) window.location.href = 'index.php'; // sem id, volta
 
     const retorno  = await fetch(`suporte_get.php?id=${id}`);
     const resposta = await retorno.json();
@@ -11,8 +13,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+
+// nnvio do formulário
 document.getElementById('formSuporte').addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // evita reload
 
     const id    = new URLSearchParams(window.location.search).get('id');
     const nome  = document.getElementById('nome').value.trim();
@@ -24,14 +28,18 @@ document.getElementById('formSuporte').addEventListener('submit', async (e) => {
     formData.append('email', email);
     formData.append('senha', senha);
 
-    const response = await fetch(`suporte_alterar.php?id=${id}`, { method: 'POST', body: formData });
-    const result   = await response.json();
+    const response = await fetch(`suporte_alterar.php?id=${id}`, {
+        method: 'POST',
+        body: formData
+    });
+
+    const result = await response.json();
 
     const mensagem = document.getElementById('mensagem');
     mensagem.textContent = result.mensagem;
     mensagem.style.color = result.status === 'ok' ? 'green' : 'red';
 
     if(result.status === 'ok'){
-        setTimeout(() => window.location.href = 'index.php', 1000);
+        setTimeout(() => window.location.href = 'index.php', 1000); // redireciona
     }
 });
