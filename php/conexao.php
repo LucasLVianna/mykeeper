@@ -1,5 +1,5 @@
 <?php
-$servidor = "localhost";
+$servidor = "localhost:3306";
 $usuario  = "root";
 $senha    = "Mp0709@#";
 $nome_banco = "Mykeeper";
