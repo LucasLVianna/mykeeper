@@ -6,6 +6,23 @@
     <title>Produtos</title>
 </head>
 <body>
+    <aside class="sideNavBar">
+            <div>
+                <h2>MyKeeper</h2>
+            </div>
+            <div>
+                <nav>
+                    <button id="inicioButtonLink">Início</button>
+                    <button id="inventarioButtonLink">Inventario</button>
+                    <button id="produtosButtonLink">Produtos registrados</button>
+                    <button id="avencerButtonLink">A Vencer</button>
+                    <button id="comprasButtonLink">Compras</button>
+                    <button id="receitasButtonLink">Receitas</button>
+                    <button id="historicoButtonLink">Historico</button>
+                </nav>
+            </div>
+        </aside>
+        
     <section>
         <div>
             <h2>Produtos Registrados</h2>

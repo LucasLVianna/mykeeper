@@ -1,5 +1,5 @@
 <?php
-    include_once('../../conexao.php');
+    include_once('../../php/conexao.php');
 
     //Configurando o padrão de retonro em todas as situações
     $retorno = [
