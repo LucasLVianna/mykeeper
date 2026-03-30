@@ -14,7 +14,11 @@ async function novo(){
     fd.append('categoria_produto', categoria_produto);
     fd.append('und_medida_produto', und_medida_produto);
 
+<<<<<<< HEAD
     const retorno = await fetch('/mykeeper/src/Controllers/produto_novo_back.php', {
+=======
+    const retorno = await fetch('/mykeeper-main/src/Controllers/produto_novo_back.php', {
+>>>>>>> local-snapshot
         method: 'POST',
         body: fd
     });
@@ -23,7 +27,11 @@ async function novo(){
 
     if(resposta.status == 'ok'){
         alert('SUCESSO! ' + resposta.mensagem);
+<<<<<<< HEAD
         window.location.href = "/mykeeper/src/Views/produto.php";
+=======
+        window.location.href = "/mykeeper-main/src/Views/produto.php";
+>>>>>>> local-snapshot
     }else{
         alert('ERRO! ' + resposta.mensagem);
     }

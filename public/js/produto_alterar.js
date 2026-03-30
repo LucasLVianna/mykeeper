@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
 // buscando o id e preenchendo formulário com informações registradas
 
 async function buscar(id){
+<<<<<<< HEAD
     const retorno = await fetch('/mykeeper/src/Controllers/produto_get.php?id='+id);
+=======
+    const retorno = await fetch('/mykeeper-main/src/Controllers/produto_get.php?id='+id);
+>>>>>>> local-snapshot
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
         alert('SUCESSO! '+resposta.mensagem);
@@ -48,7 +52,11 @@ async function alterar(){
     fd.append('categoria_produto', categoria_produto);
     fd.append('und_medida_produto', und_medida_produto);
 
+<<<<<<< HEAD
     const retorno = await fetch('/mykeeper/src/Controllers/produto_alterar_back.php?id='+id, {
+=======
+    const retorno = await fetch('/mykeeper-main/src/Controllers/produto_alterar_back.php?id='+id, {
+>>>>>>> local-snapshot
         method: 'POST',
         body: fd
     });
@@ -57,9 +65,16 @@ async function alterar(){
 
     if(resposta.status == 'ok'){
         alert('SUCESSO! ' + resposta.mensagem);
+<<<<<<< HEAD
         window.location.href = "/mykeeper/src/Views/produto.php";
     }else{
         alert('ERRO! ' + resposta.mensagem);
         window.location.href = "/mykeeper/src/Views/produto.php";
+=======
+        window.location.href = "/mykeeper-main/src/Views/produto.php";
+    }else{
+        alert('ERRO! ' + resposta.mensagem);
+        window.location.href = "/mykeeper-main/src/Views/produto.php";
+>>>>>>> local-snapshot
     }
 }

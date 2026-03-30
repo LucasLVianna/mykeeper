@@ -31,7 +31,13 @@
         $retorno = [
             'status' => 'ok', //ok ou nok
             'mensagem' => 'Item inserido com sucesso', //mensagem que envio para o front
+<<<<<<< HEAD
             'data' => []
+=======
+            'data' => [
+                'id' => $stmt->insert_id
+            ]
+>>>>>>> local-snapshot
         ];
     }else{
         $retorno = [
@@ -45,4 +51,8 @@
     $conexao->close();
 
     header("Content-type:application/json;charset:utf-8");
+<<<<<<< HEAD
     echo json_encode($retorno);
+=======
+    echo json_encode($retorno);
+>>>>>>> local-snapshot
