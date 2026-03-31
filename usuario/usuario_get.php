@@ -1,4 +1,5 @@
 <?php
+    include_once('../php/auth.php');
     include_once('../php/conexao.php');
     
     $retorno = [

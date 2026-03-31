@@ -1,30 +1,30 @@
-document.addEventListener("DOMContentLoaded", () => {
-    valida_sessao();
+document.addEventListener("DOMContentLoaded", async () => {
+    await valida_sessao();
 });
 
-document.getElementById("enviar").addEventListener("click", () => {
-    novo();
+document.getElementById("formNovo").addEventListener("submit", (e) => {
+    e.preventDefault();
+    salvar();
 });
 
-async function novo(){
-    var nome    = document.getElementById("nome").value;
-    var senha   = document.getElementById("senha").value;
-    var email   = document.getElementById("email").value;
+async function salvar(){
+    var nome  = document.getElementById("nome").value;
+    var email = document.getElementById("email").value;
+    var senha = document.getElementById("senha").value;
 
     const fd = new FormData();
     fd.append("nome", nome);
-    fd.append("senha", senha);
     fd.append("email", email);
+    fd.append("senha", senha);
 
-    const retorno = await fetch("usuario_novo.php",
-        {
-          method: 'POST',
-          body: fd  
-        });
+    const retorno = await fetch("../usuario/usuario_novo_post.php", {
+        method: 'POST',
+        body: fd
+    });
     const resposta = await retorno.json();
     if(resposta.status == "ok"){
         alert("SUCESSO: " + resposta.mensagem);
-        //window.location.href = "../home/";
+        window.location.href = '../dashboard/home.php';
     }else{
         alert("ERRO: " + resposta.mensagem);
     }

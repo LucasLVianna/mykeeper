@@ -1,6 +1,6 @@
 <?php
 // É uma boa prática colocar o session_start() logo na primeira linha
-session_start(); 
+session_start();    
 
 // 1. Só executa a lógica do banco se a requisição for um POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -82,6 +82,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     
     <script src="usuario_login.js"></script>
-    <script src="..js/valida_sessao.js"></script>
 </body>
 </html>

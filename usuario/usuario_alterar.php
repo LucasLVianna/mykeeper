@@ -1,61 +1,17 @@
 <?php
-    include_once('../php/conexao.php');
-
-    $retorno = [
-        'status'    => '',
-        'mensagem'  => '',
-        'data'      => []
-    ];
-
-    if(isset($_GET['id'])){
-        // Simulando as informações que vem do front
-        $nome       = $_POST['nome']; // $_POST['nome'];
-        $email      = $_POST['email'];
-        $senha      = $_POST['senha'];
-    
-        // Preparando para inserção no banco de dados
-        $stmt = $conexao->prepare("UPDATE usuario SET email = ?, nome = ?, senha = ? WHERE id = ?");
-        $stmt->bind_param("sssi", $email, $nome, $senha, $_GET['id']);
-        $stmt->execute();
-
-        if($stmt->affected_rows > 0){
-            $retorno = [
-                'status'    => 'ok',
-                'mensagem'  => 'Registro alterado com sucesso.',
-                'data'      => []
-            ];
-        }else{
-            $retorno = [
-                'status'    => 'nok',
-                'mensagem'  => 'Não posso alterar um registro.'.json_encode($_GET),
-                'data'      => []
-            ];
-        }
-        $stmt->close();
-    }else{
-        $retorno = [
-            'status'    => 'nok',
-            'mensagem'  => 'Não posso alterar um registro sem um ID informado.',
-            'data'      => []
-        ];
-    }
-       
-    $conexao->close();
-
-    header("Content-type:application/json;charset:utf-8");
-    echo json_encode($retorno);
-    exit;
+    include_once('../php/auth.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alterar Usuário</title>
 </head>
 <body>
     <h1>Alterar usuários</h1>
-    <form action="usuario_alterar.php" method="post">
+    <form id="formAlterar">
+        <input type="hidden" id="id" name="id">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required><br><br>
         <label for="email">Email:</label>
@@ -64,6 +20,7 @@
         <input type="password" id="senha" name="senha" required><br><br>
         <input type="submit" value="Alterar">
     </form>
+    <script src="../js/valida_sessao.js"></script>
     <script src="usuario_alterar.js"></script>
 </body>
 </html>

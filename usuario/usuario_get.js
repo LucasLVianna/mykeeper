@@ -1,64 +1,48 @@
-document.addEventListener("DOMContentLoaded", () => {
-    valida_sessao();
-    buscar();
+document.addEventListener("DOMContentLoaded", async () => {
+    await valida_sessao();
+    listar();
+
+    document.getElementById("novo").addEventListener("click", () => {
+        window.location.href = "usuario_novo.php";
+    });
+
+    document.getElementById("logoff").addEventListener("click", () => {
+        window.location.href = "../php/logoff.php";
+    });
 });
 
-document.getElementById("novo").addEventListener("click", () => {
-    window.location.href = 'usuario_novo.php';
-});
+async function excluir(id){
+    if(!confirm('Tem certeza que deseja excluir este usuário?')) return;
 
-document.getElementById("logoff").addEventListener("click", () => {
-    logoff();
-});
-
-async function logoff(){
-    const retorno = await fetch("../usuario/usuario_logoff.php");
+    const retorno = await fetch("../usuario/usuario_excluir.php?id=" + id);
     const resposta = await retorno.json();
     if(resposta.status == "ok"){
-        window.location.href = '../login/';   
+        alert("SUCESSO: " + resposta.mensagem);
+        listar();
+    }else{
+        alert("ERRO: " + resposta.mensagem);
     }
 }
-async function buscar(){
+
+async function listar(){
     const retorno = await fetch("../usuario/usuario_get.php");
     const resposta = await retorno.json();
     if(resposta.status == "ok"){
-        preencherTabela(resposta.data);    
-    }
-}
-
-async function excluir(id){
-    const retorno = await fetch("../usuario/usuario_excluir.php?id="+id);
-    const resposta = await retorno.json();
-    if(resposta.status == "ok"){
-        alert(resposta.mensagem);
-        window.location.reload();    
-    }else{
-        alert(resposta.mensagem);
-    }
-}
-
-function preencherTabela(tabela){
-    var html = `
-        <table>
-            <tr>
-                <th> Email </th>
-                <th> Nome </th>
-                <th> Senha </th>
-                <th> # </th>
-            </tr>`;
-    for(var i=0;i<tabela.length;i++){
-        html += `
-            <tr>
-                <td>${tabela[i].email}</td>
-                <td>${tabela[i].nome}</td>
-                <td>${tabela[i].senha}</td>
+        var html = "<table border='1'><tr><th>ID</th><th>Nome</th><th>Email</th><th>Ações</th></tr>";
+        resposta.data.forEach(usuario => {
+            html += `<tr>
+                <td>${usuario.id}</td>
+                <td>${usuario.nome}</td>
+                <td>${usuario.email}</td>
                 <td>
-                    <a href='usuario_alterar.php?id=${tabela[i].id}'>Alterar</a>
-                    <a href='#' onclick='excluir(${tabela[i].id})'>Excluir</a>
+                    <a href="usuario_alterar.php?id=${usuario.id}">Editar</a>
+                    <button onclick="excluir(${usuario.id})">Excluir</button>
                 </td>
-            </tr>
-        `;
+            </tr>`;
+        });
+        html += "</table>";
+        document.getElementById("lista").innerHTML = html;
+    }else{
+        alert("ERRO: " + resposta.mensagem);
     }
-    html += '</table>';
-    document.getElementById("lista").innerHTML = html;
 }

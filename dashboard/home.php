@@ -1,8 +1,6 @@
 <?php
+    include_once('../php/auth.php');
     include_once('../php/conexao.php');
-    include('../php/valida_sessao.php');
-    
-
 ?>
 
     <!DOCTYPE html>
@@ -34,10 +32,12 @@
                 </nav>
             </div>
         </aside>
-    </body>
+
         <script src="../js/valida_sessao.js">
+            valida_sessao();
         </script>
         <script>
+        
             document.getElementById("inicioButtonLink").addEventListener("click", () => {
                 window.location.href = '../dashboard/home.php';
             });
@@ -60,4 +60,5 @@
                 window.location.href = '../php/logoff.php';
             });
         </script>
+    </body>
     </html>

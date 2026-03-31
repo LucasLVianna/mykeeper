@@ -1,3 +1,7 @@
+<?php
+    include_once('../php/auth.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,8 +16,7 @@
     
     <div id="lista"></div>
     
+    <script src="../js/valida_sessao.js"></script>
     <script src="../usuario/usuario_get.js"></script>
 </body>
-<script src="usuario_get.js"></script>
-<script src="usuario_novo.js"></script>
 </html>

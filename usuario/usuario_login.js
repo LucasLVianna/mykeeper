@@ -23,7 +23,7 @@ async function login(){
         
         if(resposta.status == "ok"){
             // Login deu certo, redireciona
-            window.location.href = "../dashboard/home";
+            window.location.href = "../dashboard/home.php";
         }else{
             // Login deu errado (senha incorreta, etc)
             alert(resposta.mensagem || "Credenciais inválidas."); 
