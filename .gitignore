@@ -15,5 +15,10 @@ storage/logs/
 # Dependências (se usar Composer futuramente)
 vendor/
 
-# Uploads de usuários
+# Uploads de usuários (storage)
 storage/uploads/
+
+# Uploads de categorias (public)
+public/uploads/*
+!public/uploads/categorias/
+!public/uploads/categorias/.gitkeep

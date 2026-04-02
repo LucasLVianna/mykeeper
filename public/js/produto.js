@@ -62,11 +62,3 @@ document.getElementById('produto_novo').addEventListener('click', ()=>{
     window.location.href = '/mykeeper/src/Views/produto_novo.php'
 })
 
-document.getElementById('inicioButtonLink').addEventListener('click', () => {
-    window.location.href = '/mykeeper/src/Views/home.php';
-});
-
-document.getElementById('produtosButtonLink').addEventListener('click', () => {
-    window.location.href = '/mykeeper/src/Views/produto.php';
-});
-
