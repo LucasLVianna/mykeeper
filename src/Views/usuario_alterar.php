@@ -1,5 +1,5 @@
 <?php
-    include_once('../php/auth.php');
+    include_once('../../config/auth.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -18,9 +18,11 @@
         <input type="email" id="email" name="email" required><br><br>
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required><br><br>
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" required><br><br>
         <input type="submit" value="Alterar">
     </form>
-    <script src="../js/valida_sessao.js"></script>
-    <script src="usuario_alterar.js"></script>
+    <script src="../../public/js/valida_sessao.js"></script>
+    <script src="../../public/js/usuario_alterar.js"></script>
 </body>
 </html>

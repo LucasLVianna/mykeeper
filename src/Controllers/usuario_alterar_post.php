@@ -1,6 +1,6 @@
 <?php
-    include_once('../php/auth.php');
-    include_once('../php/conexao.php');
+    include_once('../../config/auth.php');
+    include_once('../../config/conexao.php');
 
     $retorno = [
         'status'    => '',
@@ -10,11 +10,12 @@
 
     if(isset($_GET['id']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome  = $_POST['nome']  ?? '';
-        $email = $_POST['email'] ?? '';
+        $email = $_POST['email'] ?? ''; //segurança para evitar undefined index
         $senha = $_POST['senha'] ?? '';
+        $cep = $_POST['cep'] ?? '';
 
-        $stmt = $conexao->prepare("UPDATE usuario SET email = ?, nome = ?, senha = ? WHERE id = ?");
-        $stmt->bind_param("sssi", $email, $nome, $senha, $_GET['id']);
+        $stmt = $conexao->prepare("UPDATE usuario SET email = ?, nome = ?, senha = ?, cep = ? WHERE id = ?");
+        $stmt->bind_param("ssssi", $email, $nome, $senha, $cep, $_GET['id']);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){

@@ -4,7 +4,7 @@ session_start();
 
 // 1. Só executa a lógica do banco se a requisição for um POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    include_once('../php/conexao.php');
+    include_once('../../config/conexao.php');
     
     $retorno = [
         'status'    => '',
@@ -80,7 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <input type="submit" value="Login">
     </form>
+    <a href="usuario_novo.php">Novo usuário</a>
     
-    <script src="usuario_login.js"></script>
+    <script src="../../public/js/usuario_login.js"></script>
 </body>
 </html>

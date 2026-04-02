@@ -2,6 +2,6 @@
     session_start();
     
     if (empty($_SESSION['usuario'])) {
-        header("Location: ../login/login.php");
+        header("Location: ../src/Views/usuario_login.php");
         exit;
     }

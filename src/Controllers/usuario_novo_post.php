@@ -1,6 +1,6 @@
 <?php
-    include_once('../php/auth.php');
-    include_once('../php/conexao.php');
+    include_once('../../config/auth.php');
+    include_once('../../config/conexao.php');
 
     $retorno = [
         'status'    => '',
@@ -12,9 +12,10 @@
         $nome  = $_POST['nome']  ?? '';
         $email = $_POST['email'] ?? '';
         $senha = $_POST['senha'] ?? '';
+        $cep = $_POST['cep'] ?? '';
 
-        $stmt = $conexao->prepare("INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $nome, $email, $senha);
+        $stmt = $conexao->prepare("INSERT INTO usuario (nome, email, senha, cep) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $nome, $email, $senha, $cep);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){

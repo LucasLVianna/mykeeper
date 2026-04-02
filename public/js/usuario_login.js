@@ -14,7 +14,7 @@ async function login(){
     fd.append("senha", senha);
     
     try {
-        const retorno = await fetch("usuario_login.php", {
+        const retorno = await fetch("../../src/Views/usuario_login.php", {
             method: "POST",
             body: fd
         });
@@ -23,7 +23,7 @@ async function login(){
         
         if(resposta.status == "ok"){
             // Login deu certo, redireciona
-            window.location.href = "../dashboard/home.php";
+            window.location.href = "../../src/Views/home.php";
         }else{
             // Login deu errado (senha incorreta, etc)
             alert(resposta.mensagem || "Credenciais inválidas."); 

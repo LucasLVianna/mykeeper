@@ -1,6 +1,6 @@
 <?php
-    include_once('../php/auth.php');
-    include_once('../php/conexao.php');
+    include_once('../../config/auth.php');
+    include_once('../../config/conexao.php');
 
     $retorno = [
         'status'    => '',
@@ -9,8 +9,8 @@
     ];
 
     if(isset($_GET['id'])){
-        $stmt = $conexao->prepare("DELETE FROM usuario WHERE id = ?");
-        $stmt->bind_param("i", $_GET['id']);
+        $stmt = $conexao->prepare("UPDATE usuario SET ativo = 0 WHERE id = ?");
+        $stmt->bind_param("ii", $_GET['id']);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){

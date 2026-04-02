@@ -1,6 +1,6 @@
 <?php
-    include_once('../php/auth.php');
-    include_once('../php/conexao.php');
+    include_once('../../config/auth.php');
+    include_once('../../config/conexao.php');
     
     $retorno = [
         'status'    => '',

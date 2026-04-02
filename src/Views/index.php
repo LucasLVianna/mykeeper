@@ -1,5 +1,5 @@
 <?php
-    include_once('../php/auth.php');
+    include_once('../../config/auth.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
     
     <div id="lista"></div>
     
-    <script src="../js/valida_sessao.js"></script>
-    <script src="../usuario/usuario_get.js"></script>
+    <script src="../../public/js/valida_sessao.js"></script>
+    <script src="../../public/js/usuario_get.js"></script>
 </body>
 </html>

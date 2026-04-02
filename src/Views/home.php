@@ -1,6 +1,6 @@
 <?php
-    include_once('../php/auth.php');
-    include_once('../php/conexao.php');
+    include_once('../../config/auth.php');
+    include_once('../../config/conexao.php');
 ?>
 
     <!DOCTYPE html>
@@ -33,13 +33,13 @@
             </div>
         </aside>
 
-        <script src="../js/valida_sessao.js">
+        <script src="../../public/js/valida_sessao.js"></script>
             valida_sessao();
         </script>
         <script>
         
             document.getElementById("inicioButtonLink").addEventListener("click", () => {
-                window.location.href = '../dashboard/home.php';
+                window.location.href = 'home.php';
             });
             document.getElementById("inventarioButtonLink").addEventListener("click", () => {
                 window.location.href = '../inventario/inventario.php';
@@ -57,7 +57,7 @@
                 window.location.href = '../historico/historico.php';
             });
             document.getElementById("logoff").addEventListener("click", () => {
-                window.location.href = '../php/logoff.php';
+                window.location.href = '../Controllers/logoff.php';
             });
         </script>
     </body>
