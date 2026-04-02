@@ -22,6 +22,7 @@ function preencherTabela(tabela){
     <table class="tabela">
         <tr>
             <th> ID </th>
+            <th>Ícone</th>
             <th> Nome </th>
             <th> Categoria </th>
             <th> Unidade Medida </th>
@@ -30,16 +31,21 @@ function preencherTabela(tabela){
     `;
 
     for(var i=0;i<tabela.length;i++){
-    html += `<tr>
-            <td> ${tabela[i].id} </td>
-            <td> ${e(tabela[i].nome_produto)} </td>
-            <td> ${e(tabela[i].categoria_produto)} </td>
-            <td> ${e(tabela[i].und_medida_produto)} </td>
-            <td class="botoes"> 
-            <button class = "btn-editar"><a href="produto_alterar.php?id=${tabela[i].id}">Editar</a></button>
-            <button class = "btn-excluir"><a href="#" onclick="excluir(${tabela[i].id})">Excluir</a></button>
-            </td>
-        </tr>`;
+        const icone = tabela[i].imagem
+            ? `<img src="${e(tabela[i].imagem)}" style="width:40px; height:40px;">`
+            : 'Sem ícone';
+
+        html += `<tr>
+                <td> ${tabela[i].id} </td>
+                <td> ${icone} </td>
+                <td> ${e(tabela[i].nome)} </td>
+                <td> ${e(tabela[i].categoria)} </td>
+                <td> ${e(tabela[i].und_medida)} </td>
+                <td class="botoes"> 
+                <button class = "btn-editar"><a href="produto_alterar.php?id=${tabela[i].id}">Editar</a></button>
+                <button class = "btn-excluir"><a href="#" onclick="excluir(${tabela[i].id})">Excluir</a></button>
+                </td>
+                </tr>`;
     }
 
     html += `</table>`;
@@ -61,12 +67,4 @@ async function excluir(id){
 document.getElementById('produto_novo').addEventListener('click', ()=>{
     window.location.href = '/mykeeper/src/Views/produto_novo.php'
 })
-
-document.getElementById('inicioButtonLink').addEventListener('click', () => {
-    window.location.href = '/mykeeper/src/Views/home.php';
-});
-
-document.getElementById('produtosButtonLink').addEventListener('click', () => {
-    window.location.href = '/mykeeper/src/Views/produto.php';
-});
 
