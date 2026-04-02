@@ -11,16 +11,28 @@
             <div>
                 <label for="nome_produto">Nome</label>
                 <input type="text" name="nome_produto" id="nome_produto">
-                <input type="hidden" name="id" id="id">
+                <input type="hidden" id="id">
             </div>
 
             <div>
                 <label for="categoria_produto">Categoria</label>
-                <input type="text" name="categoria_produto" id="categoria_produto">
+                <select name="categoria_produto" id="categoria_produto">
+                    <option value="">Selecione uma categoria</option>
+                </select>
             </div>
+            
             <div>
                 <label for="und_medida_produto">Unidade de medida</label>
                 <input type="text" name="und_medida_produto" id="und_medida_produto">
+            </div>
+
+            <div>
+                <label for="icone_produto">Ícone do produto</label>
+                <input type="file" name="icone_produto" id="icone_produto" accept="image/png, image/jpeg, image/jpg">
+            </div>
+
+            <div>
+                <img src="" id="preview" style="display:none; width:100px; height:100px;">
             </div>
 
             <button type="button" id="alterarproduto">Salvar</button>

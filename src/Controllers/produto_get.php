@@ -9,10 +9,19 @@
     ];
 
     if(isset($_GET['id'])){
-        $stmt = $conexao->prepare("SELECT * FROM produto WHERE id = ?");
+        $stmt = $conexao->prepare("
+            SELECT p.*, c.nome AS categoria 
+            FROM produto p
+            LEFT JOIN categoria c ON p.id_categoria = c.id
+            WHERE p.id = ?
+        ");
         $stmt->bind_param('i', $_GET['id']);
     } else {
-        $stmt = $conexao->prepare("SELECT * FROM produto");
+        $stmt = $conexao->prepare("
+            SELECT p.*, c.nome AS categoria 
+            FROM produto p
+            LEFT JOIN categoria c ON p.id_categoria = c.id
+        ");
     }
 
     $stmt->execute();

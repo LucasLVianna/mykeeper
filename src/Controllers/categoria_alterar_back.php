@@ -19,7 +19,7 @@ if(isset($_GET['id'])){
     if(isset($_FILES['icone_categoria']) && $_FILES['icone_categoria']['error'] == 0){
 
         $ext = pathinfo($_FILES['icone_categoria']['name'], PATHINFO_EXTENSION);
-        $nome_arquivo = uniqid() . '.' . $ext;
+        $nome_arquivo = uniqid('categoria_') . '.' . $ext;
 
         $pastaFisica = dirname(__DIR__, 2) . '/public/uploads/categorias/';
         $caminhoURL = '/mykeeper/public/uploads/categorias/' . $nome_arquivo;

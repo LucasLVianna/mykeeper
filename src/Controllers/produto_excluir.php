@@ -2,16 +2,37 @@
     include_once(__DIR__ . '/../../config/headers.php');
     include_once(__DIR__ . '/../../config/conexao.php');
 
-    //Configurando o padrão de retonro em todas as situações
     $retorno = [
         'status' => '', //ok ou nok
         'mensagem' => '', //mensagem que envio para o front
         'data' => []
     ];
 
-    // recuperando informações do banco de dados
-
     if(isset($_GET['id'])){
+
+        $stmt = $conexao->prepare("SELECT imagem FROM produto WHERE id = ?");
+        $stmt->bind_param('i', $_GET['id']);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        $imagem = null;
+
+        if($resultado->num_rows > 0){
+            $linha = $resultado->fetch_assoc();
+            $imagem = $linha['imagem'];
+        }
+
+        $stmt->close();
+
+        if($imagem){
+            // transforma URL em caminho físico
+            $caminhoFisico = dirname(__DIR__, 2) . str_replace('/mykeeper', '', $imagem);
+
+            if(file_exists($caminhoFisico)){
+                unlink($caminhoFisico);
+            }
+        }
+
         $stmt = $conexao->prepare("DELETE FROM produto WHERE id = ?");
         $stmt->bind_param('i', $_GET['id']);
         $stmt->execute();
