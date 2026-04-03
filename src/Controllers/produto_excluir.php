@@ -1,0 +1,66 @@
+<?php
+    include_once(__DIR__ . '/../../config/headers.php');
+    include_once(__DIR__ . '/../../config/conexao.php');
+
+    $retorno = [
+        'status' => '', //ok ou nok
+        'mensagem' => '', //mensagem que envio para o front
+        'data' => []
+    ];
+
+    if(isset($_GET['id'])){
+
+        $stmt = $conexao->prepare("SELECT imagem FROM produto WHERE id = ?");
+        $stmt->bind_param('i', $_GET['id']);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        $imagem = null;
+
+        if($resultado->num_rows > 0){
+            $linha = $resultado->fetch_assoc();
+            $imagem = $linha['imagem'];
+        }
+
+        $stmt->close();
+
+        if($imagem){
+            // transforma URL em caminho físico
+            $caminhoFisico = dirname(__DIR__, 2) . str_replace('/mykeeper', '', $imagem);
+
+            if(file_exists($caminhoFisico)){
+                unlink($caminhoFisico);
+            }
+        }
+
+        $stmt = $conexao->prepare("DELETE FROM produto WHERE id = ?");
+        $stmt->bind_param('i', $_GET['id']);
+        $stmt->execute();
+
+        if($stmt->affected_rows > 0){
+            $retorno = [
+                'status' => 'ok', //ok ou nok
+                'mensagem' => 'Item excluido', //mensagem que envio para o front
+                'data' => []
+            ];
+        }else{
+            $retorno = [
+                'status' => 'nok', //ok ou nok
+                'mensagem' => 'Item não excluido', //mensagem que envio para o front
+                'data' => []
+            ];
+        }
+
+        $stmt->close();
+    }else{
+        $retorno = [
+            'status' => 'nok', //ok ou nok
+            'mensagem' => 'É necessário informar um ID para exclusão', //mensagem que envio para o front
+            'data' => []
+        ];
+    };
+
+    $conexao->close();
+
+    header("Content-type:application/json;charset:utf-8");
+    echo json_encode($retorno);
