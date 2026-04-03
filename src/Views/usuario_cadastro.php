@@ -1,29 +1,31 @@
-<?php
-    session_start();
-    include_once('verifica_login_realizado.php');
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
 </head>
 
 <body>
     <section>
         <div>
             <div>
-                <h2>Bem-vindo ao MyKeeper</h2>
+                <h2>Criar conta no MyKeeper</h2>
             </div>
             <div>
-                <p>Entre com sua conta para acessar seu estoque alimenticio</p>
+                <p>Preencha os dados abaixo para começar a controlar seu estoque</p>
             </div>
 
-            <form id="formLogin">
-
+            <form id="formCadastro">
+                <div>
+                    <div>
+                        <label for="nome">Nome completo</label>
+                    </div>
+                    <div>
+                        <input type="text" name="nome" id="nome" placeholder="Seu nome">
+                    </div>
+                </div>
                 <div>
                     <div>
                         <label for="email">E-mail</label>
@@ -33,6 +35,10 @@
                     </div>
                 </div>
 
+                <div>
+                    <label for="cep">CEP</label>
+                    <input type="text" name="cep" id="cep" placeholder="Seu CEP" maxlength="9">
+                </div>
 
                 <div>
                     <div>
@@ -41,22 +47,17 @@
                     <div>
                         <input type="password" name="senha" id="senha" placeholder="••••••" minLength="8">
                     </div>
-                    <div>
-                        <p>Esqueceu a senha? <a href="#">Redefinir</a></p>
-                    </div>
                 </div>
 
-                <button type="submit">Entrar</button>
+                <button type="submit">Criar conta</button>
             </form>
-
+            
             <div class="divider">
-                <span>AINDA NÃO TEM CONTA?</span>
+                <span>JÁ TEM UMA CONTA?</span>
             </div>
-
+            <button type="button" id="entrar">Entrar</button>
         </div>
-        <button type="button" id="createAccount">Criar uma conta</button>
     </section>
-
-<script src="/mykeeper/public/js/login.js"></script>
 </body>
+<script src="/mykeeper/public/js/cadastrar.js"></script>
 </html>
