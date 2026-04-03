@@ -1,0 +1,12 @@
+addEventListener('DOMContentLoaded', async () => {
+    const response = await fetch('/mykeeper/config/check_session.php');
+    const data = await response.json();
+    if (!data.logado) {
+        window.location.href = '/mykeeper/src/Views/usuario_login.php';
+        return;
+    }
+});
+
+document.getElementById('cadastroSuporteButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Views/suporte.php';
+});

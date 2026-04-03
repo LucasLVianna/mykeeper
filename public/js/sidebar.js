@@ -29,3 +29,7 @@ document.getElementById('historicoButtonLink').addEventListener('click', () => {
 document.getElementById('perfilButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
 });
+
+document.getElementById('adminHomeButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Views/admin_home.php';
+});
