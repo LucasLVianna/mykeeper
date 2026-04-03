@@ -1,22 +1,29 @@
 <?php
-include_once(__DIR__ . '/../../config/valida_sessao.php');
+    include_once(__DIR__ . '/../../config/valida_sessao.php');
+    include_once(__DIR__ . '/../../config/valida_admin.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br">    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
+    <title>Home</title>
 </head>
+
 <body>
+    <header>
+        <button id="colorMode">White/dark mode</button>
+    </header>
+
     <aside class="sideNavBar">
-            <div>
-                <h2>MyKeeper</h2>
-            </div>
-            <div>
-                <nav>
-                    <button id="inicioButtonLink">Início</button>
+        <div>
+            <h2>ADMIN HOME</h2>
+        </div>
+        <div>
+            <nav>
+                <button id="inicioButtonLink">Início</button>
                 <button id="inventarioButtonLink">Inventario</button>
                 <button id="produtosButtonLink">Produtos registrados</button>
                 <button id="categoriasButtonLink">Categorias</button>
@@ -25,21 +32,20 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
                 <button id="receitasButtonLink">Receitas</button>
                 <button id="historicoButtonLink">Historico</button>
                 <button id="perfilButtonLink">Perfil</button>
+                <button id="adminHomeButtonLink">Admin</button>
                 <button id="logoffButtonLink">Sair</button>
-                </nav>
-            </div>
-        </aside>
-        
+            </nav>
+        </div>
+    </aside>
+
     <section>
         <div>
-            <h2>Produtos Registrados</h2>
-        </div>
-        <div id="item"></div>
-        <div>
-            <button type="button" id="produto_novo" class="addvs">Adicionar Produto</button>
+            <button id="cadastroSuporteButtonLink">Cadastrar Suporte</button>
         </div>
     </section>
-    <script src="/mykeeper/public/js/produto.js"></script>
-    <script src="/mykeeper/public/js/sidebar.js"></script>
+    
 </body>
+
+<script src="/mykeeper/public/js/admin_home.js"></script>
+<script src="/mykeeper/public/js/sidebar.js"></script>
 </html>

@@ -9,15 +9,10 @@
     ];
 
     if(isset($_GET['id'])){
-        $stmt = $conexao->prepare("SELECT id, nome, cep, email FROM usuario WHERE id = ?");
+        $stmt = $conexao->prepare("SELECT * FROM suporte WHERE id = ?");
         $stmt->bind_param('i', $_GET['id']);
     } else {
-        echo json_encode([
-            'status' => 'nok',
-            'mensagem' => 'ID do usuário não fornecido',
-            'data' => []
-        ]);
-        exit;
+        $stmt = $conexao->prepare("SELECT * FROM suporte");
     }
 
     $stmt->execute();
@@ -25,10 +20,13 @@
     $tabela = [];
 
     if($resultado->num_rows > 0){
+        while($linha = $resultado->fetch_assoc()){
+            $tabela[] = $linha;
+        }
         $retorno = [
             'status' => 'ok',
             'mensagem' => 'Sucesso, consulta efetuada',
-            'data' => $resultado->fetch_assoc() 
+            'data' => $tabela
         ];
     } else {
         $retorno = [

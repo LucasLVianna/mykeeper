@@ -11,25 +11,22 @@
         exit;
     }
 
-    $id    = $_SESSION['usuario']['id'];
-    $nome  = $_POST['nome'];
-    $email = $_POST['email'];
-    $cep   = $_POST['cep'];
+    $id = $_SESSION['usuario']['id'];
 
-    $stmt = $conexao->prepare("UPDATE usuario SET nome = ?, email = ?, cep = ? WHERE id = ?");
-    $stmt->bind_param('sssi', $nome, $email, $cep, $id);
+    $stmt = $conexao->prepare("UPDATE usuario SET conta_ativa = false WHERE id = ?");
+    $stmt->bind_param('i', $id);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        $_SESSION['usuario']['nome'] = $nome; 
+        session_destroy();
         $retorno = [
             'status' => 'ok',
-            'mensagem' => 'Perfil atualizado com sucesso'
+            'mensagem' => 'Conta desativada com sucesso'
         ];
     } else {
         $retorno = [
             'status' => 'nok',
-            'mensagem' => 'Falha ao atualizar perfil'
+            'mensagem' => 'Falha ao desativar conta'
         ];
     }
 

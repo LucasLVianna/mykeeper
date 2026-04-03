@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
     include_once(__DIR__ . '/../../config/headers.php');
     include_once(__DIR__ . '/../../config/conexao.php');
     
@@ -8,10 +6,9 @@ error_reporting(E_ALL);
     $email     = $_POST['email'];
     $senha     = $_POST['senha'];
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-    $cep       = $_POST['cep'];
 
-    $stmt = $conexao->prepare("INSERT INTO usuario (nome, email, senha, cep) VALUES (?,?,?,?)");
-    $stmt->bind_param("ssss", $nome, $email, $senhaHash, $cep);
+    $stmt = $conexao->prepare("INSERT INTO suporte (nome, email, senha) VALUES (?,?,?)");
+    $stmt->bind_param("sss", $nome, $email, $senhaHash);
 
     if ($stmt->execute()) {
         $retorno = [
@@ -20,11 +17,9 @@ error_reporting(E_ALL);
         ];
     } else {
         $retorno = [
-        'status' => 'nok',
-        'mensagem' => $stmt->errno == 1062 
-            ? 'Este email já está cadastrado' 
-            : 'Falha ao inserir: ' . $stmt->error
-    ];
+            'status' => 'nok',
+            'mensagem' => 'Falha ao inserir: ' . $stmt->error
+        ];
     }
 
     $stmt->close();
