@@ -1,3 +1,7 @@
+<?php
+include_once(__DIR__ . '/../../config/valida_sessao.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,6 +24,7 @@
                 <button id="comprasButtonLink">Compras</button>
                 <button id="receitasButtonLink">Receitas</button>
                 <button id="historicoButtonLink">Historico</button>
+                <button id="logoffButtonLink">Sair</button>
                 </nav>
             </div>
         </aside>

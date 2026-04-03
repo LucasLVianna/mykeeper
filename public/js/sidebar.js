@@ -9,3 +9,19 @@ document.getElementById('produtosButtonLink').addEventListener('click', () => {
 document.getElementById('categoriasButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/categoria.php';
 });
+
+document.getElementById('logoffButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Controllers/logoff.php';
+});
+
+document.getElementById('comprasButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Views/compra.php';
+});
+
+document.getElementById('receitasButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Views/receita.php';
+});
+
+document.getElementById('historicoButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Views/historico.php';
+}); 

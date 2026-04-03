@@ -1,3 +1,7 @@
+<?php
+include_once(__DIR__ . '/../../config/valida_sessao.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
