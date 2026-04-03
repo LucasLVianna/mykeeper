@@ -6,6 +6,8 @@ header('Content-Type: application/json');
 if(isset($_SESSION['logado']) && $_SESSION['logado'] === true){
     echo json_encode([
         'logado' => true,
+        'id'      => $_SESSION['usuario']['id'],
+        'nome'    => $_SESSION['usuario']['nome'],
         'redirect' => '/mykeeper/src/Views/home.php'
     ]);
 }else{

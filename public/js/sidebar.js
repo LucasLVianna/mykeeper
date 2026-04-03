@@ -25,3 +25,7 @@ document.getElementById('receitasButtonLink').addEventListener('click', () => {
 document.getElementById('historicoButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/historico.php';
 }); 
+
+document.getElementById('perfilButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
+});

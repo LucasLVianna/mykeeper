@@ -24,6 +24,7 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
                 <button id="comprasButtonLink">Compras</button>
                 <button id="receitasButtonLink">Receitas</button>
                 <button id="historicoButtonLink">Historico</button>
+                <button id="perfilButtonLink">Perfil</button>
                 <button id="logoffButtonLink">Sair</button>
                 </nav>
             </div>

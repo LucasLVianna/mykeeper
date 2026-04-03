@@ -10,24 +10,32 @@ $result = $stmt->get_result();
 $usuario = $result->fetch_assoc();
 
 if ($usuario && password_verify($_POST['senha'], $usuario['senha'])) {
+    if (!$usuario['conta_ativa']) {
+        echo json_encode([
+            'status' => 'nok',
+            'mensagem' => 'Conta desativada. Entre em contato com o suporte.'
+        ]);
+        exit;
+    }
+
+    session_start();
+    $_SESSION['usuario'] = [
+        'id'   => $usuario['id'],
+        'nome' => $usuario['nome']
+    ];
+    $_SESSION['logado'] = true;
     $retorno = [
-        'status' => 'ok',
+        'status'   => 'ok',
         'mensagem' => 'Login realizado com sucesso',
         'redirect' => '/mykeeper/src/Views/home.php'
     ];
-
-    $_SESSION['usuario'] = [
-        'id' => $usuario['id'],
-        'nome' => $usuario['nome']
-    ];
-
-    $_SESSION['logado'] = true;
-}else{
+    
+}else {
     $retorno = [
-        'status' => 'nok',
-        'mensagem' => 'Login não realizado'
+        'status'   => 'nok',
+        'mensagem' => 'Email ou senha incorretos'
     ];
-};
+}
 
 $stmt->close();
 $conexao->close();
