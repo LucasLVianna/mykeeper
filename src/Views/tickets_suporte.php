@@ -1,22 +1,19 @@
 <?php
     include_once(__DIR__ . '/../../config/valida_sessao.php');
+    include_once(__DIR__ . '/../../config/valida_admin.php');
 ?>
-    <!DOCTYPE html>
-    <html lang="en">    
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
-    </head>
-
-    <body>
-        <header>
-            <button id="colorMode">White/dark mode</button>
-        </header>
-        <aside class="sideNavBar">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets de Suporte</title>
+</head>
+<body>
+    <aside class="sideNavBar">
             <div>
-                <h2>MyKeeper</h2>
+                <h2>TICKETS SUPORTE HOME</h2>
             </div>
             <div>
                 <nav>
@@ -28,15 +25,25 @@
                     <button id="comprasButtonLink">Compras</button>
                     <button id="receitasButtonLink">Receitas</button>
                     <button id="historicoButtonLink">Historico</button>
-                    <button id="perfilButtonLink">Perfil</button>
                     <button id="adminHomeButtonLink">Admin</button>
                     <button id="ticketButtonLink">Tickets</button>
+                    <button id="perfilButtonLink">Perfil</button>
                     <button id="logoffButtonLink">Sair</button>
                 </nav>
             </div>
         </aside>
-    </body>
+        
+    <section>
+        <div>
+            <h2>Tickets de Suporte</h2>
+        </div>
+        <div id="item">
 
-    <script src="/mykeeper/public/js/home.js"></script>
+        </div>
+
+
+    </section>
+    <script src="/mykeeper/public/js/tickets_suporte.js"></script>
     <script src="/mykeeper/public/js/sidebar.js"></script>
-    </html>
+</body>
+</html>
