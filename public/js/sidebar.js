@@ -33,3 +33,8 @@ document.getElementById('perfilButtonLink').addEventListener('click', () => {
 document.getElementById('adminHomeButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/admin_home.php';
 });
+
+document.getElementById('ticketButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Views/ticket_usuario.php';
+});
+
