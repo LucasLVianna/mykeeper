@@ -21,8 +21,6 @@ async function buscar() {
     const resposta = await retorno.json();
     if (resposta.status == 'ok') {
         preencherTabela(resposta.data);
-    } else {
-        document.getElementById('item').innerHTML = '<p>Nenhuma categoria encontrada.</p>';
     }
 }
 
