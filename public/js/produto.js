@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 })
 
 async function buscar() {
+<<<<<<< HEAD
     const retorno = await fetch('/mykeeper/src/Controllers/produto_get.php');
+=======
+    const retorno = await fetch('/mykeeper-main/src/Controllers/produto_get.php');
+>>>>>>> local-snapshot
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
         preencherTabela(resposta.data);
@@ -61,7 +65,11 @@ function preencherTabela(tabela){
 }
 
 async function excluir(id){
+<<<<<<< HEAD
     const retorno = await fetch('/mykeeper/src/Controllers/produto_excluir.php?id='+id);
+=======
+    const retorno = await fetch('/mykeeper-main/src/Controllers/produto_excluir.php?id='+id);
+>>>>>>> local-snapshot
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
         alert('SUCESSO! '+ resposta.mensagem);
@@ -73,6 +81,7 @@ async function excluir(id){
 }
 
 document.getElementById('produto_novo').addEventListener('click', ()=>{
+<<<<<<< HEAD
     window.location.href = '/mykeeper/src/Views/produto_novo.php'
 })
 

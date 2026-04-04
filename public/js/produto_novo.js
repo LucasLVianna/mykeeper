@@ -59,7 +59,11 @@ async function novo() {
         fd.append('icone_produto', icone_produto);
     }
 
+<<<<<<< HEAD
     const retorno = await fetch('/mykeeper/src/Controllers/produto_novo_back.php', {
+=======
+    const retorno = await fetch('/mykeeper-main/src/Controllers/produto_novo_back.php', {
+>>>>>>> local-snapshot
         method: 'POST',
         body: fd
     });
