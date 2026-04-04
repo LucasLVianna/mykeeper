@@ -40,5 +40,5 @@ Execute o script de criação para estruturar o banco de dados: `mykeeper.sql`
 Após configurar o banco:
 * Crie sua própria conta na página de cadastro.
 * Realize o login com a conta criada.
-* Aproveite ao máximo do nosso sistema!
+* Aproveite ao máximo do nosso sistema!!
 
