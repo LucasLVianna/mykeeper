@@ -40,13 +40,13 @@
         if($stmt->affected_rows > 0){
             $retorno = [
                 'status' => 'ok', //ok ou nok
-                'mensagem' => 'Item excluido', //mensagem que envio para o front
+                'mensagem' => 'Produto excluido', //mensagem que envio para o front
                 'data' => []
             ];
         }else{
             $retorno = [
                 'status' => 'nok', //ok ou nok
-                'mensagem' => 'Item não excluido', //mensagem que envio para o front
+                'mensagem' => 'Produto não excluido', //mensagem que envio para o front
                 'data' => []
             ];
         }

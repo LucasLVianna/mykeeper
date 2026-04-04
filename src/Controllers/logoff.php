@@ -2,5 +2,5 @@
     session_start();
     $_SESSION = array();
     session_destroy();
-    header("Location: /mykeeper/src/Views/usuario_login.php");
+    header("Location: /mykeeper/index.html");
     exit;

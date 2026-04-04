@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="/mykeeper/public/css/usuario_login.css">
 </head>
 
 <body>
@@ -51,10 +52,11 @@
 
             <div class="divider">
                 <span>AINDA NÃO TEM CONTA?</span>
+                <button type="button" id="createAccount">Criar uma conta</button>
             </div>
 
         </div>
-        <button type="button" id="createAccount">Criar uma conta</button>
+        
     </section>
 
 <script src="/mykeeper/public/js/login.js"></script>

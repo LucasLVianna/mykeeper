@@ -14,18 +14,6 @@ document.getElementById('logoffButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Controllers/logoff.php';
 });
 
-document.getElementById('comprasButtonLink').addEventListener('click', () => {
-    window.location.href = '/mykeeper/src/Views/compra.php';
-});
-
-document.getElementById('receitasButtonLink').addEventListener('click', () => {
-    window.location.href = '/mykeeper/src/Views/receita.php';
-});
-
-document.getElementById('historicoButtonLink').addEventListener('click', () => {
-    window.location.href = '/mykeeper/src/Views/historico.php';
-}); 
-
 document.getElementById('perfilButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
 });

@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Perfil</title>
+    <link rel="stylesheet" href="/mykeeper/public/css/perfil_alterar.css">
 </head>
 <body>
     <section>
