@@ -41,7 +41,6 @@
     <section>
         <div>
             <button id="cadastroSuporteButtonLink">Cadastrar Suporte</button>
-            <button id="ticketsSuporte">Tickets de Suporte</button>
         </div>
     </section>
     

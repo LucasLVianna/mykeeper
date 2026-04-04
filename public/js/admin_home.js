@@ -10,7 +10,3 @@ addEventListener('DOMContentLoaded', async () => {
 document.getElementById('cadastroSuporteButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/suporte.php';
 });
-
-document.getElementById('ticketsSuporte').addEventListener('click', () => {
-    window.location.href = '/mykeeper/src/Views/tickets_suporte.php';
-});

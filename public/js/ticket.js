@@ -32,7 +32,6 @@ function preencherTabela(tabela){
             <th> Titulo </th>
             <th> Descrição </th>
             <th> Data de Abertura </th>
-            <th> Resposta </th>
             <th> Status </th>
             <th> # </th>
         </tr>
@@ -45,7 +44,6 @@ function preencherTabela(tabela){
                 <td> ${e(tabela[i].titulo)} </td>
                 <td> ${e(tabela[i].descricao)} </td>
                 <td> ${e(tabela[i].data_ticket)} </td>
-                <td> ${e(tabela[i].resposta_ticket)} </td>
                 <td> ${e(tabela[i].status_ticket)} </td>
                 <td class="botoes"> 
                 <button class = "btn-editar"><a href="ticket_usuario_alterar.php?id=${tabela[i].id}">Editar</a></button>
