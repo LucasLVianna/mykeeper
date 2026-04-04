@@ -4,24 +4,25 @@ function e(str) {
     return div.innerHTML;
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async ()=>{
+    // 1. Primeiro verifica se está logado
     const response = await fetch('/mykeeper/config/check_session.php');
     const data = await response.json();
-
+    
     if (!data.logado) {
         window.location.href = '/mykeeper/src/Views/usuario_login.php';
-        return;
+        return; // para a execução aqui
     }
+    buscar();
+})
 
-    buscar(data.id); 
-});
-
-async function buscar(id) {
-    const retorno = await fetch(`/mykeeper/src/Controllers/ticket_get.php?id=${id}`);
+async function buscar() {
+    const retorno = await fetch('/mykeeper/src/Controllers/tickets_suporte_get.php');
     const resposta = await retorno.json();
-    if (resposta.status == 'ok') {
+    if(resposta.status == 'ok'){
         preencherTabela(resposta.data);
     }
+    
 }
 
 function preencherTabela(tabela){
@@ -48,8 +49,7 @@ function preencherTabela(tabela){
                 <td> ${e(tabela[i].resposta_ticket)} </td>
                 <td> ${e(tabela[i].status_ticket)} </td>
                 <td class="botoes"> 
-                <button class = "btn-editar"><a href="ticket_usuario_alterar.php?id=${tabela[i].id}">Editar</a></button>
-                <button class = "btn-excluir"><a href="#" onclick="excluir(${tabela[i].id})">Excluir</a></button>
+                <button class = "btn-editar"><a href="tickets_suporte_alterar.php?id=${tabela[i].id}">Editar</a></button>
                 </td>
                 </tr>`;
     }
@@ -58,18 +58,3 @@ function preencherTabela(tabela){
     document.getElementById('item').innerHTML = html
 }
 
-async function excluir(id){
-    const retorno = await fetch('/mykeeper/src/Controllers/ticket_excluir.php?id='+id);
-    const resposta = await retorno.json();
-    if(resposta.status == 'ok'){
-        alert('SUCESSO! '+ resposta.mensagem);
-    }else{
-        alert('ERRO! ' + resposta.mensagem)
-    }
-
-    window.location.reload();
-}
-
-document.getElementById('ticket_novo').addEventListener('click', ()=>{
-    window.location.href = '/mykeeper/src/Views/ticket_usuario_novo.php'
-});
