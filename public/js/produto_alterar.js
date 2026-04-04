@@ -52,9 +52,6 @@ async function carregarCategorias(id) {
 
 async function buscar(id) {
     const retorno = await fetch('/mykeeper/src/Controllers/produto_get.php?id='+id);
-=======
-    const retorno = await fetch('/mykeeper-main/src/Controllers/produto_get.php?id='+id);
->>>>>>> local-snapshot
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
@@ -97,11 +94,7 @@ async function alterar() {
         fd.append('icone_produto', icone_produto);
     }
 
-<<<<<<< HEAD
     const retorno = await fetch('/mykeeper/src/Controllers/produto_alterar_back.php?id='+id, {
-=======
-    const retorno = await fetch('/mykeeper-main/src/Controllers/produto_alterar_back.php?id='+id, {
->>>>>>> local-snapshot
         method: 'POST',
         body: fd
     });
