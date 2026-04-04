@@ -18,7 +18,6 @@ if ($usuario && password_verify($_POST['senha'], $usuario['senha'])) {
         exit;
     }
 
-    session_start();
     $_SESSION['usuario'] = [
         'id'   => $usuario['id'],
         'nome' => $usuario['nome']

@@ -1,6 +1,5 @@
 <?php
     session_start();
-    include_once('verifica_login_realizado.php');
 ?>
 
 <!DOCTYPE html>
