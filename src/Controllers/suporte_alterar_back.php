@@ -21,7 +21,7 @@ if(isset($_GET['id'])){
     if($stmt->affected_rows > 0){
         $retorno = [
             'status' => 'ok',
-            'mensagem' => 'Categoria alterada com sucesso',
+            'mensagem' => 'Suporte alterado com sucesso',
             'data' => []
         ];
     }else{

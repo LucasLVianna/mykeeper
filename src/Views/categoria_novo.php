@@ -8,6 +8,7 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova Categoria</title>
+    <link rel="stylesheet" href="/mykeeper/public/css/categoria_novo.css">
 </head>
 <body>
     <section>

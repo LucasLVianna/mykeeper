@@ -40,13 +40,13 @@ if(isset($_GET['id'])){
     if($stmt->affected_rows > 0){
         $retorno = [
             'status' => 'ok',
-            'mensagem' => 'Item excluído com sucesso',
+            'mensagem' => 'Categoria excluída com sucesso',
             'data' => []
         ];
     }else{
         $retorno = [
             'status' => 'nok',
-            'mensagem' => 'Item não excluído',
+            'mensagem' => 'Categoria não excluída',
             'data' => []
         ];
     }

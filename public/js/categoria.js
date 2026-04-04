@@ -50,12 +50,8 @@ function preencherTabela(tabela) {
                 <td>${e(tabela[i].nome)}</td>
                 <td>${e(tabela[i].descricao)}</td>
                 <td class="botoes">
-                    <button class="btn-editar">
-                        <a href="categoria_alterar.php?id=${tabela[i].id}">Editar</a>
-                    </button>
-                    <button class="btn-excluir">
-                        <a href="#" onclick="excluir(${tabela[i].id})">Excluir</a>
-                    </button>
+                    <button class="btn-editar"><a href="categoria_alterar.php?id=${tabela[i].id}">Editar</a></button>
+                    <button class="btn-excluir"><a href="#" onclick="excluir(${tabela[i].id})">Excluir</a></button>
                 </td>
             </tr>`;
     }

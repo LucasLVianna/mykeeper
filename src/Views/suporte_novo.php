@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Suporte</title>
+    <link rel="stylesheet" href="/mykeeper/public/css/suporte_novo.css">
 </head>
 
 <body>
@@ -28,7 +29,7 @@
             <div>
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" id="senha" minlength="8">
-            </div>a
+            </div>
             
             <button type="button" id="addsuporte">Adicionar</button>
         </form>

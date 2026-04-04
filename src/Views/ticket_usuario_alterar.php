@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar ticket</title>
+    <link rel="stylesheet" href="/mykeeper/public/css/ticket_usuario_alterar.css">
 </head>
 <body>
     <section>

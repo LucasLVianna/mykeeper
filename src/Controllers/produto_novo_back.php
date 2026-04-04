@@ -66,13 +66,13 @@ $stmt->execute();
 if($stmt->affected_rows > 0){
     $retorno = [
         'status' => 'ok', //ok ou nok
-        'mensagem' => 'Item inserido com sucesso', //mensagem que envio para o front
+        'mensagem' => 'Produto inserido com sucesso', //mensagem que envio para o front
         'data' => []
     ];
 }else{
     $retorno = [
         'status' => 'nok', //ok ou nok
-        'mensagem' => 'Falha ao inserir o item', //mensagem que envio para o front
+        'mensagem' => 'Falha ao inserir o produto', //mensagem que envio para o front
         'data' => []
     ];
 }
