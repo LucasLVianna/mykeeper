@@ -25,13 +25,13 @@
 
             <div>
                 <label for="cep">CEP</label>
-                <input type="text" name="cep" id="cep">
+                <input type="text" name="cep" id="cep" placeholder="00000-000" maxlength="9" inputmode="numeric">
             </div>
 
             <button type="button" id="alterarperfil">Salvar</button>
         </form>
     </section>
 
-    <script src="/mykeeper/public/js/perfil_alterar.js"></script>
+    <script src="/mykeeper/public/js/perfil_alterar.js?v=20260406-cep"></script>
 </body>
 </html>

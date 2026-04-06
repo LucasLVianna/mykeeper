@@ -38,7 +38,7 @@
 
                 <div>
                     <label for="cep">CEP</label>
-                    <input type="text" name="cep" id="cep" placeholder="Seu CEP" maxlength="9">
+                    <input type="text" name="cep" id="cep" placeholder="00000-000" maxlength="9" inputmode="numeric">
                 </div>
 
                 <div>
@@ -46,7 +46,7 @@
                         <label for="senha">Senha</label> <br>
                     </div>
                     <div>
-                        <input type="password" name="senha" id="senha" placeholder="••••••" minLength="8">
+                        <input type="password" name="senha" id="senha" placeholder="••••••" minlength="8">
                     </div>
                 </div>
 
@@ -60,5 +60,5 @@
         </div>
     </section>
 </body>
-<script src="/mykeeper/public/js/cadastrar.js"></script>
+<script src="/mykeeper/public/js/cadastrar.js?v=20260406-cep"></script>
 </html>
