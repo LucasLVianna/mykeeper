@@ -11,16 +11,24 @@ document.getElementById('icone_produto').addEventListener('change', function() {
     }
 });
 
+function atualizarVisualSelect(select) {
+    select.dataset.empty = select.value ? 'false' : 'true';
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Primeiro verifica se está logado
+    document.querySelectorAll('select').forEach((select) => {
+        atualizarVisualSelect(select);
+        select.addEventListener('change', () => atualizarVisualSelect(select));
+    });
+
     const response = await fetch('/mykeeper/config/check_session.php');
     const data = await response.json();
-    
+
     if (!data.logado) {
         window.location.href = '/mykeeper/src/Views/usuario_login.php';
-        return; // para a execução aqui
+        return;
     }
-    
+
     carregarCategorias();
 });
 
@@ -32,10 +40,12 @@ async function carregarCategorias() {
         const select = document.getElementById('categoria_produto');
         resposta.data.forEach(categoria => {
             const option = document.createElement('option');
-            option.value = categoria.id;        // envia o id para o banco
-            option.textContent = categoria.nome; // exibe o nome para o usuário
+            option.value = categoria.id;
+            option.textContent = categoria.nome;
             select.appendChild(option);
         });
+
+        atualizarVisualSelect(select);
     } else {
         alert('Erro ao carregar categorias');
     }
@@ -46,17 +56,17 @@ document.getElementById('addproduto').addEventListener('click', () => {
 });
 
 async function novo() {
-
-    const nome_produto       = document.getElementById('nome_produto').value.trim();
-    const categoria_produto  = document.getElementById('categoria_produto').value;
+    const nome_produto = document.getElementById('nome_produto').value.trim();
+    const categoria_produto = document.getElementById('categoria_produto').value;
     const und_medida_produto = document.getElementById('und_medida_produto').value.trim();
-    const icone_produto      = document.getElementById('icone_produto').files[0];
+    const icone_produto = document.getElementById('icone_produto').files[0];
 
     if (!nome_produto) {
         alert('Por favor, preencha o nome do produto.');
         document.getElementById('nome_produto').focus();
         return;
     }
+
     if (!und_medida_produto) {
         alert('Por favor, preencha a unidade de medida.');
         document.getElementById('und_medida_produto').focus();
@@ -65,8 +75,9 @@ async function novo() {
 
     const fd = new FormData();
     fd.append('nome_produto', nome_produto);
-    fd.append('id_categoria', categoria_produto); // envia o id da categoria
+    fd.append('id_categoria', categoria_produto);
     fd.append('und_medida_produto', und_medida_produto);
+
     if (icone_produto) {
         fd.append('icone_produto', icone_produto);
     }
