@@ -9,7 +9,7 @@
         'data' => []
     ];
 
-    $id_usuario = $_SESSION['id'];
+    $id_usuario = $_SESSION['usuario']['id'];
 
     if(isset($_GET['id'])){
         $stmt = $conexao->prepare("
