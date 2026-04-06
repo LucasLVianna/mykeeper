@@ -73,6 +73,13 @@ async function novo() {
         return;
     }
 
+    if (!categoria_produto){
+        alert('Por favor, selecione uma categoria.');
+        document.getElementById('categoria_produto').focus();
+        return;
+    }
+    
+
     const fd = new FormData();
     fd.append('nome_produto', nome_produto);
     fd.append('id_categoria', categoria_produto);
