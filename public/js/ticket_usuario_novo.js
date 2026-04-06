@@ -18,6 +18,18 @@ async function novo() {
     const titulo = document.getElementById('titulo').value;
     const descricao = document.getElementById('descricao').value;
 
+    if (!titulo.trim()) {   
+        alert('Por favor, preencha o título do ticket.');
+        document.getElementById('titulo').focus();
+        return;
+    }
+
+    if (!descricao.trim()) {
+        alert('Por favor, preencha a descrição do ticket.');
+        document.getElementById('descricao').focus();
+        return; 
+    }
+
     const fd = new FormData();
     fd.append('titulo', titulo);
     fd.append('descricao', descricao);

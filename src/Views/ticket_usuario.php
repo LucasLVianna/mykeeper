@@ -17,6 +17,7 @@
             <h2>Tickets de Suporte</h2>
         </div>
         <div id="item"></div>
+        <p id="mensagem"></p>
         <div>
             <button type="button" id="ticket_novo" class="addvs">Adicionar Ticket</button>
         </div>
