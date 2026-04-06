@@ -29,6 +29,8 @@ async function buscar(id) {
     const resposta = await retorno.json();
     if (resposta.status == 'ok') {
         preencherTabela(resposta.data);
+    } else {
+        document.getElementById('mensagem').textContent = 'Não há tickets registrados.';
     }
 }
 
@@ -47,6 +49,13 @@ function preencherTabela(tabela){
     `;
 
     for(var i=0;i<tabela.length;i++){
+        const btnEditar = tabela[i].status_ticket == 'ticket_respondido' || tabela[i].status_ticket == 'ticket_encerrado'
+            ? 'Não pode ser editado.' // não exibe o botão
+            : `<button class="btn-editar"><a href="ticket_usuario_alterar.php?id=${tabela[i].id}">Editar</a></button>`;
+        
+        const BtnExcluir = tabela[i].status_ticket == 'ticket_respondido' || tabela[i].status_ticket == 'ticket_encerrado'
+            ? 'Não pode ser excluído.' // não exibe o botão
+            : `<button class="btn-excluir"><a href="#" onclick="excluir(${tabela[i].id})">Excluir</a></button>`;
 
         html += `<tr>
                 <td> ${tabela[i].id} </td>
@@ -56,14 +65,14 @@ function preencherTabela(tabela){
                 <td> ${respostaOuTracos(tabela[i].resposta_ticket)} </td>
                 <td> ${e(tabela[i].status_ticket)} </td>
                 <td class="botoes"> 
-                <button class = "btn-editar"><a href="ticket_usuario_alterar.php?id=${tabela[i].id}">Editar</a></button>
-                <button class = "btn-excluir"><a href="#" onclick="excluir(${tabela[i].id})">Excluir</a></button>
+                    ${btnEditar}
+                    ${BtnExcluir}
                 </td>
                 </tr>`;
     }
 
     html += `</table>`;
-    document.getElementById('item').innerHTML = html
+    document.getElementById('item').innerHTML = html;
 }
 
 async function excluir(id){
