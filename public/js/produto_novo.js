@@ -46,10 +46,22 @@ document.getElementById('addproduto').addEventListener('click', () => {
 });
 
 async function novo() {
-    const nome_produto       = document.getElementById('nome_produto').value;
+
+    const nome_produto       = document.getElementById('nome_produto').value.trim();
     const categoria_produto  = document.getElementById('categoria_produto').value;
-    const und_medida_produto = document.getElementById('und_medida_produto').value;
+    const und_medida_produto = document.getElementById('und_medida_produto').value.trim();
     const icone_produto      = document.getElementById('icone_produto').files[0];
+
+    if (!nome_produto) {
+        alert('Por favor, preencha o nome do produto.');
+        document.getElementById('nome_produto').focus();
+        return;
+    }
+    if (!und_medida_produto) {
+        alert('Por favor, preencha a unidade de medida.');
+        document.getElementById('und_medida_produto').focus();
+        return;
+    }
 
     const fd = new FormData();
     fd.append('nome_produto', nome_produto);

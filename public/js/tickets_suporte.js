@@ -19,10 +19,16 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 async function buscar() {
     const retorno = await fetch('/mykeeper/src/Controllers/tickets_suporte_get.php');
     const resposta = await retorno.json();
-    if(resposta.status == 'ok'){
+
+    if (resposta.status == 'ok') {
+        if (resposta.data.length === 0) {
+            document.getElementById('item').innerHTML = '<p>Nenhum ticket registrado no momento.</p>';
+            return;
+        }
         preencherTabela(resposta.data);
+    } else {
+        document.getElementById('item').innerHTML = '<p>Erro ao carregar os tickets.</p>';
     }
-    
 }
 
 function preencherTabela(tabela){

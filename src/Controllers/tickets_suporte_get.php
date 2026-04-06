@@ -51,7 +51,7 @@
             $tabela[] = $linha;
         }
 
-        if($retorno = count($tabela) > 0){
+        if(count($tabela) > 0){
             $retorno = [
                 'status' => 'ok',
                 'mensagem' => 'Sucesso', 
@@ -60,8 +60,8 @@
 
         }else{
             $retorno = [
-                'status' => 'nok', 
-                'mensagem' => 'Não há registros', 
+                'status' => 'ok',
+                'mensagem' => 'Não há registros',
                 'data' => []
             ];
         }
