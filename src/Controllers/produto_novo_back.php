@@ -59,7 +59,7 @@ if (isset($_FILES['icone_produto']) && $_FILES['icone_produto']['error'] === 0) 
 
 $stmt = $conexao->prepare("INSERT INTO produto(nome, id_categoria, und_medida, imagem) VALUES(?,?,?,?)");
 
-$stmt->bind_param("siss", $nome_produto, $id_categoria, $und_medida_produto, $icone_produto);
+$stmt->bind_param("ssss", $nome_produto, $id_categoria, $und_medida_produto, $icone_produto);
 // inserindo
 $stmt->execute();
 
