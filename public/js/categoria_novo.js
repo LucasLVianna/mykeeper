@@ -27,9 +27,9 @@ document.getElementById('addcategoria').addEventListener('click', () => {
 });
 
 async function novo() {
-    const nome_categoria     = document.getElementById('nome_categoria').value;
+    const nome_categoria      = document.getElementById('nome_categoria').value;
     const descricao_categoria = document.getElementById('descricao_categoria').value;
-    const icone_categoria    = document.getElementById('icone_categoria').files[0];
+    const icone_categoria     = document.getElementById('icone_categoria').files[0];
 
     const fd = new FormData();
     fd.append('nome_categoria', nome_categoria);

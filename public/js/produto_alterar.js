@@ -94,6 +94,25 @@ async function alterar() {
     const id = document.getElementById('id').value;
     const icone_produto = document.getElementById('icone_produto').files[0];
 
+    if (!nome_produto.trim()) {
+        alert('Por favor, preencha o nome do produto.');
+        document.getElementById('nome_produto').focus();
+        return;
+    }
+
+    if (!und_medida_produto.trim()) {
+        alert('Por favor, preencha a unidade de medida.');
+        document.getElementById('und_medida_produto').focus();
+        return;
+    }
+
+    if (!id_categoria){
+        alert('Por favor, selecione uma categoria.');
+        document.getElementById('categoria_produto').focus();
+        return;
+    }
+
+
     const fd = new FormData();
     fd.append('nome_produto', nome_produto);
     fd.append('id_categoria', id_categoria);
