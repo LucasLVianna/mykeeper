@@ -31,10 +31,10 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
                 <label for="und_medida_produto">Unidade de medida</label>
                 <select name="und_medida_produto" id="und_medida_produto">
                     <option value="" data-placeholder="true">Escolha como esse item sera medido</option>
-                    <option value="kg">Quilo (kg)</option>
+                    <option value="kg">Quilo (Kg)</option>
                     <option value="gramas">Gramas (g)</option>
-                    <option value="l">Litro (l)</option>
-                    <option value="ml">Mililitro (ml)</option>
+                    <option value="l">Litro (L)</option>
+                    <option value="ml">Mililitro (mL)</option>
                 </select>
             </div>
 
