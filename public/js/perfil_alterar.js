@@ -4,6 +4,26 @@ function e(str) {
     return div.innerHTML;
 }
 
+function formatCep(value) {
+    let digits = String(value || '').replace(/\D/g, '').slice(0, 8);
+
+    if (digits.length > 5) {
+        digits = `${digits.slice(0, 5)}-${digits.slice(5)}`;
+    }
+
+    return digits;
+}
+
+function cepDigitsLength(value) {
+    return String(value || '').replace(/\D/g, '').length;
+}
+
+const cepInput = document.getElementById('cep');
+
+cepInput.addEventListener('input', () => {
+    cepInput.value = formatCep(cepInput.value);
+});
+
 document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('/mykeeper/config/check_session.php');
     const data = await response.json();
@@ -25,14 +45,22 @@ async function buscar(id) {
 function preencherInformacoes(usuario) {
     document.getElementById('nome').value = usuario.nome;
     document.getElementById('email').value = usuario.email;
-    document.getElementById('cep').value = usuario.cep;
+    cepInput.value = formatCep(usuario.cep);
 }
 
 document.getElementById('alterarperfil').addEventListener('click', async () => {
+    const cep = formatCep(cepInput.value);
+
+    if (cepDigitsLength(cep) !== 8) {
+        alert('Digite um CEP válido no formato 00000-000.');
+        cepInput.focus();
+        return;
+    }
+
     const fd = new FormData();
-    fd.append('nome', document.getElementById('nome').value);
-    fd.append('email', document.getElementById('email').value);
-    fd.append('cep', document.getElementById('cep').value);
+    fd.append('nome', document.getElementById('nome').value.trim());
+    fd.append('email', document.getElementById('email').value.trim());
+    fd.append('cep', cep);
 
     const retorno = await fetch('/mykeeper/src/Controllers/usuario_alterar_post.php', {
         method: 'POST',

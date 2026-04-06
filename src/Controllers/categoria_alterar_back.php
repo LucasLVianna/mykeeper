@@ -2,11 +2,17 @@
 include_once(__DIR__ . '/../../config/headers.php');
 include_once(__DIR__ . '/../../config/conexao.php');
 
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+};
+
 $retorno = [
     'status' => '',
     'mensagem' => '',
     'data' => []
 ];
+
+$id_usuario = $_SESSION['usuario']['id'];
 
 if(isset($_GET['id'])){
 
@@ -34,16 +40,16 @@ if(isset($_GET['id'])){
         $stmt = $conexao->prepare("
             UPDATE categoria 
             SET nome=?, descricao=?, icone=?
-            WHERE id=?
+            WHERE id=? AND id_usuario = ?
         ");
-        $stmt->bind_param("sssi", $nome_categoria, $descricao_categoria, $caminhoURL, $_GET['id']);
+        $stmt->bind_param("sssss", $nome_categoria, $descricao_categoria, $caminhoURL, $_GET['id'], $id_usuario);
     } else {
         $stmt = $conexao->prepare("
             UPDATE categoria 
             SET nome=?, descricao=?
-            WHERE id=?
+            WHERE id=? AND id_usuario = ?
         ");
-        $stmt->bind_param("ssi", $nome_categoria, $descricao_categoria, $_GET['id']);
+        $stmt->bind_param("ssss", $nome_categoria, $descricao_categoria, $_GET['id'], $id_usuario);
     }
 
     $stmt->execute();

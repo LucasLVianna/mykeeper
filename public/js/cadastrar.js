@@ -1,45 +1,68 @@
-document.getElementById('formCadastro').addEventListener('submit',(e)=>{
-    e.preventDefault();
-    cadastrar();
-})
+const cadastroForm = document.getElementById('formCadastro');
+const entrarButton = document.getElementById('entrar');
+const cepInput = document.getElementById('cep');
 
-document.getElementById('entrar').addEventListener('click',()=>{
+function formatCep(value) {
+    let digits = String(value || '').replace(/\D/g, '').slice(0, 8);
+
+    if (digits.length > 5) {
+        digits = `${digits.slice(0, 5)}-${digits.slice(5)}`;
+    }
+
+    return digits;
+}
+
+function cepDigitsLength(value) {
+    return String(value || '').replace(/\D/g, '').length;
+}
+
+cadastroForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    cadastrar();
+});
+
+entrarButton.addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/usuario_login.php';
-})
+});
+
+cepInput.addEventListener('input', () => {
+    cepInput.value = formatCep(cepInput.value);
+});
 
 async function cadastrar() {
-    let nome  = document.getElementById('nome').value;
-    let email = document.getElementById('email').value;
-    let senha = document.getElementById('senha').value;
-    let cep   = document.getElementById('cep').value;
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const senha = document.getElementById('senha').value;
+    const cep = formatCep(cepInput.value);
 
-    if(cep.length != 9){
-        alert('ERRO! CEP inválido');
+    if (cepDigitsLength(cep) !== 8) {
+        alert('ERRO! Digite um CEP válido no formato 00000-000.');
+        cepInput.focus();
         return;
-    }else{
-        if(senha.length<8){
-            alert('ERRO! Senha muito curta');
-            return;
-        }else{
-            const fd = new FormData();
-            fd.append('nome', nome);
-            fd.append('email',email);
-            fd.append('senha',senha);
-            fd.append('cep',cep);
-
-            const retorno = await fetch('/mykeeper/src/Controllers/usuario_cadastrar.php',{
-                method: 'POST',
-                body: fd
-            })
-
-            const resposta = await retorno.json();
-            if(resposta.status == 'ok'){
-                alert("SUCESSO! Cadastro realizado com êxito");
-                window.location.href = '/mykeeper/src/Views/usuario_login.php';
-            }else{
-                alert('ERRO!' + resposta.mensagem);
-            }
-        }
     }
-    
+
+    if (senha.length < 8) {
+        alert('ERRO! Senha muito curta');
+        return;
+    }
+
+    const fd = new FormData();
+    fd.append('nome', nome);
+    fd.append('email', email);
+    fd.append('senha', senha);
+    fd.append('cep', cep);
+
+    const retorno = await fetch('/mykeeper/src/Controllers/usuario_cadastrar.php', {
+        method: 'POST',
+        body: fd
+    });
+
+    const resposta = await retorno.json();
+    if (resposta.status === 'ok') {
+        alert('SUCESSO! Cadastro realizado com êxito');
+        window.location.href = '/mykeeper/src/Views/usuario_login.php';
+        return;
+    }
+
+    alert('ERRO! ' + resposta.mensagem);
 }

@@ -22,7 +22,7 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
             <div>
                 <label for="categoria_produto">Categoria</label>
                 <select name="categoria_produto" id="categoria_produto">
-                    <option value="">Selecione uma categoria</option>
+                    <option value="" data-placeholder="true">Escolha a categoria do produto</option>
                 </select>
             </div>
             

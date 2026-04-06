@@ -1,6 +1,7 @@
 <?php
     include_once(__DIR__ . '/../../config/headers.php');
     include_once(__DIR__ . '/../../config/conexao.php');
+    session_start();
 
     $retorno = [
         'status' => '',
@@ -8,20 +9,24 @@
         'data' => []
     ];
 
+    $id_usuario = $_SESSION['usuario']['id'];
+
     if(isset($_GET['id'])){
         $stmt = $conexao->prepare("
             SELECT p.*, c.nome AS categoria 
             FROM produto p
             LEFT JOIN categoria c ON p.id_categoria = c.id
-            WHERE p.id = ?
+            WHERE p.id = ? AND p.id_usuario = ?
         ");
-        $stmt->bind_param('i', $_GET['id']);
+        $stmt->bind_param('ii', $_GET['id'], $id_usuario);
     } else {
         $stmt = $conexao->prepare("
             SELECT p.*, c.nome AS categoria 
             FROM produto p
             LEFT JOIN categoria c ON p.id_categoria = c.id
+            WHERE p.id_usuario = ?
         ");
+        $stmt->bind_param('i', $id_usuario);
     }
 
     $stmt->execute();

@@ -1,9 +1,10 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 include_once(__DIR__ . '/../../config/headers.php');
 include_once(__DIR__ . '/../../config/conexao.php');
+
+ if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $retorno = [
     'status'   => '',
@@ -11,6 +12,7 @@ $retorno = [
     'data'     => []
 ];
 
+$id_usuario = $_SESSION['usuario']['id'];
 $nome_categoria      = $_POST['nome_categoria'];
 $descricao_categoria = $_POST['descricao_categoria'];
 $icone_categoria     = null;
@@ -53,8 +55,8 @@ if (isset($_FILES['icone_categoria']) && $_FILES['icone_categoria']['error'] ===
     }
 }
 
-$stmt = $conexao->prepare("INSERT INTO categoria (nome, descricao, icone) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $nome_categoria, $descricao_categoria, $icone_categoria);
+$stmt = $conexao->prepare("INSERT INTO categoria (nome, descricao, icone, id_usuario) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $nome_categoria, $descricao_categoria, $icone_categoria, $id_usuario);
 $stmt->execute();
 
 if ($stmt->affected_rows > 0) {
