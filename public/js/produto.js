@@ -21,11 +21,16 @@ async function buscar() {
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
         preencherTabela(resposta.data);
+    } else {
+        document.getElementById('mensagem').textContent = 'Não há produtos cadastrados.';
     }
+    
     
 }
 
 function preencherTabela(tabela){
+
+
     var html = `
     <table class="tabela">
         <tr>
@@ -37,6 +42,7 @@ function preencherTabela(tabela){
             <th> # </th>
         </tr>
     `;
+
 
     for(var i=0;i<tabela.length;i++){
         const icone = tabela[i].imagem
@@ -58,9 +64,16 @@ function preencherTabela(tabela){
 
     html += `</table>`;
     document.getElementById('item').innerHTML = html
+    
+
 }
 
 async function excluir(id){
+
+    if (!confirm('Tem certeza que deseja excluir este produto?')) {
+        return;
+    }
+
     const retorno = await fetch('/mykeeper/src/Controllers/produto_excluir.php?id='+id);
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
