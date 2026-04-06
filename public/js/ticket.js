@@ -4,6 +4,14 @@ function e(str) {
     return div.innerHTML;
 }
 
+function respostaOuTracos(valor) {
+    if (valor === null || valor === undefined || String(valor).trim() === '' || String(valor).toLowerCase() === 'null') {
+        return '---';
+    }
+
+    return e(valor);
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('/mykeeper/config/check_session.php');
     const data = await response.json();
@@ -45,7 +53,7 @@ function preencherTabela(tabela){
                 <td> ${e(tabela[i].titulo)} </td>
                 <td> ${e(tabela[i].descricao)} </td>
                 <td> ${e(tabela[i].data_ticket)} </td>
-                <td> ${e(tabela[i].resposta_ticket)} </td>
+                <td> ${respostaOuTracos(tabela[i].resposta_ticket)} </td>
                 <td> ${e(tabela[i].status_ticket)} </td>
                 <td class="botoes"> 
                 <button class = "btn-editar"><a href="ticket_usuario_alterar.php?id=${tabela[i].id}">Editar</a></button>
