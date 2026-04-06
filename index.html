@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyKeeper - Seu Estoque Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow"></div>
+
+    <main class="landing-container">
+        <header>
+            <div class="logo-badge">MK</div>
+            <h1>MyKeeper</h1>
+        </header>
+        
+        <section class="content">
+            <p class="tagline">Estoque sob controle, desperd&iacute;cio zero.</p>
+            <p class="description">
+                O gerenciador de estoque aliment&iacute;cio pensado para o seu dia a dia.
+                Organize sua despensa de forma inteligente e pr&aacute;tica.
+            </p>
+            
+            <button id="startNowButton">
+                Come&ccedil;ar agora
+                <span class="arrow">&rarr;</span>
+            </button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MyKeeper System</p>
+    </footer>
+
+    <script>
+      document.getElementById('startNowButton').addEventListener('click', () => {
+        window.location.href = '/mykeeper-lucas_vianna/src/Views/home.php'
+      })
+    </script>
+</body>
+</html>

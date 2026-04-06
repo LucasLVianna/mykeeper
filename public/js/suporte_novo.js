@@ -1,0 +1,40 @@
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Primeiro verifica se está logado
+    const response = await fetch('/mykeeper-lucas_vianna/config/check_session.php');
+    const data = await response.json();
+    
+    if (!data.logado) {
+        window.location.href = '/mykeeper-lucas_vianna/src/Views/usuario_login.php';
+        return; // Para a execução aqui.
+    }
+});
+
+
+document.getElementById('addsuporte').addEventListener('click', () => {
+    novo();
+});
+
+async function novo() {
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+
+    const fd = new FormData();
+    fd.append('nome', nome);
+    fd.append('email', email);
+    fd.append('senha', senha);
+
+    const retorno = await fetch('/mykeeper-lucas_vianna/src/Controllers/suporte_novo_back.php', {
+        method: 'POST',
+        body: fd
+    });
+
+    const resposta = await retorno.json();
+
+    if (resposta.status == 'ok') {
+        alert('SUCESSO! ' + resposta.mensagem);
+        window.location.href = '/mykeeper-lucas_vianna/src/Views/suporte.php';
+    } else {
+        alert('ERRO! ' + resposta.mensagem);
+    }
+}
