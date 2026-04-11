@@ -23,6 +23,5 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
         </div>
     </section>
     <script src="/mykeeper/public/js/produto.js"></script>
-    <script src="/mykeeper/public/js/sidebar.js"></script>
 </body>
 </html>

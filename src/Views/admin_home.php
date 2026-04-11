@@ -32,5 +32,4 @@
 </body>
 
 <script src="/mykeeper/public/js/admin_home.js"></script>
-<script src="/mykeeper/public/js/sidebar.js"></script>
 </html>

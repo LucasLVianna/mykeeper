@@ -48,6 +48,5 @@
     </section>
 
     <script src="/mykeeper/public/js/home.js"></script>
-    <script src="/mykeeper/public/js/sidebar.js"></script>
 </body>
 </html>

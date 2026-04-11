@@ -24,6 +24,5 @@
 
     </section>
     <script src="/mykeeper/public/js/tickets_suporte.js"></script>
-    <script src="/mykeeper/public/js/sidebar.js"></script>
 </body>
 </html>

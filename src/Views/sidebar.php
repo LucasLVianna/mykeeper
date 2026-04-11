@@ -40,33 +40,33 @@
     </div>
     <div class="nav-container">
         <nav>
-            <button id="inicioButtonLink" data-label="Início" title="Início">
+            <button type="button" id="inicioButtonLink" data-label="Início" title="Início">
                 <i class="fas fa-home"></i>
                 <span>Início</span>
             </button>
-            <button id="produtosButtonLink" data-label="Produtos" title="Produtos registrados">
+            <button type="button" id="produtosButtonLink" data-label="Produtos" title="Produtos registrados">
                 <i class="fas fa-box"></i>
                 <span>Produtos registrados</span>
             </button>
-            <button id="categoriasButtonLink" data-label="Categorias" title="Categorias">
+            <button type="button" id="categoriasButtonLink" data-label="Categorias" title="Categorias">
                 <i class="fas fa-tags"></i>
                 <span>Categorias</span>
             </button>
-            <button id="perfilButtonLink" data-label="Perfil" title="Perfil">
+            <button type="button" id="perfilButtonLink" data-label="Perfil" title="Perfil">
                 <i class="fas fa-user"></i>
                 <span>Perfil</span>
             </button>
-            <button id="adminHomeButtonLink" data-label="Admin" title="Admin">
+            <button type="button" id="adminHomeButtonLink" data-label="Admin" title="Admin">
                 <i class="fas fa-cog"></i>
                 <span>Admin</span>
             </button>
-            <button id="ticketButtonLink" data-label="Tickets" title="Tickets">
+            <button type="button" id="ticketButtonLink" data-label="Tickets" title="Tickets">
                 <i class="fas fa-ticket-alt"></i>
                 <span>Tickets</span>
             </button>
         </nav>
 
-        <button id="logoffButtonLink" data-label="Sair" title="Sair">
+        <button type="button" id="logoffButtonLink" data-label="Sair" title="Sair">
             <i class="fas fa-door-open"></i>
             <span>Sair</span>
         </button>
@@ -78,3 +78,4 @@
 </div>
 
 <script src="/mykeeper/public/js/sidebar-toggle.js"></script>
+<script src="/mykeeper/public/js/sidebar.js"></script>

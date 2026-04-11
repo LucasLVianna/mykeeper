@@ -23,6 +23,5 @@
         </div>
     </section>
     <script src="/mykeeper/public/js/ticket.js"></script>
-    <script src="/mykeeper/public/js/sidebar.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>

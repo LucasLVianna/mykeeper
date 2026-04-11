@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <button id="criarTicket">Criar ticket</button>
+                <button type="button" id="criarTicket">Criar ticket</button>
             </form>
     </section>
 </body>
