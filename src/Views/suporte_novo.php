@@ -31,6 +31,7 @@
                 <input type="password" name="senha" id="senha" minlength="8">
             </div>
             
+            <p id="erro" style="color:salmon;"></p>
             <button type="button" id="addsuporte">Adicionar</button>
         </form>
     </section>

@@ -47,10 +47,11 @@
                         <label for="senha">Senha</label> <br>
                     </div>
                     <div>
-                        <input type="password" name="senha" id="senha" placeholder="••••••" minlength="8">
+                        <input type="password" name="senha" id="senha" placeholder="••••••">
                     </div>
                 </div>
 
+                <p id="erro" style="color:salmon"></p>
                 <button type="submit">Criar conta</button>
             </form>
             

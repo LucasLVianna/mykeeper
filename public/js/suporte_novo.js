@@ -19,6 +19,14 @@ async function novo() {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
 
+    const retorno_email = await fetch('/mykeeper/src/Controllers/suporte_get.php');
+    const resposta_email = await retorno_email.json();
+    if(resposta_email.status == 'ok' && resposta_email.data.find(s => s.email === email)){
+        document.getElementById('erro').textContent = 'Este e-mail já está em uso!';
+        return;
+    }
+    document.getElementById('erro').textContent = '';
+
     const fd = new FormData();
     fd.append('nome', nome);
     fd.append('email', email);

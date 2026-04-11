@@ -35,14 +35,19 @@ async function cadastrar() {
     const senha = document.getElementById('senha').value;
     const cep = formatCep(cepInput.value);
 
+    if(!nome || !email || !senha || cepDigitsLength(cep) === 0){
+        document.getElementById('erro').textContent = 'ERRO! Preencha todos os campos';
+        return;
+    }
+
     if (cepDigitsLength(cep) !== 8) {
-        alert('ERRO! Digite um CEP válido no formato 00000-000.');
+        document.getElementById('erro').textContent = 'ERRO! Digite um CEP válido no formato 00000-000.';
         cepInput.focus();
         return;
     }
 
     if (senha.length < 8) {
-        alert('ERRO! Senha muito curta');
+        document.getElementById('erro').textContent = 'ERRO! Senha muito curta';
         return;
     }
 
@@ -64,5 +69,5 @@ async function cadastrar() {
         return;
     }
 
-    alert('ERRO! ' + resposta.mensagem);
+    document.getElementById('erro').textContent = 'ERRO! ' + resposta.mensagem;
 }

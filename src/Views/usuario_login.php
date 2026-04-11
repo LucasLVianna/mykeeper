@@ -47,6 +47,7 @@
                     </div>
                 </div>
 
+                <p id="erro" style="color:salmon"></p>
                 <button type="submit">Entrar</button>
             </form>
 

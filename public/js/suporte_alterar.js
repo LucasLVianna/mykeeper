@@ -48,6 +48,21 @@ async function alterar(){
     let email  = document.getElementById('email').value;
     let id     = document.getElementById('id').value;
 
+    const retorno_todos_emails = await fetch('/mykeeper/src/Controllers/suporte_get.php');
+    const resposta_todos_emails = await retorno_todos_emails.json();
+
+    if(resposta_todos_emails.status == 'ok'){
+        const emailDuplicado = resposta_todos_emails.data.find(s => s.email === email && s.id != id);
+
+        if(emailDuplicado){
+            console.log('Email já cadastrado em outro suporte');
+            document.getElementById('erro').textContent = 'Esse email já está cadastrado em outro suporte';
+            return;
+        } else {
+            document.getElementById('erro').textContent = '';
+        }
+    }
+
     const fd = new FormData();
 
     fd.append('nome', nome);

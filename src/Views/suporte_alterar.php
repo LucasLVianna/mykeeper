@@ -26,7 +26,8 @@
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
             </div>
-            
+
+            <p id="erro" style="color:salmon"></p>
             <button type="button" id="alterarsuporte">Alterar</button>
         </form>
     </section>

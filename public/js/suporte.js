@@ -22,6 +22,13 @@ async function buscar() {
     if(resposta.status == 'ok'){
         preencherTabela(resposta.data);
     }
+    else{
+        document.getElementById('item').innerHTML = `
+        <div style="text-align:center; padding: 20px 0;">
+            <p style="color:grey; font-size:1.1rem;">Não tem contas de suporte registradas</p>
+        </div>
+    `;
+    }
     
 }
 

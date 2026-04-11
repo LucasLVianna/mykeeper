@@ -25,7 +25,7 @@ async function login() {
         alert(resposta.mensagem);
         window.location.href = resposta.redirect
     }else{
-        alert(resposta.mensagem);
+        document.getElementById('erro').textContent = resposta.mensagem;
     };
 }
 
