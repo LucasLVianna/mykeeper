@@ -1,6 +1,5 @@
 <?php
     include_once(__DIR__ . '/../../config/valida_sessao.php');  
-    include_once(__DIR__ . '/sidebar.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +10,9 @@
     <title>Tickets de Suporte</title>
     <link rel="stylesheet" href="/mykeeper/public/css/ticket_usuario.css">
 </head>
-<body>    
-    <section>
+<body>
+    <?php include_once(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
         <div>
             <h2>Tickets de Suporte</h2>
         </div>
@@ -23,6 +23,5 @@
         </div>
     </section>
     <script src="/mykeeper/public/js/ticket.js"></script>
-    <script src="/mykeeper/public/js/sidebar.js"></script>
 </body>
 </html>

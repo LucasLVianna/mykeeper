@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="/mykeeper/public/css/ticket_usuario_novo.css">
 </head>
 
-<body>
-    <section>
-            <div>
+<body class="form-page">
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
+            <div class="form-page-header">
                 <h2>Criar ticket</h2>
+                <a href="/mykeeper/src/Views/ticket_usuario.php" class="page-close-button page-close-inline" title="Fechar">&times;</a>
             </div>
             <div>
                 <p>Preencha os dados abaixo para criar um novo ticket</p>
@@ -38,7 +40,7 @@
                     </div>
                 </div>
 
-                <button id="criarTicket">Criar ticket</button>
+                <button type="button" id="criarTicket">Criar ticket</button>
             </form>
     </section>
 </body>

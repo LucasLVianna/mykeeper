@@ -1,6 +1,5 @@
 <?php
 include_once(__DIR__ . '/../../config/valida_sessao.php');
-include_once(__DIR__ . '/sidebar.php'); 
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +11,8 @@ include_once(__DIR__ . '/sidebar.php');
     <link rel="stylesheet" href="/mykeeper/public/css/categoria.css">
 </head>
 <body>
-<section>
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+<section class="main-content">
     <div>
         <h2>Categorias de Produto</h2>
     </div>
@@ -22,6 +22,5 @@ include_once(__DIR__ . '/sidebar.php');
     </div>
 </section>
 <script src="/mykeeper/public/js/categoria.js"></script>
-<script src="/mykeeper/public/js/sidebar.js"></script>
 </body>
 </html>

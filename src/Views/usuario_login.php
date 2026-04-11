@@ -11,9 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/mykeeper/public/css/usuario_login.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/theme.css?v=20260411-theme">
+    <link rel="stylesheet" href="/mykeeper/public/css/app-notifications.css">
+
+    <script>
+        (function () {
+            var theme = localStorage.getItem('mykeeper-theme');
+            document.documentElement.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
+        })();
+    </script>
 </head>
 
-<body>
+<body class="login-page">
     <section>
         <div>
             <div>
@@ -59,6 +68,8 @@
         
     </section>
 
-<script src="/mykeeper/public/js/login.js"></script>
+<script src="/mykeeper/public/js/app-notifications.js?v=20260411-login-notify"></script>
+<script src="/mykeeper/public/js/theme.js?v=20260411-theme"></script>
+<script src="/mykeeper/public/js/login.js?v=20260411-login-notify"></script>
 </body>
 </html>

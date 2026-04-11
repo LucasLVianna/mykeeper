@@ -30,15 +30,14 @@ section {
 h2 {
     font-size: 1.6rem;
     color: #ffffff;
-    margin-bottom: 8px;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
 }
 
 p {
     font-size: 0.9rem;
     color: #a0a0a0;
-    text-align: center;
+    text-align: left;
     margin-bottom: 30px;
 }
 
@@ -113,7 +112,7 @@ input::placeholder {
         padding: 30px 20px;
     }
     
-    h2 {
+    .form-page-header h2 {
         font-size: 1.4rem;
     }
 }

@@ -1,55 +1,406 @@
+.toggle-arrow {
+    position: fixed;
+    left: 261px; /* Ajustado para compensar o padding extra */
+    top: 30px;   /* Ajustado para compensar o padding extra */
+    padding: 15px; /* Aumenta muito mais a área clicável da setinha */
+    color: #00ffa3;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.toggle-arrow:hover {
+    transform: scale(1.2) translateX(3px);
+    text-shadow: 0 0 10px rgba(0, 255, 163, 0.6);
+}
+
+.toggle-arrow i {
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sideNavBar.collapsed ~ .toggle-arrow {
+    left: 81px; /* Ajustado para compensar o padding extra */
+}
+
+.sideNavBar.collapsed ~ .toggle-arrow i {
+    transform: rotate(180deg);
+}
+
 .sideNavBar {
     width: 260px;
-    height: 100vh !important; 
-    background-color: #121418;
+    height: 100vh !important;
+    background: rgba(15, 19, 24, 0.85); /* Fundo sutilmente transparente para o blur funcionar */
+    backdrop-filter: blur(12px); /* Efeito vidro/desfoque atrás da sidebar */
+    -webkit-backdrop-filter: blur(12px);
     color: #ffffff;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-start !important; 
+    justify-content: flex-start !important;
     padding: 0 !important;
     position: fixed;
     left: 0;
     top: 0;
-    border-right: 1px solid #222;
+    border-right: 1px solid rgba(0, 255, 163, 0.15); /* Bordinha neon mais viva */
     z-index: 999;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sideNavBar.collapsed {
+    width: 80px;
+}
+
+.sidebar-header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 15px;
+    border-bottom: 1px solid rgba(0, 255, 163, 0.1);
+    gap: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.logo-badge {
+    background: linear-gradient(135deg, #00ffa3 0%, #00d4aa 100%);
+    color: #0b0e11;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.8rem;
+    box-shadow: 0 0 20px rgba(0, 255, 163, 0.4);
+    flex-shrink: 0;
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 255, 163, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 163, 0.8);
+    }
 }
 
 .sideNavBar h2 {
-    height: 100px; 
-    display: flex;
-    align-items: center;
-    padding-left: 25px;
     margin: 0 !important;
-    font-size: 1.25rem;
-    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #00ffa3 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    flex: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sideNavBar.collapsed h2 {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.nav-container {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .sideNavBar nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 0 15px;
-    margin-top: 10px; 
+    gap: 12px;
+    padding: 25px 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
 }
 
 .sideNavBar button {
-    background: none;
-    border: none;
+    background: transparent;
+    border: 1px solid transparent;
     color: #a0a0a0;
-    padding: 12px 15px;
+    padding: 14px 15px;
     text-align: left;
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
     border-radius: 8px;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     width: 100%;
-    display: flex; 
+    display: flex;
     align-items: center;
+    gap: 14px;
+    position: relative;
 }
 
+.sideNavBar button i {
+    min-width: 20px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.sideNavBar button span {
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sideNavBar.collapsed button span {
+    opacity: 0;
+    width: 0;
+    display: none;
+}
+
+.sideNavBar.collapsed button {
+    justify-content: center;
+    padding: 14px;
+}
+
+.sideNavBar nav button:hover {
+    background-color: rgba(0, 255, 163, 0.08);
+    color: #00ffa3;
+    border-color: rgba(0, 255, 163, 0.3);
+    transform: translateX(4px);
+}
+
+.sideNavBar.collapsed nav button:hover {
+    transform: scale(1.05);
+}
+
+.sideNavBar nav button:active {
+    background-color: rgba(0, 255, 163, 0.15);
+    color: #00ffa3;
+    border-color: rgba(0, 255, 163, 0.5);
+}
+
+/* Botão SAIR com animação diferente */
 #logoffButtonLink {
-    margin-top: auto; 
-    margin-bottom: 20px; 
+    margin-top: auto;
+    margin-bottom: 20px;
     color: #ff4d4d;
+    border-color: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+#logoffButtonLink::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 77, 77, 0.1);
+    transition: left 0.4s ease;
+    z-index: -1;
+    border-radius: 8px;
+}
+
+#logoffButtonLink:hover::before {
+    left: 0;
+}
+
+#logoffButtonLink:hover {
+    color: #ff6d6d;
+    border-color: rgba(255, 77, 77, 0.3);
+    transform: translateY(-3px);
+}
+
+#logoffButtonLink:active {
+    transform: translateY(0);
+}
+
+/* Scrollbar customizada */
+.sideNavBar nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sideNavBar nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sideNavBar nav::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 163, 0.3);
+    border-radius: 3px;
+}
+
+.sideNavBar nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 163, 0.6);
+}
+
+/* ========================================= */
+/* AJUSTE RESPONSIVO DO CONTEUDO PRINCIPAL   */
+/* ========================================= */
+body > section,
+body > .main-content,
+body > main,
+body > .main-container,
+body > .admin-container {
+    transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+body.sidebar-collapsed > section,
+body.sidebar-collapsed > .main-content,
+body.sidebar-collapsed > main,
+body.sidebar-collapsed > .main-container,
+body.sidebar-collapsed > .admin-container {
+    margin-left: 80px !important;
+    width: calc(100% - 80px) !important;
+}
+
+/* ========================================= */
+/* ESTILOS GLOBAIS DE UX (PREMIUM FEEL)      */
+/* ========================================= */
+
+/* 1. Cor da seleção de texto customizada (Neon) */
+::selection {
+    background-color: rgba(0, 255, 163, 0.3);
+    color: #ffffff;
+}
+::-moz-selection {
+    background-color: rgba(0, 255, 163, 0.3);
+    color: #ffffff;
+}
+
+/* 2. Scrollbar Global para todo o site (Substitui a barra branca padrão do navegador) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #0b0e11; /* Mesma cor do fundo do site */
+}
+::-webkit-scrollbar-thumb {
+    background: #2a2f38; /* Cinza escuro elegante */
+    border-radius: 5px;
+    border: 2px solid #0b0e11;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00ffa3; /* Brilha em verde ao passar o mouse */
+}
+
+/* 3. Animação global suave de entrada nas páginas */
+@keyframes fadeInUpGlobal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-content {
+    /* Toda página que tiver .main-content agora vai entrar deslizando e aparecendo suavemente */
+    animation: fadeInUpGlobal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.page-close-button {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255, 77, 77, 0.14);
+    border: 1px solid rgba(255, 77, 77, 0.35);
+    color: #ff6b6b;
+    text-decoration: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    z-index: 1100;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.page-close-button:hover {
+    background: rgba(255, 77, 77, 0.22);
+    border-color: rgba(255, 77, 77, 0.6);
+    color: #ffd1d1;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 14px 32px rgba(255, 77, 77, 0.2);
+}
+
+.page-close-button:active {
+    transform: scale(0.96);
+}
+
+.form-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 26px;
+}
+
+.form-page-header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.page-close-button.page-close-inline {
+    position: static;
+    width: auto;
+    height: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: #ff6b6b;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+    transform-origin: center;
+    animation: closeHintFloat 2.8s ease-in-out infinite;
+}
+
+.page-close-button.page-close-inline:hover {
+    background: transparent;
+    color: #ff9c9c;
+    transform: translateX(2px) scale(1.08) rotate(90deg);
+    box-shadow: none;
+    text-shadow: 0 0 14px rgba(255, 107, 107, 0.35);
+}
+
+.page-close-button.page-close-inline:active {
+    transform: scale(0.94);
+}
+
+@keyframes closeHintFloat {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.88;
+    }
+    50% {
+        transform: translateY(-2px);
+        opacity: 1;
+    }
 }

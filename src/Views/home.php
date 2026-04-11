@@ -1,6 +1,5 @@
 <?php
     include_once(__DIR__ . '/../../config/valida_sessao.php');
-    include_once(__DIR__ . '/sidebar.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">    
@@ -11,6 +10,7 @@
     <link rel="stylesheet" href="/mykeeper/public/css/home.css">
 </head>
 <body>
+    <?php include(__DIR__ . '/sidebar.php'); ?>
     <section class="main-content">
         <div class="welcome-container">
             <h1>Bem-vindo ao <span>MyKeeper</span></h1>
@@ -48,6 +48,5 @@
     </section>
 
     <script src="/mykeeper/public/js/home.js"></script>
-    <script src="/mykeeper/public/js/sidebar.js"></script>
 </body>
 </html>

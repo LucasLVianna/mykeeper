@@ -1,5 +1,4 @@
 <?php
-    include_once(__DIR__ . '/../../config/valida_sessao.php');
     include_once(__DIR__ . '/../../config/valida_admin.php');
 ?>
 
@@ -13,8 +12,13 @@
     <link rel="stylesheet" href="/mykeeper/public/css/suporte_novo.css">
 </head>
 
-<body>
-    <section>
+<body class="form-page">
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
+        <div class="form-page-header">
+            <h2>Novo Usuario Suporte</h2>
+            <a href="/mykeeper/src/Views/suporte.php" class="page-close-button page-close-inline" title="Fechar">&times;</a>
+        </div>
         <form>
             <div>
                 <label for="nome">Nome</label>

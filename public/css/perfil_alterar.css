@@ -27,16 +27,6 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-section::before {
-    content: 'Alterar Perfil';
-    display: block;
-    font-size: 1.6rem;
-    color: #ffffff;
-    font-weight: 700;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -108,8 +98,8 @@ input:not(:placeholder-shown) {
     section {
         padding: 30px 20px;
     }
-    
-    section::before {
+
+    .form-page-header h2 {
         font-size: 1.4rem;
     }
 }
