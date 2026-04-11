@@ -1,5 +1,4 @@
 <?php
-    include_once(__DIR__ . '/../../config/valida_sessao.php');  
     include_once(__DIR__ . '/../../config/valida_admin.php');
 ?>
 <!DOCTYPE html>

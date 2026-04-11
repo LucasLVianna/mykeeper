@@ -1,41 +1,34 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        // A tela admin exige usuario logado; se nao estiver, volta para login comum.
-        const response = await fetch('/mykeeper/config/check_session.php');
-        const data = await response.json();
+async function autenticarAdmin() {
+    const senha = document.getElementById('senha').value.trim();
+    if (!senha) {
+        appNotify('Por favor, informe a senha de administrador.');
+        return;
+    }
 
-        if (!data.logado) {
-            window.location.href = '/mykeeper/src/Views/usuario_login.php';
+    const fd = new FormData();
+    fd.append('senha', senha);
+
+    try {
+        const retorno = await fetch('/mykeeper/src/Controllers/admin_auth.php', {
+            method: 'POST',
+            body: fd
+        });
+        const resposta = await retorno.json();
+
+        if (resposta.status === 'ok') {
+            appNotify('SUCESSO! Acesso administrativo liberado.');
+            window.location.href = '/mykeeper/src/Views/admin_home.php';
+        } else {
+            appNotify('ERRO! ' + resposta.mensagem);
         }
     } catch (error) {
-        appNotify('ERRO! Falha ao validar sessao.');
+        appNotify('ERRO! Nao foi possivel validar o acesso admin.');
     }
-}); 
+}
 
-document.getElementById('entrar').addEventListener('click', async () => {
-        const senha = document.getElementById('senha').value;
-        if (!senha) {
-            appNotify('Por favor, informe a senha de administrador.');
-            return;
-        }
+document.getElementById('entrar').addEventListener('click', autenticarAdmin);
 
-        const fd = new FormData();
-        fd.append('senha', senha);
-
-        try {
-            const retorno = await fetch('/mykeeper/src/Controllers/admin_auth.php', {
-                method: 'POST',
-                body: fd
-            });
-            const resposta = await retorno.json();
-
-            if (resposta.status === 'ok') {
-                appNotify('SUCESSO! Acesso administrativo liberado.');
-                window.location.href = '/mykeeper/src/Views/admin_home.php';
-            } else {
-                appNotify('ERRO! ' + resposta.mensagem);
-            }
-        } catch (error) {
-            appNotify('ERRO! Nao foi possivel validar o acesso admin.');
-        }
-    });
+document.getElementById('adminLoginForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    autenticarAdmin();
+});

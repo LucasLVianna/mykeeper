@@ -29,7 +29,7 @@
                 <h2>Página de entrada para Administradores</h2>
             </div>
             <div>
-                <form>
+                <form id="adminLoginForm">
                     <input type="password" id="senha" placeholder="Senha de acesso">
                     <button type="button" id="entrar">Entrar</button>
                 </form>
