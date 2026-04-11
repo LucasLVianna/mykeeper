@@ -41,6 +41,19 @@
                 <button id="criarTicket">Criar ticket</button>
             </form>
     </section>
+    <div id="toast" style="
+        display:none;
+        position:fixed;
+        bottom:30px;
+        right:30px;
+        padding:15px 25px;
+        border-radius:10px;
+        color:white;
+        font-size:1rem;
+        z-index:9999;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: opacity 0.5s;
+    "></div>
 </body>
 <script src="/mykeeper/public/js/ticket_usuario_novo.js"></script>
 </html>

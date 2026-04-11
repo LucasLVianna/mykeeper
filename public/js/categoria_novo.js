@@ -46,9 +46,23 @@ async function novo() {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        alert('SUCESSO! ' + resposta.mensagem);
-        window.location.href = "/mykeeper/src/Views/categoria.php";
+        toast('Categoria cadastrada com sucesso!', 'ok');
+        setTimeout(() => {
+            window.location.href = '/mykeeper/src/Views/categoria.php';
+        }, 800);
     } else {
-        alert('ERRO! ' + resposta.mensagem);
+        toast('Erro ao cadastrar!', 'erro');
     }
+}
+
+function toast(mensagem, tipo = 'ok') {
+    const div = document.getElementById('toast');
+    div.textContent = mensagem;
+    div.style.backgroundColor = tipo === 'ok' ? '#00c97a' : '#ff4757';
+    div.style.display = 'block';
+    div.style.opacity = '1';
+    setTimeout(() => {
+        div.style.opacity = '0';
+        setTimeout(() => div.style.display = 'none', 500);
+    }, 3000);
 }

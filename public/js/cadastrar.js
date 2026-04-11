@@ -64,10 +64,24 @@ async function cadastrar() {
 
     const resposta = await retorno.json();
     if (resposta.status === 'ok') {
-        alert('SUCESSO! Cadastro realizado com êxito');
-        window.location.href = '/mykeeper/src/Views/usuario_login.php';
+        toast('Cadastro realizado com sucesso!', 'ok');
+        setTimeout(() => {
+            window.location.href = '/mykeeper/src/Views/usuario_login.php';
+        }, 800);
         return;
     }
 
     document.getElementById('erro').textContent = 'ERRO! ' + resposta.mensagem;
+}
+
+function toast(mensagem, tipo = 'ok') {
+    const div = document.getElementById('toast');
+    div.textContent = mensagem;
+    div.style.backgroundColor = tipo === 'ok' ? '#00c97a' : '#ff4757';
+    div.style.display = 'block';
+    div.style.opacity = '1';
+    setTimeout(() => {
+        div.style.opacity = '0';
+        setTimeout(() => div.style.display = 'none', 500);
+    }, 3000);
 }
