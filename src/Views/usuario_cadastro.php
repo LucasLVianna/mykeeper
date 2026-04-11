@@ -47,7 +47,8 @@
 
                 <div>
                     <label for="cep">CEP</label>
-                    <input type="text" name="cep" id="cep" placeholder="00000-000" maxlength="9" inputmode="numeric">
+                    <input type="text" name="cep" id="cep" placeholder="Seu CEP (XXXXX-XXX)" maxlength="9"><br><br>
+
                 </div>
 
                 <div>
