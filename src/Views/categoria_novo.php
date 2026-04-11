@@ -10,8 +10,13 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
     <title>Nova Categoria</title>
     <link rel="stylesheet" href="/mykeeper/public/css/categoria_novo.css">
 </head>
-<body>
-    <section>
+<body class="form-page">
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
+    <div class="form-page-header">
+        <h2>Nova Categoria</h2>
+        <a href="/mykeeper/src/Views/categoria.php" class="page-close-button page-close-inline" title="Fechar">&times;</a>
+    </div>
 
     <form>
         <div>

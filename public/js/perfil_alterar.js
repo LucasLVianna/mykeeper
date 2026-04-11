@@ -19,58 +19,91 @@ function cepDigitsLength(value) {
 }
 
 const cepInput = document.getElementById('cep');
+const nomeInput = document.getElementById('nome');
+const emailInput = document.getElementById('email');
 
 cepInput.addEventListener('input', () => {
     cepInput.value = formatCep(cepInput.value);
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const response = await fetch('/mykeeper/config/check_session.php');
-    const data = await response.json();
-    if (!data.logado) {
-        window.location.href = '/mykeeper/src/Views/usuario_login.php';
-        return;
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const profileId = urlParams.get('id') || document.body.dataset.userId;
+
+        if (!profileId) {
+            appNotify('ERRO! Nao foi possivel identificar o perfil para edicao.');
+            window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
+            return;
+        }
+
+        await buscar(profileId);
+    } catch (error) {
+        appNotify('ERRO! Nao foi possivel carregar os dados do perfil.');
     }
-    buscar(data.id);
 });
 
 async function buscar(id) {
     const retorno = await fetch(`/mykeeper/src/Controllers/usuario_get.php?id=${id}`);
     const resposta = await retorno.json();
-    if (resposta.status == 'ok') {
+
+    if (resposta.status == 'ok' && resposta.data) {
         preencherInformacoes(resposta.data);
+        return;
     }
+
+    appNotify('ERRO! Nao foi possivel localizar os dados do perfil.');
+    window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
 }
 
 function preencherInformacoes(usuario) {
-    document.getElementById('nome').value = usuario.nome;
-    document.getElementById('email').value = usuario.email;
+    nomeInput.value = usuario.nome || '';
+    emailInput.value = usuario.email || '';
     cepInput.value = formatCep(usuario.cep);
 }
 
 document.getElementById('alterarperfil').addEventListener('click', async () => {
     const cep = formatCep(cepInput.value);
+    const nome = nomeInput.value.trim();
+    const email = emailInput.value.trim();
+
+    if (!nome) {
+        appNotify('Por favor, preencha o nome.');
+        nomeInput.focus();
+        return;
+    }
+
+    if (!email) {
+        appNotify('Por favor, preencha o email.');
+        emailInput.focus();
+        return;
+    }
 
     if (cepDigitsLength(cep) !== 8) {
-        alert('Digite um CEP válido no formato 00000-000.');
+        appNotify('Digite um CEP valido no formato 00000-000.');
         cepInput.focus();
         return;
     }
 
     const fd = new FormData();
-    fd.append('nome', document.getElementById('nome').value.trim());
-    fd.append('email', document.getElementById('email').value.trim());
+    fd.append('nome', nome);
+    fd.append('email', email);
     fd.append('cep', cep);
 
-    const retorno = await fetch('/mykeeper/src/Controllers/usuario_alterar_post.php', {
-        method: 'POST',
-        body: fd
-    });
-    const resposta = await retorno.json();
-    if (resposta.status == 'ok') {
-        alert(resposta.mensagem);
-        window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
-    } else {
-        alert('Erro: ' + resposta.mensagem);
+    try {
+        const retorno = await fetch('/mykeeper/src/Controllers/usuario_alterar_post.php', {
+            method: 'POST',
+            body: fd
+        });
+        const resposta = await retorno.json();
+
+        if (resposta.status == 'ok') {
+            appNotify('SUCESSO! ' + resposta.mensagem);
+            window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
+        } else {
+            appNotify('ERRO! ' + resposta.mensagem);
+        }
+    } catch (error) {
+        appNotify('ERRO! Nao foi possivel salvar as alteracoes do perfil.');
     }
 });

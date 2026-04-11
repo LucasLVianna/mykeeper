@@ -8,32 +8,45 @@ document.getElementById('createAccount').addEventListener('click', ()=>{
 })
 
 async function login() {
-    let email = document.getElementById('email').value;
+    let email = document.getElementById('email').value.trim();
     let senha = document.getElementById('senha').value;
+
+    if (!email || !senha) {
+        appNotify('Por favor, preencha email e senha.');
+        return;
+    }
 
     const fd = new FormData();
     fd.append('email', email);
     fd.append('senha', senha);
 
-    const retorno = await fetch('/mykeeper/src/Controllers/usuario_login.php',{
-        method: "POST",
-        body: fd
-    })
+    try {
+        const retorno = await fetch('/mykeeper/src/Controllers/usuario_login.php',{
+            method: "POST",
+            body: fd
+        })
 
-    const resposta = await retorno.json();
-    if(resposta.status == 'ok'){
-        alert(resposta.mensagem);
-        window.location.href = resposta.redirect
-    }else{
-        document.getElementById('erro').textContent = resposta.mensagem;
-    };
+        const resposta = await retorno.json();
+        if(resposta.status == 'ok'){
+            appNotify('SUCESSO! ' + resposta.mensagem);
+            window.location.href = resposta.redirect
+        }else{
+            appNotify('ERRO! ' + resposta.mensagem);
+        };
+    } catch (error) {
+        appNotify('ERRO! Nao foi possivel entrar agora. Tente novamente.');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', async ()=>{
-    const response = await fetch('/mykeeper/config/check_session.php');
-    const data = await response.json();
+    try {
+        const response = await fetch('/mykeeper/config/check_session.php');
+        const data = await response.json();
 
-    if(data.logado){
-        window.location.href = data.redirect;
-    };
+        if(data.logado){
+            window.location.href = data.redirect;
+        };
+    } catch (error) {
+        appNotify('ERRO! Falha ao verificar sessao atual.');
+    }
 });

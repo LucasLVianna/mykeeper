@@ -7,11 +7,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alterar Perfil</title>
-    <link rel="stylesheet" href="/mykeeper/public/css/perfil_alterar.css">
+    <title>Perfil - Edicao</title>
+    <link rel="stylesheet" href="/mykeeper/public/css/perfil_alterar.css?v=20260411-profile-fix">
 </head>
-<body>
-    <section>
+<body data-user-id="<?php echo isset($_SESSION['usuario']['id']) ? (int)$_SESSION['usuario']['id'] : ''; ?>" class="form-page">
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
+        <div class="form-page-header">
+            <h2>Alterar Perfil</h2>
+            <a href="/mykeeper/src/Views/perfil_usuario.php" class="page-close-button page-close-inline" title="Fechar">&times;</a>
+        </div>
         <form>
             <div>
                 <label for="nome">Nome</label>
@@ -32,6 +37,6 @@
         </form>
     </section>
 
-    <script src="/mykeeper/public/js/perfil_alterar.js?v=20260406-cep"></script>
+    <script src="/mykeeper/public/js/perfil_alterar.js?v=20260411-profile-fix"></script>
 </body>
 </html>

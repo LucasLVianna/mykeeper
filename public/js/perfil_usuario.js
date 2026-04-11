@@ -21,7 +21,10 @@ async function buscar(id) {
     const resposta = await retorno.json();
     if (resposta.status == 'ok') {
         preencherInformacoes(resposta.data);
+        return;
     }
+
+    appNotify('ERRO! Nao foi possivel carregar os dados do perfil.');
 }
 
 function preencherInformacoes(usuario) {
@@ -32,16 +35,24 @@ function preencherInformacoes(usuario) {
 }
 
 document.getElementById('desativarConta').addEventListener('click', async () => {
-    if (confirm('Tem certeza que deseja desativar sua conta? Esta ação não pode ser desfeita.')) {
-        const response = await fetch('/mykeeper/src/Controllers/usuario_desativar.php', {
-            method: 'POST'
-        });
-        const data = await response.json();
-        if (data.status === 'ok') {
-            alert(data.mensagem);
-            window.location.href = '/mykeeper/src/Views/usuario_login.php';
-        } else {
-            alert('Erro ao desativar conta: ' + data.mensagem);
-        }
+    const confirmed = await appConfirm('Tem certeza que deseja desativar sua conta? Esta ação não pode ser desfeita.', {
+        title: 'Desativar conta',
+        confirmText: 'Desativar',
+        cancelText: 'Voltar',
+    });
+
+    if (!confirmed) {
+        return;
+    }
+
+    const response = await fetch('/mykeeper/src/Controllers/usuario_desativar.php', {
+        method: 'POST'
+    });
+    const data = await response.json();
+    if (data.status === 'ok') {
+        appNotify('SUCESSO! ' + data.mensagem);
+        window.location.href = '/mykeeper/src/Views/usuario_login.php';
+    } else {
+        appNotify('ERRO! ' + data.mensagem);
     }
 });

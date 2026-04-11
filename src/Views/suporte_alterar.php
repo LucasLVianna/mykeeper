@@ -1,5 +1,4 @@
 <?php
-    include_once(__DIR__ . '/../../config/valida_sessao.php');
     include_once(__DIR__ . '/../../config/valida_admin.php');
 ?>
 
@@ -13,8 +12,10 @@
     <link rel="stylesheet" href="/mykeeper/public/css/suporte_alterar.css">
 </head>
 
-<body>
-    <section>
+<body class="form-page">
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <a href="/mykeeper/src/Views/suporte.php" class="page-close-button" title="Fechar">&times;</a>
+    <section class="main-content">
         <form>
             <div>
                 <label for="nome">Nome</label>
