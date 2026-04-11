@@ -62,12 +62,13 @@ section span {
     border: none;
     padding: 12px 25px;
     border-radius: 8px;
+    display: inline-block;
+    text-decoration: none;
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
 }
 
-.btn-editar a {
-    text-decoration: none;
+.btn-editar {
     color: #0b0e11;
     font-weight: 600;
 }

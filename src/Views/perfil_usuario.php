@@ -25,7 +25,7 @@
         </div>
 
         <div class="profile-actions">
-            <button class = "btn-editar"><a href="" id="linkEditar">Editar</a></button>
+            <a class="btn-editar" href="" id="linkEditar">Editar</a>
             <button class="btn-desativar" id="desativarConta">Desativar Conta</button>
         </div>
 

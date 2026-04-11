@@ -268,7 +268,7 @@ html[data-theme='light'] .profile-page .btn-editar {
     background-color: #00a56a !important;
 }
 
-html[data-theme='light'] .profile-page .btn-editar a {
+html[data-theme='light'] .profile-page .btn-editar {
     color: #ffffff !important;
 }
 
