@@ -11,7 +11,8 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
     <link rel="stylesheet" href="/mykeeper/public/css/categoria_novo.css">
 </head>
 <body>
-    <section>
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
 
     <form>
         <div>

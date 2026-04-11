@@ -1,7 +1,6 @@
 <?php
     include_once(__DIR__ . '/../../config/valida_sessao.php');
     include_once(__DIR__ . '/../../config/valida_admin.php');
-    include_once(__DIR__ . '/sidebar.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,8 +11,9 @@
     <title>Contas de Suporte</title>
     <link rel="stylesheet" href="/mykeeper/public/css/suporte.css">
 </head>
-<body>    
-    <section>
+<body>
+    <?php include_once(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
         <div>
             <h2>Contas de Suporte</h2>
         </div>

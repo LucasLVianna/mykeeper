@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="/mykeeper/public/css/categoria_alterar.css">
 </head>
 <body>
-<section>
+<?php include(__DIR__ . '/sidebar.php'); ?>
+<section class="main-content">
     <form>
         <div>
             <label for="nome_categoria">Nome</label>

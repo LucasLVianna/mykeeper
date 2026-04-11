@@ -1,7 +1,6 @@
 <?php
     include_once(__DIR__ . '/../../config/valida_sessao.php');
     include_once(__DIR__ . '/../../config/valida_admin.php');
-    include_once(__DIR__ . '/sidebar.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,16 +14,20 @@
 </head>
 
 <body>
-    <div>
-        <h2>Admin Home</h2>
-    </div>
+    <?php include_once(__DIR__ . '/sidebar.php'); ?>
     
-    <section>
+    <div class="main-content">
         <div>
-            <button id="cadastroSuporteButtonLink">Cadastrar Suporte</button>
-            <button id="ticketsSuporte">Tickets de Suporte</button>
+            <h2>Admin Home</h2>
         </div>
-    </section>
+        
+        <section>
+            <div>
+                <button id="cadastroSuporteButtonLink">Cadastrar Suporte</button>
+                <button id="ticketsSuporte">Tickets de Suporte</button>
+            </div>
+        </section>
+    </div>
     
 </body>
 

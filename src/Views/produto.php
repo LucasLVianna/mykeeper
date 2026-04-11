@@ -1,6 +1,5 @@
 <?php
 include_once(__DIR__ . '/../../config/valida_sessao.php');
-include_once(__DIR__ . '/sidebar.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +11,8 @@ include_once(__DIR__ . '/sidebar.php');
     <link rel="stylesheet" href="/mykeeper/public/css/produto.css">
 </head>
 <body>  
-    <section>
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
         <div>
             <h2>Produtos Registrados</h2>
         </div>

@@ -1,6 +1,5 @@
 <?php
     include_once(__DIR__ . '/../../config/valida_sessao.php');
-    include_once(__DIR__ . '/sidebar.php'); 
 ?>
 
 <!DOCTYPE html>
@@ -12,8 +11,9 @@
     <link rel="stylesheet" href="/mykeeper/public/css/perfil_usuario.css">
 </head>
 <body>
+    <?php include(__DIR__ . '/sidebar.php'); ?>
       
-    <section>
+    <section class="main-content">
         <div>
             <h2>Perfil</h2>
         </div>

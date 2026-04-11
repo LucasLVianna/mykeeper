@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <section>
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
             <div>
                 <h2>Criar ticket</h2>
             </div>

@@ -73,8 +73,15 @@ h2 {
     border-bottom: none;
 }
 
+.tabela tr {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
 .tabela tr:hover {
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(0, 255, 163, 0.04);
+    box-shadow: inset 2px 0 0 #00ffa3; /* Linha neon lateral ao passar o mouse */
+    transform: scale(1.002);
 }
 
 td.botoes {

@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="/mykeeper/public/css/tickets_suporte_alterar.css">
 </head>
 <body>
-    <section>
+    <?php include(__DIR__ . '/sidebar.php'); ?>
+    <section class="main-content">
         <div>
             <h2>Atualizar ticket</h2>
         </div>
