@@ -38,11 +38,16 @@ html[data-theme='light'] .app-confirm-dialog {
     border-color: var(--app-border) !important;
 }
 
-html[data-theme='light'] .welcome-container,
 html[data-theme='light'] .stats-grid .home-card,
 html[data-theme='light'] .card-link .home-card {
     background-color: var(--app-surface) !important;
     border-color: var(--app-border) !important;
+}
+
+html[data-theme='light'] .welcome-container {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
 }
 
 html[data-theme='light'] p,
@@ -156,7 +161,6 @@ html[data-theme='light'] .tabela tr:hover {
 }
 
 html[data-theme='light'] .btn-editar,
-html[data-theme='light'] .btn-atv,
 html[data-theme='light'] #addproduto,
 html[data-theme='light'] #addcategoria,
 html[data-theme='light'] #addsuporte,
@@ -178,7 +182,6 @@ html[data-theme='light'] #suporte_novo {
 }
 
 html[data-theme='light'] .btn-editar:hover,
-html[data-theme='light'] .btn-atv:hover,
 html[data-theme='light'] #addproduto:hover,
 html[data-theme='light'] #addcategoria:hover,
 html[data-theme='light'] #addsuporte:hover,
@@ -281,4 +284,16 @@ html[data-theme='light'] .profile-page .btn-desativar {
 html[data-theme='light'] .profile-page .btn-desativar:hover {
     background-color: #e11d48 !important;
     color: #ffffff !important;
+}
+
+html[data-theme='light'] .btn-atv {
+    background-color: transparent !important;
+    color: #00a56a !important;
+    border-color: transparent !important;
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+html[data-theme='light'] .home-card:hover .btn-atv {
+    border-bottom-color: #00a56a !important;
 }
