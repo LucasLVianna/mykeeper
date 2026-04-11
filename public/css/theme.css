@@ -60,6 +60,10 @@ html[data-theme='light'] .app-confirm-message {
     color: var(--app-muted) !important;
 }
 
+html[data-theme='light'] .divider span {
+    background-color: var(--app-surface) !important;
+}
+
 html[data-theme='light'] h1,
 html[data-theme='light'] h2,
 html[data-theme='light'] h3,
@@ -102,15 +106,15 @@ html[data-theme='light'] .sidebar-header {
 html[data-theme='light'] .sideNavBar h2 {
     color: #1f2937 !important;
     background: none !important;
-    -webkit-text-fill-color: currentColor;
+    -webkit-text-fill-color: #1f2937 !important;
 }
 
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
     html[data-theme='light'] .sideNavBar h2 {
         background: linear-gradient(135deg, #1f2937 0%, #00a56a 100%) !important;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        background-clip: text !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
     }
 }
 
