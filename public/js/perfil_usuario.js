@@ -35,7 +35,7 @@ function preencherInformacoes(usuario) {
 }
 
 document.getElementById('desativarConta').addEventListener('click', async () => {
-    const confirmed = await appConfirm('Tem certeza que deseja desativar sua conta? Esta acao nao pode ser desfeita.', {
+    const confirmed = await appConfirm('Tem certeza que deseja desativar sua conta? Esta ação não pode ser desfeita.', {
         title: 'Desativar conta',
         confirmText: 'Desativar',
         cancelText: 'Voltar',
