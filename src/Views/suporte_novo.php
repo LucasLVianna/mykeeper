@@ -16,6 +16,10 @@
 <body>
     <?php include(__DIR__ . '/sidebar.php'); ?>
     <section class="main-content">
+        <div class="form-page-header">
+            <h2>Novo Usuario Suporte</h2>
+            <a href="/mykeeper/src/Views/suporte.php" class="page-close-button page-close-inline" title="Fechar">&times;</a>
+        </div>
         <form>
             <div>
                 <label for="nome">Nome</label>

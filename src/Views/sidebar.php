@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="/mykeeper/public/css/sidebar.css">
+<link rel="stylesheet" href="/mykeeper/public/css/app-notifications.css?v=20260411-notify-fix">
 
 <!-- Script executado imediatamente para impedir o piscar/tremer da animação -->
 <script>
@@ -79,3 +80,4 @@
 
 <script src="/mykeeper/public/js/sidebar-toggle.js"></script>
 <script src="/mykeeper/public/js/sidebar.js"></script>
+<script src="/mykeeper/public/js/app-notifications.js?v=20260411-notify-fix"></script>

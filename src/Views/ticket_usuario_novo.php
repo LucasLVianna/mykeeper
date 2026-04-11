@@ -14,8 +14,9 @@
 <body>
     <?php include(__DIR__ . '/sidebar.php'); ?>
     <section class="main-content">
-            <div>
+            <div class="form-page-header">
                 <h2>Criar ticket</h2>
+                <a href="/mykeeper/src/Views/ticket_usuario.php" class="page-close-button page-close-inline" title="Fechar">&times;</a>
             </div>
             <div>
                 <p>Preencha os dados abaixo para criar um novo ticket</p>

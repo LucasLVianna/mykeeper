@@ -31,6 +31,6 @@
 
     </section>
 
-    <script src="/mykeeper/public/js/perfil_usuario.js"></script>
+    <script src="/mykeeper/public/js/perfil_usuario.js?v=20260411-profile-fix"></script>
 </body>
 </html>

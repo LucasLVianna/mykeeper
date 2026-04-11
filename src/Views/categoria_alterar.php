@@ -12,6 +12,7 @@
 </head>
 <body>
 <?php include(__DIR__ . '/sidebar.php'); ?>
+<a href="/mykeeper/src/Views/categoria.php" class="page-close-button" title="Fechar">&times;</a>
 <section class="main-content">
     <form>
         <div>

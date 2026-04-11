@@ -8,8 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar ticket</title>
     <link rel="stylesheet" href="/mykeeper/public/css/ticket_usuario_alterar.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/app-notifications.css">
 </head>
 <body>
+    <a href="/mykeeper/src/Views/ticket_usuario.php" class="page-close-button" title="Fechar">&times;</a>
     <section>
         <div>
             <h2>Alterar ticket</h2>
@@ -30,6 +32,7 @@
             <button type="button" id="alterarTicket">Alterar ticket</button>
         </form>
     </section>
+    <script src="/mykeeper/public/js/app-notifications.js"></script>
     <script src="/mykeeper/public/js/ticket_usuario_alterar.js"></script>
 </body>
 </html>
