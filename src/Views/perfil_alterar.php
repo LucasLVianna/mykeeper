@@ -10,7 +10,7 @@
     <title>Perfil - Edicao</title>
     <link rel="stylesheet" href="/mykeeper/public/css/perfil_alterar.css?v=20260411-profile-fix">
 </head>
-<body data-user-id="<?php echo isset($_SESSION['usuario']['id']) ? (int)$_SESSION['usuario']['id'] : ''; ?>">
+<body data-user-id="<?php echo isset($_SESSION['usuario']['id']) ? (int)$_SESSION['usuario']['id'] : ''; ?>" class="form-page">
     <?php include(__DIR__ . '/sidebar.php'); ?>
     <section class="main-content">
         <div class="form-page-header">

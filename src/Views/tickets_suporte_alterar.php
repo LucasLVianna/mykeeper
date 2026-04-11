@@ -10,7 +10,7 @@
     <title>Alterar ticket</title>
     <link rel="stylesheet" href="/mykeeper/public/css/tickets_suporte_alterar.css">
 </head>
-<body>
+<body class="form-page">
     <?php include(__DIR__ . '/sidebar.php'); ?>
     <a href="/mykeeper/src/Views/tickets_suporte.php" class="page-close-button" title="Fechar">&times;</a>
     <section class="main-content">

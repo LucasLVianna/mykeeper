@@ -10,7 +10,7 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
     <title>Alterar Produto</title>
     <link rel="stylesheet" href="/mykeeper/public/css/produto_alterar.css">
 </head>
-<body>
+<body class="form-page">
     <?php include(__DIR__ . '/sidebar.php'); ?>
     <a href="/mykeeper/src/Views/produto.php" class="page-close-button" title="Fechar">&times;</a>
     <section class="main-content">

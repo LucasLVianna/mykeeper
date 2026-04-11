@@ -8,9 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar ticket</title>
     <link rel="stylesheet" href="/mykeeper/public/css/ticket_usuario_alterar.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/theme.css?v=20260411-theme">
     <link rel="stylesheet" href="/mykeeper/public/css/app-notifications.css">
+
+    <script>
+        (function () {
+            var theme = localStorage.getItem('mykeeper-theme');
+            document.documentElement.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
+        })();
+    </script>
 </head>
-<body>
+<body class="form-page">
     <a href="/mykeeper/src/Views/ticket_usuario.php" class="page-close-button" title="Fechar">&times;</a>
     <section>
         <div>
@@ -33,6 +41,7 @@
         </form>
     </section>
     <script src="/mykeeper/public/js/app-notifications.js"></script>
+    <script src="/mykeeper/public/js/theme.js?v=20260411-theme"></script>
     <script src="/mykeeper/public/js/ticket_usuario_alterar.js"></script>
 </body>
 </html>

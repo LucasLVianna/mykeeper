@@ -1,6 +1,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="/mykeeper/public/css/sidebar.css">
+<link rel="stylesheet" href="/mykeeper/public/css/theme.css?v=20260411-theme">
 <link rel="stylesheet" href="/mykeeper/public/css/app-notifications.css?v=20260411-notify-fix">
+
+<script>
+    (function () {
+        var theme = localStorage.getItem('mykeeper-theme');
+        document.documentElement.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
+    })();
+</script>
 
 <!-- Script executado imediatamente para impedir o piscar/tremer da animação -->
 <script>
@@ -65,6 +73,11 @@
                 <i class="fas fa-ticket-alt"></i>
                 <span>Tickets</span>
             </button>
+
+            <button type="button" id="themeToggleButton" data-label="Tema" title="Ativar modo claro">
+                <i class="fas fa-sun"></i>
+                <span>Modo claro</span>
+            </button>
         </nav>
 
         <button type="button" id="logoffButtonLink" data-label="Sair" title="Sair">
@@ -80,4 +93,5 @@
 
 <script src="/mykeeper/public/js/sidebar-toggle.js"></script>
 <script src="/mykeeper/public/js/sidebar.js"></script>
+<script src="/mykeeper/public/js/theme.js?v=20260411-theme"></script>
 <script src="/mykeeper/public/js/app-notifications.js?v=20260411-notify-fix"></script>

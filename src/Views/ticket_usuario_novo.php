@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/mykeeper/public/css/ticket_usuario_novo.css">
 </head>
 
-<body>
+<body class="form-page">
     <?php include(__DIR__ . '/sidebar.php'); ?>
     <section class="main-content">
             <div class="form-page-header">

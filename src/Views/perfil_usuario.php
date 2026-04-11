@@ -10,21 +10,21 @@
     <title>Perfil do Usuário</title>
     <link rel="stylesheet" href="/mykeeper/public/css/perfil_usuario.css">
 </head>
-<body>
+<body class="profile-page">
     <?php include(__DIR__ . '/sidebar.php'); ?>
       
     <section class="main-content">
-        <div>
+        <div class="profile-header">
             <h2>Perfil</h2>
         </div>
         
-        <div>
+        <div class="profile-card">
             <p><strong>Nome:</strong> <span id="nome"></span></p>
             <p><strong>Email:</strong> <span id="email"></span></p>
             <p><strong>CEP:</strong> <span id="cep"></span></p>
         </div>
 
-        <div>
+        <div class="profile-actions">
             <button class = "btn-editar"><a href="" id="linkEditar">Editar</a></button>
             <button class="btn-desativar" id="desativarConta">Desativar Conta</button>
         </div>

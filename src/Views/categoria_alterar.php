@@ -10,7 +10,7 @@
     <title>Alterar Categoria</title>
     <link rel="stylesheet" href="/mykeeper/public/css/categoria_alterar.css">
 </head>
-<body>
+<body class="form-page">
 <?php include(__DIR__ . '/sidebar.php'); ?>
 <a href="/mykeeper/src/Views/categoria.php" class="page-close-button" title="Fechar">&times;</a>
 <section class="main-content">

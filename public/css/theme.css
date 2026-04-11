@@ -1,0 +1,280 @@
+:root {
+    --app-bg: #0b0e11;
+    --app-surface: #1a1d23;
+    --app-surface-alt: #24282f;
+    --app-text: #e0e0e0;
+    --app-muted: #a0a0a0;
+    --app-border: #2d3139;
+    --app-input-bg: #0b0e11;
+    --app-input-border: #3d424a;
+    --app-accent: #00ffa3;
+    --app-danger: #ff4d4d;
+}
+
+html[data-theme='light'] {
+    --app-bg: #f2f6fa;
+    --app-surface: #ffffff;
+    --app-surface-alt: #eef3f8;
+    --app-text: #1f2937;
+    --app-muted: #5f6f83;
+    --app-border: #dbe4ee;
+    --app-input-bg: #f8fbfe;
+    --app-input-border: #ced9e5;
+    --app-accent: #00a56a;
+    --app-danger: #d93025;
+}
+
+html[data-theme='light'] body {
+    background-color: var(--app-bg) !important;
+    color: var(--app-text) !important;
+}
+
+html[data-theme='light'] #item,
+html[data-theme='light'] .home-card,
+html[data-theme='light'] .app-toast,
+html[data-theme='light'] .app-confirm-dialog {
+    background-color: var(--app-surface) !important;
+    color: var(--app-text) !important;
+    border-color: var(--app-border) !important;
+}
+
+html[data-theme='light'] .welcome-container,
+html[data-theme='light'] .stats-grid .home-card,
+html[data-theme='light'] .card-link .home-card {
+    background-color: var(--app-surface) !important;
+    border-color: var(--app-border) !important;
+}
+
+html[data-theme='light'] p,
+html[data-theme='light'] span,
+html[data-theme='light'] strong,
+html[data-theme='light'] label {
+    color: inherit;
+}
+
+html[data-theme='light'] p,
+html[data-theme='light'] .divider span,
+html[data-theme='light'] .welcome-container p,
+html[data-theme='light'] .app-toast__message,
+html[data-theme='light'] .app-confirm-message {
+    color: var(--app-muted) !important;
+}
+
+html[data-theme='light'] h1,
+html[data-theme='light'] h2,
+html[data-theme='light'] h3,
+html[data-theme='light'] h4 {
+    color: var(--app-text) !important;
+}
+
+html[data-theme='light'] input[type='text'],
+html[data-theme='light'] input[type='email'],
+html[data-theme='light'] input[type='password'],
+html[data-theme='light'] input[type='file'],
+html[data-theme='light'] select,
+html[data-theme='light'] textarea {
+    background-color: var(--app-input-bg) !important;
+    border-color: var(--app-input-border) !important;
+    color: var(--app-text) !important;
+}
+
+html[data-theme='light'] input::placeholder,
+html[data-theme='light'] textarea::placeholder {
+    color: #7a8798 !important;
+}
+
+html[data-theme='light'] .divider,
+html[data-theme='light'] .divider::before,
+html[data-theme='light'] .divider::after {
+    border-color: #dbe4ee !important;
+}
+
+html[data-theme='light'] .sideNavBar {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-right: 1px solid #d7e2ec !important;
+    box-shadow: 4px 0 25px rgba(46, 64, 86, 0.12) !important;
+}
+
+html[data-theme='light'] .sidebar-header {
+    border-bottom: 1px solid #e5edf4 !important;
+}
+
+html[data-theme='light'] .sideNavBar h2 {
+    color: #1f2937 !important;
+    background: none !important;
+    -webkit-text-fill-color: currentColor;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    html[data-theme='light'] .sideNavBar h2 {
+        background: linear-gradient(135deg, #1f2937 0%, #00a56a 100%) !important;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+html[data-theme='light'] .logo-badge {
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(0, 165, 106, 0.28);
+}
+
+html[data-theme='light'] .sideNavBar button {
+    color: #5a697c;
+}
+
+html[data-theme='light'] .sideNavBar nav button:hover {
+    background-color: rgba(0, 165, 106, 0.1);
+    border-color: rgba(0, 165, 106, 0.3);
+    color: #008e5c;
+}
+
+html[data-theme='light'] #logoffButtonLink {
+    color: var(--app-danger);
+}
+
+html[data-theme='light'] .toggle-arrow {
+    color: #00a56a;
+}
+
+html[data-theme='light'] .tabela th {
+    background-color: var(--app-surface-alt) !important;
+    color: #008e5c !important;
+}
+
+html[data-theme='light'] .tabela td {
+    color: var(--app-text) !important;
+    border-bottom-color: #e4ebf2 !important;
+}
+
+html[data-theme='light'] .tabela tr:hover {
+    background-color: rgba(0, 165, 106, 0.06) !important;
+}
+
+html[data-theme='light'] .btn-editar,
+html[data-theme='light'] .btn-atv,
+html[data-theme='light'] #addproduto,
+html[data-theme='light'] #addcategoria,
+html[data-theme='light'] #addsuporte,
+html[data-theme='light'] #criarTicket,
+html[data-theme='light'] #alterarTicket,
+html[data-theme='light'] #alterarperfil,
+html[data-theme='light'] #alterarproduto,
+html[data-theme='light'] #alterarcategoria,
+html[data-theme='light'] #alterarsuporte,
+html[data-theme='light'] .addvs,
+html[data-theme='light'] .login-page button[type="submit"],
+html[data-theme='light'] #entrar,
+html[data-theme='light'] #createAccount,
+html[data-theme='light'] #ticket_novo,
+html[data-theme='light'] #suporte_novo {
+    background-color: #00a56a !important;
+    color: #ffffff !important;
+    border-color: #00a56a !important;
+}
+
+html[data-theme='light'] .btn-editar:hover,
+html[data-theme='light'] .btn-atv:hover,
+html[data-theme='light'] #addproduto:hover,
+html[data-theme='light'] #addcategoria:hover,
+html[data-theme='light'] #addsuporte:hover,
+html[data-theme='light'] #criarTicket:hover,
+html[data-theme='light'] #alterarTicket:hover,
+html[data-theme='light'] #alterarperfil:hover,
+html[data-theme='light'] #alterarproduto:hover,
+html[data-theme='light'] #alterarcategoria:hover,
+html[data-theme='light'] #alterarsuporte:hover,
+html[data-theme='light'] .addvs:hover,
+html[data-theme='light'] .login-page button[type="submit"]:hover,
+html[data-theme='light'] #entrar:hover,
+html[data-theme='light'] #createAccount:hover,
+html[data-theme='light'] #ticket_novo:hover,
+html[data-theme='light'] #suporte_novo:hover {
+    background-color: #008e5c !important;
+    border-color: #008e5c !important;
+}
+
+html[data-theme='light'] .btn-excluir,
+html[data-theme='light'] .btn-desativar {
+    background-color: rgba(217, 48, 37, 0.08) !important;
+    border-color: rgba(217, 48, 37, 0.35) !important;
+    color: #c3251c !important;
+}
+
+html[data-theme='light'] .btn-excluir:hover,
+html[data-theme='light'] .btn-desativar:hover {
+    background-color: #d93025 !important;
+    color: #ffffff !important;
+}
+
+html[data-theme='light'] .page-close-button {
+    color: #d93025 !important;
+}
+
+html[data-theme='light'] .page-close-button.page-close-inline:hover {
+    color: #a62018 !important;
+    text-shadow: none !important;
+}
+
+html[data-theme='light'] .app-toast__message,
+html[data-theme='light'] .app-confirm-message {
+    color: #55657a !important;
+}
+
+html[data-theme='light'] .admin-login-page section > div,
+html[data-theme='light'] .login-page section > div:first-child,
+html[data-theme='light'] .form-page section.main-content {
+    background-color: var(--app-surface) !important;
+    border-color: var(--app-border) !important;
+    box-shadow: 0 12px 28px rgba(41, 58, 78, 0.12) !important;
+}
+
+html[data-theme='light'] .profile-page .profile-card {
+    background-color: #ffffff !important;
+    border: 1px solid #dbe4ee !important;
+    box-shadow: 0 10px 26px rgba(41, 58, 78, 0.12) !important;
+}
+
+html[data-theme='light'] .profile-page .profile-card p {
+    color: #5f6f83 !important;
+    border-bottom-color: #dbe4ee !important;
+}
+
+html[data-theme='light'] .profile-page .profile-card strong {
+    color: #35526f !important;
+}
+
+html[data-theme='light'] .profile-page .profile-card span {
+    color: #1f2937 !important;
+}
+
+html[data-theme='light'] .admin-login-page #entrar {
+    background-color: #00a56a !important;
+    color: #ffffff !important;
+}
+
+html[data-theme='light'] .admin-login-page #entrar:hover {
+    background-color: #008e5c !important;
+}
+
+html[data-theme='light'] .profile-page .btn-editar {
+    background-color: #00a56a !important;
+}
+
+html[data-theme='light'] .profile-page .btn-editar a {
+    color: #ffffff !important;
+}
+
+html[data-theme='light'] .profile-page .btn-editar:hover {
+    background-color: #008e5c !important;
+}
+
+html[data-theme='light'] .profile-page .btn-desativar {
+    border-color: #e11d48 !important;
+    color: #e11d48 !important;
+}
+
+html[data-theme='light'] .profile-page .btn-desativar:hover {
+    background-color: #e11d48 !important;
+    color: #ffffff !important;
+}

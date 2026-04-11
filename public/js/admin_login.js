@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Se estiver logado como usuario, permite ir direto para home.
+        // A tela admin exige usuario logado; se nao estiver, volta para login comum.
         const response = await fetch('/mykeeper/config/check_session.php');
         const data = await response.json();
 
-        if (data.logado) {
-            window.location.href = '/mykeeper/src/Views/home.php';
+        if (!data.logado) {
+            window.location.href = '/mykeeper/src/Views/usuario_login.php';
         }
     } catch (error) {
         appNotify('ERRO! Falha ao validar sessao.');
