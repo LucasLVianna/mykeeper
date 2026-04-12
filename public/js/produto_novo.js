@@ -77,7 +77,6 @@ async function novo() {
         document.getElementById('categoria_produto').focus();
         return;
     }
-    
 
     const fd = new FormData();
     fd.append('nome_produto', nome_produto);

@@ -19,7 +19,7 @@
     if(isset($_GET['id'])){
 
         $nome = $_POST['nome_produto'];
-        $id_categoria = !empty($_POST['id_categoria']) ? (int)$_POST['id_categoria'] : null;
+        $id_categoria = !empty($_POST['id_categoria']) ? $_POST['id_categoria'] : null;
         $und_medida = $_POST['und_medida_produto'];
 
         $imagem = null;
@@ -49,14 +49,14 @@
                 SET nome=?, id_categoria=?, und_medida=?, imagem=?
                 WHERE id=? AND id_usuario = ?
             ");
-            $stmt->bind_param("siisii", $nome, $id_categoria, $und_medida, $imagem, $_GET['id'], $id_usuario);
+            $stmt->bind_param("ssssss", $nome, $id_categoria, $und_medida, $imagem, $_GET['id'], $id_usuario);
         } else {
             $stmt = $conexao->prepare("
                 UPDATE produto 
                 SET nome=?, id_categoria=?, und_medida=?
                 WHERE id=? AND id_usuario = ?
             ");
-            $stmt->bind_param("sisis", $nome, $id_categoria, $und_medida, $_GET['id'], $id_usuario);
+            $stmt->bind_param("sssss", $nome, $id_categoria, $und_medida, $_GET['id'], $id_usuario);
         }
 
         if(!$stmt->execute()){

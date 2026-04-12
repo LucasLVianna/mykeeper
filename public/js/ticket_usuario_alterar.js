@@ -28,8 +28,6 @@ async function buscar(id){
     const resposta = await retorno.json();
 
     if(resposta.status == 'ok'){
-        var item = resposta.data[0];
-
         document.getElementById('titulo').value    = e(resposta.data.titulo);
         document.getElementById('descricao').value = e(resposta.data.descricao);
 

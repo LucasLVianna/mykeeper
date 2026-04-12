@@ -66,7 +66,8 @@ async function buscar(id) {
     if (resposta.status == 'ok') {
         const item = resposta.data[0];
         document.getElementById('nome_produto').value = e(item.nome);
-        document.getElementById('und_medida_produto').value = e(item.und_medida);
+        document.getElementById('und_medida_produto').value = item.und_medida;
+        atualizarVisualSelect(document.getElementById('und_medida_produto'));   
         document.getElementById('id').value = id;
 
         document.getElementById('categoria_produto').value = item.id_categoria;
