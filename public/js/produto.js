@@ -4,14 +4,15 @@ function e(str) {
     return div.innerHTML;
 }
 
+let todosProdutos = []; // ✅ ADICIONADO
+
 document.addEventListener('DOMContentLoaded', async ()=>{
-    // 1. Primeiro verifica se está logado
     const response = await fetch('/mykeeper/config/check_session.php');
     const data = await response.json();
     
     if (!data.logado) {
         window.location.href = '/mykeeper/src/Views/usuario_login.php';
-        return; // para a execução aqui
+        return;
     }
     buscar();
 })
@@ -20,17 +21,31 @@ async function buscar() {
     const retorno = await fetch('/mykeeper/src/Controllers/produto_get.php');
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
+        todosProdutos = resposta.data;
         preencherTabela(resposta.data);
     } else {
-        document.getElementById('mensagem').textContent = 'Não há produtos cadastrados.';
+        mostrarVazio('Não há produtos cadastrados');
     }
-    
-    
+}
+
+document.getElementById('busca').addEventListener('input', () => {
+    const termo = document.getElementById('busca').value.toLowerCase();
+    const filtrado = todosProdutos.filter(p => p.nome.toLowerCase().includes(termo));
+    if(filtrado.length > 0){
+        preencherTabela(filtrado);
+    } else {
+        mostrarVazio('Nenhum produto encontrado');
+    }
+});
+
+function mostrarVazio(mensagem) {
+    document.getElementById('item').style.display = 'none';
+    const msg = document.getElementById('mensagem');
+    msg.className = 'vazio';
+    msg.textContent = mensagem;
 }
 
 function preencherTabela(tabela){
-
-
     var html = `
     <table class="tabela">
         <tr>
@@ -42,7 +57,6 @@ function preencherTabela(tabela){
             <th> # </th>
         </tr>
     `;
-
 
     for(var i=0;i<tabela.length;i++){
         const icone = tabela[i].imagem
@@ -63,9 +77,7 @@ function preencherTabela(tabela){
     }
 
     html += `</table>`;
-    document.getElementById('item').innerHTML = html
-    
-
+    document.getElementById('item').innerHTML = html;
 }
 
 async function excluir(id){
@@ -86,4 +98,3 @@ async function excluir(id){
 document.getElementById('produto_novo').addEventListener('click', ()=>{
     window.location.href = '/mykeeper/src/Views/produto_novo.php'
 })
-

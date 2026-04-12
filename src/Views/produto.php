@@ -1,6 +1,5 @@
 <?php
 include_once(__DIR__ . '/../../config/valida_sessao.php');
-include_once(__DIR__ . '/modal_confirmar.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +15,7 @@ include_once(__DIR__ . '/modal_confirmar.php');
     <section class="main-content">
         <div>
             <h2>Produtos Registrados</h2>
+            <input type="text" id="busca" placeholder="Buscar produto...">
         </div>
         <div id="item"></div>
         <p id="mensagem"></p>
@@ -23,7 +23,8 @@ include_once(__DIR__ . '/modal_confirmar.php');
             <button type="button" id="produto_novo" class="addvs">Adicionar Produto</button>
         </div>
     </section>
-    <script src="/mykeeper/public/js/modal_confirmar.js"></script> 
+    <?php include_once(__DIR__ . '/confirmacao.php'); ?> <!-- ✅ DEPOIS DA SECTION -->
+    <script src="/mykeeper/public/js/confirmacao.js"></script> 
     <script src="/mykeeper/public/js/produto.js"></script>
 </body>
 </html>

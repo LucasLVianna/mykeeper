@@ -22,8 +22,8 @@
             <button type="button" id="ticket_novo" class="addvs">Adicionar Ticket</button>
         </div>
     </section>
-    <?php include_once(__DIR__ . '/modal_confirmar.php'); ?>
-    <script src="/mykeeper/public/js/modal_confirmar.js"></script>
+    <?php include_once(__DIR__ . '/confirmacao.php'); ?>
+    <script src="/mykeeper/public/js/confirmacao.js"></script>
     <script src="/mykeeper/public/js/ticket.js"></script>
 </body>
 </html>

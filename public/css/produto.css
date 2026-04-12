@@ -156,3 +156,21 @@ td.botoes {
         padding: 20px;
     }
 }
+
+
+#busca {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #2d3139;
+    background: #1a1d23;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    width: 300px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+#busca:focus {
+    outline: none;
+    border-color: #00ffa3;
+}

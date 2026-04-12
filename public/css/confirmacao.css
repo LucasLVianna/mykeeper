@@ -1,0 +1,56 @@
+#confirmacao {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirmacao .confirmacao-box {
+    background: var(--app-surface, #1e1e1e);
+    border-radius: 16px;
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    border: 2px solid #00c97a;
+}
+
+#confirmacao-mensagem {
+    color: var(--app-text, white);
+    font-size: 1rem;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.confirmacao-botoes {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#confirmacao-cancelar {
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: 1px solid var(--app-border, #ddd);
+    background: transparent;
+    color: var(--app-text, #333);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#confirmacao-btn {
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: none;
+    background: var(--app-danger, #ff4757);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
