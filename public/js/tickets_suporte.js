@@ -30,12 +30,20 @@ async function buscar() {
 
     if (resposta.status == 'ok') {
         if (resposta.data.length === 0) {
-            document.getElementById('item').innerHTML = '<p>Nenhum ticket registrado no momento.</p>';
+            document.getElementById('item').innerHTML = `
+                <div style="text-align:center; padding: 25px 0;">
+                    <p style="color:#aaa; font-size:1.1rem;">Nenhum ticket registrado no momento</p>
+                </div>
+            `;
             return;
         }
         preencherTabela(resposta.data);
     } else {
-        document.getElementById('item').innerHTML = '<p>Erro ao carregar os tickets.</p>';
+        document.getElementById('item').innerHTML = `
+            <div style="text-align:center; padding: 25px 0;">
+                <p style="color:#aaa; font-size:1.1rem;">Erro ao carregar os tickets</p>
+            </div>
+        `;
     }
 }
 

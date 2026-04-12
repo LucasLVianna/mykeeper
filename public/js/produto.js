@@ -69,10 +69,8 @@ function preencherTabela(tabela){
 }
 
 async function excluir(id){
-
-    if (!confirm('Tem certeza que deseja excluir este produto?')) {
-        return;
-    }
+    const ok = await confirmar('Tem certeza que deseja excluir este produto?'); 
+    if(!ok) return;
 
     const retorno = await fetch('/mykeeper/src/Controllers/produto_excluir.php?id='+id);
     const resposta = await retorno.json();

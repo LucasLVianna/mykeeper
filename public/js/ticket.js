@@ -76,6 +76,9 @@ function preencherTabela(tabela){
 }
 
 async function excluir(id){
+    const ok = await confirmar('Tem certeza que deseja excluir este ticket?'); 
+    if(!ok) return;
+
     const retorno = await fetch('/mykeeper/src/Controllers/ticket_excluir.php?id='+id);
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){

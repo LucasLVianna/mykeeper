@@ -16,8 +16,8 @@ $id_usuario = $_SESSION['usuario']['id'];
 
 if(isset($_GET['id'])){
 
-    $stmt = $conexao->prepare("SELECT icone FROM categoria WHERE id = ? AND id_usuario = ?");
-    $stmt->bind_param('ii', $_GET['id'], $id_usuario);
+    $stmt = $conexao->prepare("SELECT icone FROM categoria WHERE id = ?");
+    $stmt->bind_param('i', $_GET['id']);
     $stmt->execute();
     $resultado = $stmt->get_result();
 
@@ -39,8 +39,8 @@ if(isset($_GET['id'])){
         }
     }
 
-    $stmt = $conexao->prepare("DELETE FROM categoria WHERE id = ? AND id_usuario = ?");
-    $stmt->bind_param('ii', $_GET['id'], $id_usuario);
+    $stmt = $conexao->prepare("DELETE FROM categoria WHERE id = ?");
+    $stmt->bind_param('i', $_GET['id']);
     $stmt->execute();
 
     if($stmt->affected_rows > 0){

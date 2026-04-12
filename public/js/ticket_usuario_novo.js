@@ -42,23 +42,9 @@ async function novo() {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        toast('Ticket criado com sucesso!', 'ok');
-        setTimeout(() => {
-            window.location.href = '/mykeeper/src/Views/ticket_usuario.php';
-        }, 800);
+        alert('SUCESSO! ' + resposta.mensagem);
+        window.location.href = '/mykeeper/src/Views/ticket_usuario.php';
     } else {
-        toast('Erro ao criar ticket!', 'erro');
+        alert('ERRO! ' + resposta.mensagem);
     }
-}
-
-function toast(mensagem, tipo = 'ok') {
-    const div = document.getElementById('toast');
-    div.textContent = mensagem;
-    div.style.backgroundColor = tipo === 'ok' ? '#00c97a' : '#ff4757';
-    div.style.display = 'block';
-    div.style.opacity = '1';
-    setTimeout(() => {
-        div.style.opacity = '0';
-        setTimeout(() => div.style.display = 'none', 500);
-    }, 3000);
 }

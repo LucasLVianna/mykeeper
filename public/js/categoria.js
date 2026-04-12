@@ -59,6 +59,9 @@ function preencherTabela(tabela) {
 }
 
 async function excluir(id) {
+    const ok = await confirmar('Tem certeza que deseja excluir esta categoria?');
+    if(!ok) return;
+
     const retorno = await fetch('/mykeeper/src/Controllers/categoria_excluir.php?id=' + id);
     const resposta = await retorno.json();
     if (resposta.status == 'ok') {

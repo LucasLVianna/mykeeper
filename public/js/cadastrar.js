@@ -35,19 +35,14 @@ async function cadastrar() {
     const senha = document.getElementById('senha').value;
     const cep = formatCep(cepInput.value);
 
-    if(!nome || !email || !senha || cepDigitsLength(cep) === 0){
-        document.getElementById('erro').textContent = 'ERRO! Preencha todos os campos';
-        return;
-    }
-
     if (cepDigitsLength(cep) !== 8) {
-        document.getElementById('erro').textContent = 'ERRO! Digite um CEP válido no formato 00000-000.';
+        alert('ERRO! Digite um CEP válido no formato 00000-000.');
         cepInput.focus();
         return;
     }
 
     if (senha.length < 8) {
-        document.getElementById('erro').textContent = 'ERRO! Senha muito curta';
+        alert('ERRO! Senha muito curta');
         return;
     }
 
@@ -64,24 +59,10 @@ async function cadastrar() {
 
     const resposta = await retorno.json();
     if (resposta.status === 'ok') {
-        toast('Cadastro realizado com sucesso!', 'ok');
-        setTimeout(() => {
-            window.location.href = '/mykeeper/src/Views/usuario_login.php';
-        }, 800);
+        alert('SUCESSO! Cadastro realizado com êxito');
+        window.location.href = '/mykeeper/src/Views/usuario_login.php';
         return;
     }
 
-    document.getElementById('erro').textContent = 'ERRO! ' + resposta.mensagem;
-}
-
-function toast(mensagem, tipo = 'ok') {
-    const div = document.getElementById('toast');
-    div.textContent = mensagem;
-    div.style.backgroundColor = tipo === 'ok' ? '#00c97a' : '#ff4757';
-    div.style.display = 'block';
-    div.style.opacity = '1';
-    setTimeout(() => {
-        div.style.opacity = '0';
-        setTimeout(() => div.style.display = 'none', 500);
-    }, 3000);
+    alert('ERRO! ' + resposta.mensagem);
 }

@@ -1,5 +1,6 @@
 <?php
 include_once(__DIR__ . '/../../config/valida_sessao.php');
+include_once(__DIR__ . '/modal_confirmar.php');
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +22,7 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
         <button type="button" id="categoria_nova" class="addvs">Adicionar Categoria</button>
     </div>
 </section>
+<script src="/mykeeper/public/js/modal_confirmar.js"></script>
 <script src="/mykeeper/public/js/categoria.js"></script>
 </body>
 </html>
