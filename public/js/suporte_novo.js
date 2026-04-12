@@ -16,7 +16,15 @@ document.getElementById('addsuporte').addEventListener('click', () => {
 
 async function novo() {
     const nome = document.getElementById('nome').value;
+    if(!nome){
+        document.getElementById('nome-error').textContent = 'Nome precisa conter valores'
+        return; 
+    }
     const email = document.getElementById('email').value;
+    if(!email.includes('@')) {
+        document.getElementById('email-error').textContent = 'Email precisa possuir @'
+        return;
+    }
     const senha = document.getElementById('senha').value;
 
     const fd = new FormData();
