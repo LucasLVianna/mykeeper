@@ -12,6 +12,9 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
 </head>
 <body>
     <section>
+    <a href="/mykeeper/src/Views/categoria.php">
+        <img src="/mykeeper/public/assets/perto.png" alt="x.png" style="position:fixed; top:12px; left:12px; width:32px; height:32px; object-fit:contain;">
+    </a>
 
     <form>
         <div>
