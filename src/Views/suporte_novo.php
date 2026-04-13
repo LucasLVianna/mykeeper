@@ -19,18 +19,23 @@
             <div>
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome">
+                <p id="error-nome"></p>
             </div>
 
             <div>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
+                <p id="error-email"></p>
             </div>
 
             <div>
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" id="senha" minlength="8">
+                <p id="error-senha"></p>
             </div>
-            
+            <div>
+                <p id="error"></p>
+            </div>
             <button type="button" id="addsuporte">Adicionar</button>
         </form>
     </section>

@@ -18,6 +18,7 @@
             <h2>Contas de Suporte</h2>
         </div>
         <div id="item"></div>
+        <div><p id="error"></p></div>
         <div>
             <button type="button" id="suporte_novo" class="addvs">Adicionar Suporte</button>
         </div>

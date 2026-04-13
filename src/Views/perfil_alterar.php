@@ -16,18 +16,23 @@
             <div>
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome">
+                <p id="error-nome"></p>
             </div>
 
             <div>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
+                <p id="error-email"></p>
             </div>
 
             <div>
                 <label for="cep">CEP</label>
                 <input type="text" name="cep" id="cep" placeholder="00000-000" maxlength="9" inputmode="numeric">
+                <p id="error-cep"></p>
             </div>
-
+            <div>
+                <p id="error"></p>
+            </div>
             <button type="button" id="alterarperfil">Salvar</button>
         </form>
     </section>

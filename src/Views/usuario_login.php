@@ -31,6 +31,7 @@
                     </div>
                     <div>
                         <input type="text" name="email" id="email" placeholder="seu@email.com">
+                        <p id="error-email"></p>
                     </div>
                 </div>
 
@@ -41,7 +42,9 @@
                     </div>
                     <div>
                         <input type="password" name="senha" id="senha" placeholder="••••••" minLength="8">
+                        <p id="error-senha"></p>
                     </div>
+                    <h4 id="error"></h4>
                     <div>
                         <p>Esqueceu a senha? <a href="#">Redefinir</a></p>
                     </div>

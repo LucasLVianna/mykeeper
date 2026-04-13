@@ -31,6 +31,16 @@ async function novo() {
     const descricao_categoria = document.getElementById('descricao_categoria').value;
     const icone_categoria     = document.getElementById('icone_categoria').files[0];
 
+    if(!nome_categoria){
+        document.getElementById('error-nome').textContent = 'Nome precisa receber valores';
+        return;
+    }
+
+    if(!descricao_categoria){
+        document.getElementById('error-descricao').textContent = 'Descrição precisa receber valores';
+        return;
+    }
+
     const fd = new FormData();
     fd.append('nome_categoria', nome_categoria);
     fd.append('descricao_categoria', descricao_categoria);
@@ -46,9 +56,9 @@ async function novo() {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        alert('SUCESSO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'SUCESSO! ' + resposta.mensagem;
         window.location.href = "/mykeeper/src/Views/categoria.php";
     } else {
-        alert('ERRO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
     }
 }

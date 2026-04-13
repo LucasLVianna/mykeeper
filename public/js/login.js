@@ -11,6 +11,21 @@ async function login() {
     let email = document.getElementById('email').value;
     let senha = document.getElementById('senha').value;
 
+    if(!email){
+        document.getElementById('error-email').textContent = 'Email precisa receber valores';
+        return;
+    }else if(!email.includes('@') && !email.includes('.')) {
+        document.getElementById('error-email').textContent = 'Digite um email válido, no formato @xxx.xxx';
+        return;
+    }
+
+    if(!senha){
+        document.getElementById('error-senha').textContent = 'Senha precisa receber valores'
+    }else if(senha.length < 8) {
+        document.getElementById('error-senha').textContent = 'ERRO! Senha muito curta';
+        return;
+    }
+
     const fd = new FormData();
     fd.append('email', email);
     fd.append('senha', senha);
@@ -22,10 +37,10 @@ async function login() {
 
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
-        alert(resposta.mensagem);
+        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
         window.location.href = resposta.redirect
     }else{
-        alert(resposta.mensagem);
+        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
     };
 }
 

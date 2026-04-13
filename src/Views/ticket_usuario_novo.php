@@ -27,6 +27,7 @@
                     </div>
                     <div>
                         <input type="text" name="titulo" id="titulo" placeholder="Título do ticket">
+                        <p id="error-nome"></p>
                     </div>
                 </div>
                 <div>
@@ -35,10 +36,13 @@
                     </div>
                     <div>
                         <input type="text" name="descricao" id="descricao" placeholder="Descrição do ticket">
+                        <p id="error-descricao"></p>
                     </div>
                 </div>
-
-                <button id="criarTicket">Criar ticket</button>
+                <div>
+                    <p id="error"></p>
+                </div>
+                <button type="button" id="criarTicket">Criar ticket</button>
             </form>
     </section>
 </body>

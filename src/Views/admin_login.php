@@ -23,6 +23,7 @@
                 <form>
                     <input type="password" id="senha" placeholder="Senha de acesso">
                     <button type="button" id="entrar">Entrar</button>
+                    <p id="error"></p>
                 </form>
             </div>
         </div>

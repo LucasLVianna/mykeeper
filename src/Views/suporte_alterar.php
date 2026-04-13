@@ -19,14 +19,18 @@
             <div>
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome">
+                <p id="error-nome"></p>
                 <input type="hidden" id="id">
             </div>
 
             <div>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
+                <p id="error-email"></p>
             </div>
-            
+            <div>
+                <p id="error"></p>
+            </div>
             <button type="button" id="alterarsuporte">Alterar</button>
         </form>
     </section>
