@@ -28,7 +28,6 @@ async function buscar(id){
     const resposta = await retorno.json();
 
     if(resposta.status == 'ok'){
-        var item = resposta.data[0];
 
         document.getElementById('titulo').value    = e(resposta.data.titulo);
         document.getElementById('descricao').value = e(resposta.data.descricao);
@@ -48,6 +47,18 @@ async function alterar(){
     let descricao = document.getElementById('descricao').value;
     let id = document.getElementById('ticketId').value;
 
+    if(!titulo.trim()){
+        document.getElementById('error-nome').textContent = 'Por favor, preencha o título do ticket.';
+        document.getElementById('titulo').focus();
+        return;
+    }
+
+    if(!descricao.trim()){
+        document.getElementById('error-descricao').textContent = 'Por favor, preencha a descrição do ticket.';
+        document.getElementById('descricao').focus();
+        return;
+    }
+
     const fd = new FormData();
 
     fd.append('titulo', titulo);
@@ -61,9 +72,9 @@ async function alterar(){
     const resposta = await retorno.json();
 
     if(resposta.status == 'ok'){
-        alert('SUCESSO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'SUCESSO! ' + resposta.mensagem;
         window.location.href = "/mykeeper/src/Views/ticket_usuario.php";
     }else{
-        alert('ERRO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
     }
 }

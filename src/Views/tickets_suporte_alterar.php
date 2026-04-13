@@ -12,6 +12,9 @@
 </head>
 <body>
     <section>
+        <a href="/mykeeper/src/Views/tickets_suporte.php">
+        <img src="/mykeeper/public/assets/perto.png" alt="x.png" style="position:fixed; top:12px; left:12px; width:32px; height:32px; object-fit:contain;">
+    </a>
         <div>
             <h2>Atualizar ticket</h2>
         </div>
@@ -39,6 +42,7 @@
             <div>
                 <label for="resposta_ticket">Resposta</label>
                 <input type="text" name="resposta_ticket" id="resposta_ticket" placeholder="Resposta do ticket">
+                <p id="error-resposta"></p>
             </div>
             <div>
                 <label for="status_ticket">Status</label>
@@ -48,6 +52,10 @@
                     <option value="ticket_atualizado">Atualizado</option>
                     <option value="ticket_encerrado">Fechado</option>
                 </select>
+                <p id="error-status"></p>
+            </div>
+            <div>
+                <p id="error"></p>
             </div>
             <button type="button" id="alterarTicket">Alterar ticket</button>
         </form>

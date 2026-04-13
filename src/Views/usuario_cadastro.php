@@ -25,6 +25,7 @@
                     </div>
                     <div>
                         <input type="text" name="nome" id="nome" placeholder="Seu nome">
+                        <p id="error-nome"></p>
                     </div>
                 </div>
                 <div>
@@ -33,13 +34,19 @@
                     </div>
                     <div>
                         <input type="text" name="email" id="email" placeholder="seu@email.com">
+                        <p id="error-email"></p>
                     </div>
                 </div>
 
                 <div>
                     <label for="cep">CEP</label>
+<<<<<<< HEAD
                     <input type="text" name="cep" id="cep" placeholder="Seu CEP (XXXXX-XXX)" maxlength="9"><br><br>
 
+=======
+                    <input type="text" name="cep" id="cep" placeholder="00000-000" maxlength="9" inputmode="numeric">
+                    <p id="error-cep"></p>
+>>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
                 </div>
 
                 <div>
@@ -48,6 +55,7 @@
                     </div>
                     <div>
                         <input type="password" name="senha" id="senha" placeholder="••••••" minlength="8">
+                        <p id="error-senha"></p>
                     </div>
                 </div>
 

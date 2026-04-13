@@ -17,6 +17,7 @@ include_once(__DIR__ . '/sidebar.php');
         <h2>Categorias de Produto</h2>
     </div>
     <div id="item"></div>
+    <div><h4 id="mensagem"></h4></div>
     <div style="display: flex; justify-content: flex-end;">
         <button type="button" id="categoria_nova" class="addvs">Adicionar Categoria</button>
     </div>

@@ -48,6 +48,19 @@ async function alterar(){
     let email  = document.getElementById('email').value;
     let id     = document.getElementById('id').value;
 
+    if(!nome){
+        document.getElementById('error-nome').textContent = 'Nome precisa receber valores';
+        return;
+    }
+
+    if(!email){
+        document.getElementById('error-email').textContent = 'Email precisa receber valores';
+        return;
+    }else if(!email.includes('@') && !email.includes('.')) {
+        document.getElementById('error-email').textContent = 'Digite um email válido, no formato @xxx.xxx';
+        return;
+    }
+    
     const fd = new FormData();
 
     fd.append('nome', nome);
@@ -61,9 +74,9 @@ async function alterar(){
     const resposta = await retorno.json();
 
     if(resposta.status == 'ok'){
-        alert('SUCESSO! ' + resposta.mensagem);
+        document.getElementById('error').innerText = 'SUCESSO! ' + resposta.mensagem;
         window.location.href = "/mykeeper/src/Views/suporte.php";
     }else{
-        alert('ERRO! ' + resposta.mensagem);
+        document.getElementById('error').innerText = 'ERRO! ' + resposta.mensagem;
     }
 }

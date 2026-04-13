@@ -19,6 +19,26 @@ async function novo() {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
 
+    if(!nome){
+        document.getElementById('error-nome').textContent = 'Nome precisa receber valores';
+        return;
+    }
+
+    if(!email){
+        document.getElementById('error-email').textContent = 'Email precisa receber valores';
+        return;
+    }else if(!email.includes('@') && !email.includes('.')) {
+        document.getElementById('error-email').textContent = 'Digite um email válido, no formato @xxx.xxx';
+        return;
+    }
+
+    if(!senha){
+        document.getElementById('error-senha').textContent = 'Senha precisa receber valores'
+    }else if(senha.length < 8) {
+        document.getElementById('error-senha').textContent = 'ERRO! Senha muito curta';
+        return;
+    }
+
     const fd = new FormData();
     fd.append('nome', nome);
     fd.append('email', email);
@@ -32,9 +52,9 @@ async function novo() {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        alert('SUCESSO! ' + resposta.mensagem);
+        document.getElementById('error').innerText = 'SUCESSO! ' + resposta.mensagem;
         window.location.href = '/mykeeper/src/Views/suporte.php';
     } else {
-        alert('ERRO! ' + resposta.mensagem);
+        document.getElementById('error').innerText = 'ERRO! ' + resposta.mensagem;
     }
 }

@@ -47,7 +47,7 @@ async function carregarCategorias() {
 
         atualizarVisualSelect(select);
     } else {
-        alert('Erro ao carregar categorias');
+        document.getElementById('error-categoria').textContent = 'Erro ao carregar categorias';
     }
 }
 
@@ -62,19 +62,22 @@ async function novo() {
     const icone_produto = document.getElementById('icone_produto').files[0];
 
     if (!nome_produto) {
-        alert('Por favor, preencha o nome do produto.');
+        document.getElementById('error-nome').textContent = 'Por favor, preencha o nome do produto.';
         document.getElementById('nome_produto').focus();
         return;
     }
-
     if (!und_medida_produto) {
-        alert('Por favor, preencha a unidade de medida.');
+        document.getElementById('error-unidade').textContent = 'Por favor, preencha a unidade de medida.';
         document.getElementById('und_medida_produto').focus();
         return;
     }
 
     if (!categoria_produto){
+<<<<<<< HEAD
         alert('Por favor, selecione uma categoria.');
+=======
+        document.getElementById('error-categoria').textContent = 'Por favor, selecione uma categoria.';
+>>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
         document.getElementById('categoria_produto').focus();
         return;
     }
@@ -97,9 +100,9 @@ async function novo() {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        alert('SUCESSO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'SUCESSO! ' + resposta.mensagem;
         window.location.href = '/mykeeper/src/Views/produto.php';
     } else {
-        alert('ERRO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
     }
 }

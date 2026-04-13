@@ -21,6 +21,8 @@ async function buscar() {
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
         preencherTabela(resposta.data);
+    } else{
+        document.getElementById('error').innerText = resposta.mensagem +'. Adicione um suporte para começar a usar!';
     }
     
 }

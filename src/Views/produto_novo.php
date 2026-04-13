@@ -14,10 +14,14 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
 
 <body>
     <section>
+        <a href="/mykeeper/src/Views/produto.php">
+        <img src="/mykeeper/public/assets/perto.png" alt="x.png" style="position:fixed; top:12px; left:12px; width:32px; height:32px; object-fit:contain;">
+    </a>
         <form>
             <div>
                 <label for="nome_produto">Nome</label>
                 <input type="text" name="nome_produto" id="nome_produto">
+                <p id="error-nome"></p>
             </div>
 
             <div>
@@ -25,6 +29,7 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
                 <select name="categoria_produto" id="categoria_produto">
                     <option value="" data-placeholder="true">Escolha a categoria do produto</option>
                 </select>
+                <p id="error-categoria"></p>
             </div>
             
             <div>
@@ -36,6 +41,7 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
                     <option value="l">Litro (L)</option>
                     <option value="ml">Mililitro (mL)</option>
                 </select>
+                <p id="error-unidade"></p>
             </div>
 
             <div>
@@ -46,7 +52,9 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
             <div>
                 <img src="" id="preview" style="display:none; width:100px; height:100px;">
             </div>
-
+            <div>
+                <p id="error"></p>
+            </div>
             <button type="button" id="addproduto">Adicionar</button>
         </form>
     </section>
