@@ -96,31 +96,19 @@ async function alterar() {
     const icone_produto = document.getElementById('icone_produto').files[0];
 
     if (!nome_produto.trim()) {
-<<<<<<< HEAD
-        alert('Por favor, preencha o nome do produto.');
-=======
         document.getElementById('error-nome').textContent = 'Por favor, preencha o nome do produto.';
->>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
         document.getElementById('nome_produto').focus();
         return;
     }
 
     if (!und_medida_produto.trim()) {
-<<<<<<< HEAD
-        alert('Por favor, preencha a unidade de medida.');
-=======
         document.getElementById('error-unidade').textContent = 'Por favor, preencha a unidade de medida.';
->>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
         document.getElementById('und_medida_produto').focus();
         return;
     }
 
     if (!id_categoria){
-<<<<<<< HEAD
-        alert('Por favor, selecione uma categoria.');
-=======
         document.getElementById('error-categoria').textContent = 'Por favor, selecione uma categoria.';
->>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
         document.getElementById('categoria_produto').focus();
         return;
     }
