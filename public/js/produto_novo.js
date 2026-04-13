@@ -73,11 +73,7 @@ async function novo() {
     }
 
     if (!categoria_produto){
-<<<<<<< HEAD
-        alert('Por favor, selecione uma categoria.');
-=======
         document.getElementById('error-categoria').textContent = 'Por favor, selecione uma categoria.';
->>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
         document.getElementById('categoria_produto').focus();
         return;
     }
