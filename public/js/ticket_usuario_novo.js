@@ -19,21 +19,13 @@ async function novo() {
     const descricao = document.getElementById('descricao').value;
 
     if (!titulo.trim()) {   
-<<<<<<< HEAD
-        alert('Por favor, preencha o título do ticket.');
-=======
         document.getElementById('error-nome').textContent = 'Por favor, preencha o título do ticket.';
->>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
         document.getElementById('titulo').focus();
         return;
     }
 
     if (!descricao.trim()) {
-<<<<<<< HEAD
-        alert('Por favor, preencha a descrição do ticket.');
-=======
         document.getElementById('error-descricao').textContent = 'Por favor, preencha a descrição do ticket.';
->>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
         document.getElementById('descricao').focus();
         return; 
     }

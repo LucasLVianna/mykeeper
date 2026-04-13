@@ -30,8 +30,6 @@ async function novo() {
     const nome_categoria      = document.getElementById('nome_categoria').value;
     const descricao_categoria = document.getElementById('descricao_categoria').value;
     const icone_categoria     = document.getElementById('icone_categoria').files[0];
-<<<<<<< HEAD
-=======
 
     if(!nome_categoria){
         document.getElementById('error-nome').textContent = 'Nome precisa receber valores';
@@ -42,7 +40,6 @@ async function novo() {
         document.getElementById('error-descricao').textContent = 'Descrição precisa receber valores';
         return;
     }
->>>>>>> 6a5be11cba6956360c30c89793d9acf33a5b2f66
 
     const fd = new FormData();
     fd.append('nome_categoria', nome_categoria);
