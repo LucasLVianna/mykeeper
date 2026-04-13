@@ -66,7 +66,8 @@ async function buscar(id) {
     if (resposta.status == 'ok') {
         const item = resposta.data[0];
         document.getElementById('nome_produto').value = e(item.nome);
-        document.getElementById('und_medida_produto').value = e(item.und_medida);
+        document.getElementById('und_medida_produto').value = item.und_medida;
+        atualizarVisualSelect(document.getElementById('und_medida_produto'))
         document.getElementById('id').value = id;
 
         document.getElementById('categoria_produto').value = item.id_categoria;
@@ -78,7 +79,7 @@ async function buscar(id) {
             preview.style.display = 'block';
         }
     } else {
-        alert('ERRO: ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'ERRO: ' + resposta.mensagem;
         window.location.href = 'produto.php';
     }
 }
@@ -95,19 +96,19 @@ async function alterar() {
     const icone_produto = document.getElementById('icone_produto').files[0];
 
     if (!nome_produto.trim()) {
-        alert('Por favor, preencha o nome do produto.');
+        document.getElementById('error-nome').textContent = 'Por favor, preencha o nome do produto.';
         document.getElementById('nome_produto').focus();
         return;
     }
 
     if (!und_medida_produto.trim()) {
-        alert('Por favor, preencha a unidade de medida.');
+        document.getElementById('error-unidade').textContent = 'Por favor, preencha a unidade de medida.';
         document.getElementById('und_medida_produto').focus();
         return;
     }
 
     if (!id_categoria){
-        alert('Por favor, selecione uma categoria.');
+        document.getElementById('error-categoria').textContent = 'Por favor, selecione uma categoria.';
         document.getElementById('categoria_produto').focus();
         return;
     }
@@ -130,10 +131,10 @@ async function alterar() {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        alert('SUCESSO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'SUCESSO! ' + resposta.mensagem;
         window.location.href = '/mykeeper/src/Views/produto.php';
     } else {
-        alert('ERRO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
         window.location.href = '/mykeeper/src/Views/produto.php';
     }
 }

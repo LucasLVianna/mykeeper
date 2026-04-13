@@ -35,14 +35,29 @@ async function cadastrar() {
     const senha = document.getElementById('senha').value;
     const cep = formatCep(cepInput.value);
 
-    if (cepDigitsLength(cep) !== 8) {
-        alert('ERRO! Digite um CEP válido no formato 00000-000.');
-        cepInput.focus();
+    if(!nome){
+        document.getElementById('error-nome').textContent = 'Nome precisa receber valores';
         return;
     }
 
-    if (senha.length < 8) {
-        alert('ERRO! Senha muito curta');
+    if(!email){
+        document.getElementById('error-email').textContent = 'Email precisa receber valores';
+        return;
+    }else if(!email.includes('@') && !email.includes('.')) {
+        document.getElementById('error-email').textContent = 'Digite um email válido, no formato @xxx.xxx';
+        return;
+    }
+
+    if(!senha){
+        document.getElementById('error-senha').textContent = 'Senha precisa receber valores'
+    }else if(senha.length < 8) {
+        document.getElementById('error-senha').textContent = 'ERRO! Senha muito curta';
+        return;
+    }
+
+    if (!cep || cepDigitsLength(cep) !== 8) {
+        document.getElementById('error-cep').textContent = 'Digite um CEP válido no formato 00000-000.';
+        cepInput.focus();
         return;
     }
 
@@ -64,5 +79,5 @@ async function cadastrar() {
         return;
     }
 
-    alert('ERRO! ' + resposta.mensagem);
+    document.getElementById('error-email').textContent = 'ERRO! ' + resposta.mensagem;
 }

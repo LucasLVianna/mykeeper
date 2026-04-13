@@ -50,16 +50,34 @@ function preencherInformacoes(usuario) {
 
 document.getElementById('alterarperfil').addEventListener('click', async () => {
     const cep = formatCep(cepInput.value);
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
 
+    if (!nome) {
+        document.getElementById('error-nome').textContent = 'Por favor, preencha o nome.';
+        document.getElementById('nome').focus();
+        return;
+    }
+
+    if (!email) {
+        document.getElementById('error-email').textContent = 'Por favor, preencha o email.';
+        document.getElementById('email').focus();
+        return;
+    }else if(!email.includes('@') && !email.includes('.')) {
+        document.getElementById('error-email').textContent = 'Por favor, preencha um email válido, no formato xxx@xxx.xxx';
+        document.getElementById('email').focus();
+        return;
+    }
+    
     if (cepDigitsLength(cep) !== 8) {
-        alert('Digite um CEP válido no formato 00000-000.');
+        document.getElementById('error-cep').textContent = 'Digite um CEP válido no formato 00000-000.';
         cepInput.focus();
         return;
     }
 
     const fd = new FormData();
-    fd.append('nome', document.getElementById('nome').value.trim());
-    fd.append('email', document.getElementById('email').value.trim());
+    fd.append('nome', nome);
+    fd.append('email', email);
     fd.append('cep', cep);
 
     const retorno = await fetch('/mykeeper/src/Controllers/usuario_alterar_post.php', {
@@ -68,9 +86,9 @@ document.getElementById('alterarperfil').addEventListener('click', async () => {
     });
     const resposta = await retorno.json();
     if (resposta.status == 'ok') {
-        alert(resposta.mensagem);
+        document.getElementById('error').textContent = 'Perfil atualizado com sucesso!';
         window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
     } else {
-        alert('Erro: ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem;
     }
 });

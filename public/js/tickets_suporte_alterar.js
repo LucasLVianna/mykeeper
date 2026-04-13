@@ -34,7 +34,11 @@ async function buscar(id){
         document.getElementById('titulo').textContent     = e(item.titulo);
         document.getElementById('descricao').textContent  = e(item.descricao);
         document.getElementById('data_ticket').textContent = e(new Date(item.data_ticket).toLocaleString());
-        document.getElementById('resposta_ticket').value  = e(item.resposta_ticket);
+        if(item.resposta_ticket === null || item.resposta_ticket === undefined || String(item.resposta_ticket).trim() === '' || String(item.resposta_ticket).toLowerCase() === 'null'){
+            document.getElementById('resposta_ticket').value  = '';
+        } else {
+            document.getElementById('resposta_ticket').value  = e(item.resposta_ticket);
+        }
         document.getElementById('status_ticket').value    = e(item.status_ticket);
 
     }else{
@@ -52,6 +56,16 @@ async function alterar(){
     let status_ticket = document.getElementById('status_ticket').value;
     let id = document.getElementById('ticketId').value;
 
+    if(!resposta_ticket || resposta_ticket.trim() === ''){
+        document.getElementById('error-resposta').textContent = 'A resposta do ticket é obrigatória.';
+        return;
+    }
+
+    if(!status_ticket){
+        document.getElementById('error-status').textContent = 'O status do ticket é obrigatório.';
+        return;
+    }
+
     const fd = new FormData();
 
     fd.append('resposta_ticket', resposta_ticket);
@@ -65,9 +79,9 @@ async function alterar(){
     const resposta = await retorno.json();
 
     if(resposta.status == 'ok'){
-        alert('SUCESSO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'SUCESSO! ' + resposta.mensagem;
         window.location.href = "/mykeeper/src/Views/tickets_suporte.php";
     }else{
-        alert('ERRO! ' + resposta.mensagem);
+        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
     }
 }
