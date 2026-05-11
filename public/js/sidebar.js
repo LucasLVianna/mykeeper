@@ -30,6 +30,10 @@ document.getElementById('receitasButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/receitas.php';
 })
 
+document.getElementById('listaComprasButtonLink').addEventListener('click', () => {
+    window.location.href = '/mykeeper/src/Views/lista_compras.php';
+});
+
 document.getElementById('estoquesButtonLink').addEventListener('click', () => {
     window.location.href = '/mykeeper/src/Views/estoque.php';
 });

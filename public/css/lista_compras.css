@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0b0e11; 
+    color: #e0e0e0;
+    display: flex;
+    min-height: 100vh;
+}
+
+section {
+    margin-left: 260px; 
+    padding: 40px;
+    width: calc(100% - 260px);
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+#item {
+    background-color: #1a1d23; 
+    border-radius: 12px;
+    border: 1px solid #2d3139;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela th {
+    background-color: #24282f;
+    color: #00ffa3; 
+    padding: 15px 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+}
+
+.tabela td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #2d3139;
+    color: #ffffff;
+    vertical-align: middle;
+}
+
+.tabela tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.tabela button, .tabela a {
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.tabela button:hover, .tabela a:hover {
+    transform: scale(1.1);
+}
+
+.tabela button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.tabela img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.status-ativa {
+    background-color: #1d5a3a;
+    color: #4ade80;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.status-concluida {
+    background-color: #5a3a3a;
+    color: #fca5a5;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.status-arquivada {
+    background-color: #3a4a5a;
+    color: #a5c1fa;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+div > h4 {
+    margin-top: 20px;
+    color: #4ade80;
+    font-size: 1rem;
+}
+
+div > h4:empty {
+    display: none;
+}
+
+.addvs {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #00ffa3, #00d084);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.addvs:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 255, 163, 0.3);
+}
+
+.addvs:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    section {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .tabela th, .tabela td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .tabela img {
+        width: 20px;
+        height: 20px;
+    }
+}

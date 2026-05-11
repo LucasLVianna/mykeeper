@@ -11,6 +11,7 @@
             <button id="produtosButtonLink">Produtos registrados</button>
             <button id="estoquesButtonLink">Estoques</button>
             <button id="categoriasButtonLink">Categorias</button>
+            <button id="listaComprasButtonLink">Listas de Compras</button>
             <!-- <button id="avencerButtonLink">A Vencer</button>
             <button id="comprasButtonLink">Compras</button>
             <button id="historicoButtonLink">Historico</button> -->
