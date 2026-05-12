@@ -9,7 +9,7 @@ include_once(__DIR__ . '/sidebar.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
-    <link rel="stylesheet" href="/mykeeper/public/css/produto.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/produto.css?v=3">
 </head>
 <body>  
     <section>
@@ -22,7 +22,7 @@ include_once(__DIR__ . '/sidebar.php');
             <button type="button" id="produto_novo" class="addvs">Adicionar Produto</button>
         </div>
     </section>
-    <script src="/mykeeper/public/js/produto.js"></script>
+    <script src="/mykeeper/public/js/produto.js?v=2"></script>
     <script src="/mykeeper/public/js/sidebar.js"></script>
 </body>
 </html>

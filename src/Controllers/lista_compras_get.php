@@ -24,11 +24,31 @@ $retorno = [
 
 $id_usuario = $_SESSION['usuario']['id'];
 
+function garantirColunaEstoqueLista($conexao) {
+    $resultado = $conexao->query("SHOW COLUMNS FROM lista_compras LIKE 'id_estoque'");
+    if ($resultado && $resultado->num_rows === 0) {
+        $conexao->query("ALTER TABLE lista_compras ADD COLUMN id_estoque INT NULL");
+    }
+}
+
+garantirColunaEstoqueLista($conexao);
+
 if (isset($_GET['id'])) {
-    $stmt = $conexao->prepare("SELECT * FROM lista_compras WHERE id = ? AND id_usuario = ?");
+    $stmt = $conexao->prepare("
+        SELECT lc.*, e.nome_estoque
+        FROM lista_compras lc
+        LEFT JOIN estoque e ON e.id = lc.id_estoque
+        WHERE lc.id = ? AND lc.id_usuario = ?
+    ");
     $stmt->bind_param('ii', $_GET['id'], $id_usuario);
 } else {
-    $stmt = $conexao->prepare("SELECT * FROM lista_compras WHERE id_usuario = ? ORDER BY data_criacao DESC");
+    $stmt = $conexao->prepare("
+        SELECT lc.*, e.nome_estoque
+        FROM lista_compras lc
+        LEFT JOIN estoque e ON e.id = lc.id_estoque
+        WHERE lc.id_usuario = ?
+        ORDER BY lc.data_criacao DESC
+    ");
     $stmt->bind_param('i', $id_usuario);
 }
 

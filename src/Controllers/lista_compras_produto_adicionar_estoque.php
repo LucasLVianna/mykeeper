@@ -16,7 +16,7 @@ if (empty($_SESSION['logado']) || !isset($_SESSION['usuario']['id'])) {
     exit;
 }
 
-$retorno = []
+$retorno = [
     'status'   => '',
     'mensagem' => '',
     'data'     => []

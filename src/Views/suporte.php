@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contas de Suporte</title>
-    <link rel="stylesheet" href="/mykeeper/public/css/suporte.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/suporte.css?v=2">
 </head>
 <body>    
     <section>

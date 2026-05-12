@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Item ao Estoque</title>
-    <link rel="stylesheet" href="/mykeeper/public/css/item_estoque_adicionar.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/item_estoque_adicionar.css?v=2">
 </head>
 <body>
 <section>

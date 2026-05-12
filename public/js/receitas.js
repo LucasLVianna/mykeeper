@@ -4,6 +4,12 @@ function e(str) {
     return div.innerHTML;
 }
 
+function mostrarMensagem(texto, tipo = 'info') {
+    const el = document.getElementById('mensagem');
+    el.textContent = texto;
+    el.className = `mensagem-feedback mensagem-${tipo}`;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('/mykeeper/config/check_session.php');
     const data = await response.json();
@@ -23,7 +29,8 @@ async function buscar() {
     if (resposta.status == 'ok' && resposta.data.length > 0) {
         renderizarCards(resposta.data);
     } else {
-        document.getElementById('mensagem').textContent = 'Nenhuma receita cadastrada.';
+        document.getElementById('item').innerHTML = '';
+        mostrarMensagem('Nenhuma receita cadastrada.', 'info');
     }
 }
 
@@ -47,11 +54,11 @@ function renderizarCards(receitas) {
                     <span class="badge ${receita.gerada_por_ia ? 'badge-ia' : 'badge-manual'}">
                         ${receita.gerada_por_ia ? 'IA' : 'Manual'}
                     </span>
-                    <span class="receita-chevron">▼</span>
+                    <span class="receita-chevron">></span>
                 </div>
             </div>
             <div class="receita-corpo">
-                <h4> Descrição </h4>
+                <h4>Descricao</h4>
                 <p class="receita-descricao"></p>
                 <ul class="receita-ingredientes"></ul>
                 <div class="receita-acoes">
@@ -73,7 +80,6 @@ async function toggleCard(card) {
     const corpo = card.querySelector('.receita-corpo');
     const aberto = card.classList.contains('aberto');
 
-    // fecha todos os outros
     document.querySelectorAll('.receita-card.aberto').forEach(c => {
         if (c !== card) c.classList.remove('aberto');
     });
@@ -83,7 +89,6 @@ async function toggleCard(card) {
         return;
     }
 
-    // busca detalhes só na primeira vez
     if (card.dataset.carregado === 'false') {
         const id = card.dataset.id;
         const retorno = await fetch('/mykeeper/src/Controllers/receitas_get.php?id=' + id);
@@ -91,15 +96,14 @@ async function toggleCard(card) {
 
         if (resposta.status == 'ok') {
             const r = resposta.data;
-
-            corpo.querySelector('.receita-descricao').textContent = r.descricao || 'Sem descrição.';
+            corpo.querySelector('.receita-descricao').textContent = r.descricao || 'Sem descricao.';
 
             const lista = corpo.querySelector('.receita-ingredientes');
             lista.innerHTML = '';
 
             r.ingredientes.forEach(ing => {
                 const li = document.createElement('li');
-                li.textContent = `${e(ing.nome)} — ${ing.qtd} ${e(ing.und_medida)}`;
+                li.textContent = `${ing.nome} - ${ing.qtd} ${ing.und_medida}`;
                 lista.appendChild(li);
             });
 
@@ -118,9 +122,9 @@ async function excluir(id, btn) {
 
     if (resposta.status == 'ok') {
         btn.closest('.receita-card').remove();
-        alert('SUCESSO! ' + resposta.mensagem);
+        mostrarMensagem('Receita excluida com sucesso!', 'sucesso');
     } else {
-        alert('ERRO! ' + resposta.mensagem);
+        mostrarMensagem('Erro ao excluir receita: ' + resposta.mensagem, 'erro');
     }
 }
 

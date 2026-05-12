@@ -98,6 +98,20 @@ h3 {
     transform: scale(1.1);
 }
 
+.tabela .botao-acao {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #00ffa3;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+}
+
 .tabela img {
     width: 24px;
     height: 24px;
@@ -105,22 +119,36 @@ h3 {
 }
 
 #formulario_produto {
-    background-color: #1a1d23;
-    border: 1px solid #2d3139;
+    max-width: 560px;
+    background: linear-gradient(180deg, #1d2128 0%, #171a20 100%);
+    border: 1px solid #343943;
     border-radius: 8px;
-    padding: 20px;
+    padding: 16px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
 }
 
 #formulario_produto form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 12px;
+    align-items: end;
 }
 
 #formulario_produto form > div {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+}
+
+#formulario_produto h3 {
+    grid-column: 1 / -1;
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+#formulario_produto form > div:nth-child(3) {
+    grid-column: 1 / -1;
+    min-height: 0;
 }
 
 label {
@@ -133,7 +161,7 @@ label {
 
 input[type="text"],
 input[type="number"] {
-    padding: 12px 16px;
+    padding: 10px 12px;
     background-color: #24282f;
     border: 1px solid #3d424a;
     border-radius: 6px;
@@ -162,16 +190,21 @@ p:empty {
 }
 
 button {
-    padding: 12px 24px;
+    padding: 10px 16px;
     background: linear-gradient(135deg, #00ffa3, #00d084);
     color: #000;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
-    margin-top: 10px;
+    margin-top: 0;
+}
+
+#confirmar_produto,
+#cancelar_produto {
+    min-width: 110px;
 }
 
 button:hover {
@@ -201,6 +234,33 @@ button:active {
 .addvs:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 255, 163, 0.3);
+}
+
+#adicionar_produto {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    color: #07111f;
+}
+
+#adicionar_produto:hover {
+    box-shadow: 0 8px 20px rgba(96, 165, 250, 0.3);
+}
+
+#editar_lista {
+    background: linear-gradient(135deg, #d8dde7, #9ca3af);
+    color: #11151b;
+}
+
+#editar_lista:hover {
+    box-shadow: 0 8px 20px rgba(216, 221, 231, 0.22);
+}
+
+#deletar_lista {
+    background: linear-gradient(135deg, #ff7a7a, #ff4d4d);
+    color: #1b0b0b;
+}
+
+#deletar_lista:hover {
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
 }
 
 div > h4 {
@@ -239,4 +299,219 @@ div > h4:empty {
         width: 100%;
         margin-bottom: 10px;
     }
+
+    #formulario_produto {
+        max-width: 100%;
+    }
+
+    #formulario_produto form {
+        grid-template-columns: 1fr;
+    }
+
+    #confirmar_produto,
+    #cancelar_produto {
+        width: 100%;
+    }
+}
+
+/* Refinamento da area de listagem */
+section {
+    gap: 18px;
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 16px;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 76px;
+    height: 3px;
+    border-radius: 999px;
+    background-color: #00ffa3;
+}
+
+#info_lista > div {
+    background: linear-gradient(180deg, #1d2128 0%, #171a20 100%) !important;
+    border: 1px solid #343943;
+    color: #e0e0e0;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
+}
+
+#lista_produtos {
+    overflow-x: auto;
+    border-radius: 12px;
+}
+
+.tabela {
+    min-width: 720px;
+    background: linear-gradient(180deg, #1d2128 0%, #171a20 100%);
+    border-color: #343943;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.tabela th {
+    border-bottom: 1px solid #343943;
+}
+
+.tabela td {
+    height: 68px;
+}
+
+.tabela tr {
+    transition: background-color 0.2s ease;
+}
+
+.tabela tr:hover {
+    background-color: rgba(0, 255, 163, 0.055);
+}
+
+.tabela .botao-acao {
+    background-color: rgba(0, 255, 163, 0.11);
+    color: #00ffa3;
+    border: 1px solid rgba(0, 255, 163, 0.65);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.coluna-acoes,
+.acoes-lista {
+    text-align: right;
+}
+
+.acoes-lista {
+    white-space: nowrap;
+}
+
+.tabela .botao-remover {
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.7);
+}
+
+.tabela .botao-salvar {
+    background-color: rgba(0, 255, 163, 0.11);
+    color: #00ffa3;
+    border-color: rgba(0, 255, 163, 0.65);
+}
+
+.tabela .botao-salvar:hover {
+    background-color: #00ffa3;
+    color: #0b0e11;
+}
+
+.tabela .botao-remover:hover {
+    background-color: #ff6b6b;
+    color: #ffffff;
+}
+
+.check-comprado {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #d8dde7;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.check-comprado input {
+    width: 18px;
+    height: 18px;
+    accent-color: #00ffa3;
+    cursor: pointer;
+}
+
+.input-quantidade-lista {
+    width: 90px;
+    padding: 9px 10px;
+    background-color: #11151b;
+    border: 1px solid #343943;
+    border-radius: 6px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.input-quantidade-lista:focus {
+    outline: none;
+    border-color: #00ffa3;
+}
+
+.status-compra {
+    display: inline-block;
+    min-width: 54px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.status-sim {
+    background-color: rgba(0, 255, 163, 0.12);
+    color: #00ffa3;
+    border: 1px solid rgba(0, 255, 163, 0.55);
+}
+
+.status-nao {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #aab2c0;
+    border: 1px solid #343943;
+}
+
+.tabela tr.comprado td {
+    color: #8f98a8;
+    text-decoration: none;
+}
+
+.tabela tr.comprado td:nth-child(2) {
+    text-decoration: line-through;
+}
+
+.modo-visualizacao #adicionar_produto,
+.modo-visualizacao #editar_lista,
+.modo-visualizacao #deletar_lista,
+.modo-visualizacao #formulario_produto {
+    display: none !important;
+}
+
+.tabela .botao-acao:active,
+.addvs:active,
+button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.mensagem-feedback {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.mensagem-feedback:empty {
+    display: none;
+}
+
+.mensagem-sucesso {
+    background-color: rgba(0, 255, 163, 0.1);
+    border: 1px solid rgba(0, 255, 163, 0.45);
+    color: #00ffa3;
+}
+
+.mensagem-erro {
+    background-color: rgba(255, 77, 77, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.45);
+    color: #ff6b6b;
+}
+
+.mensagem-info {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #343943;
+    color: #8f98a8;
 }

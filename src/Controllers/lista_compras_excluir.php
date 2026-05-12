@@ -43,6 +43,13 @@ if (isset($_GET['id'])) {
         $stmt3->bind_param('i', $_GET['id']);
 
         if ($stmt3->execute()) {
+            $resultadoProximoId = $conexao->query("SELECT COALESCE(MAX(id), 0) + 1 AS proximo_id FROM lista_compras");
+            if ($resultadoProximoId) {
+                $linhaProximoId = $resultadoProximoId->fetch_assoc();
+                $proximoId = (int) $linhaProximoId['proximo_id'];
+                $conexao->query("ALTER TABLE lista_compras AUTO_INCREMENT = $proximoId");
+            }
+
             $retorno = [
                 'status'   => 'ok',
                 'mensagem' => 'Lista de compras excluída com sucesso',

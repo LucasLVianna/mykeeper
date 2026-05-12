@@ -141,3 +141,64 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 @media (max-width: 600px) {
     #item { grid-template-columns: 1fr; }
 }
+
+/* Refinamento da area de listagem */
+section {
+    gap: 18px;
+}
+
+.header-estoque {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #2d3139;
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 14px;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 76px;
+    height: 3px;
+    border-radius: 999px;
+    background-color: #00ffa3;
+}
+
+#item {
+    gap: 22px;
+}
+
+.card {
+    min-height: 340px;
+    background: linear-gradient(180deg, #1d2128 0%, #171a20 100%);
+    border-color: #343943;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32);
+}
+
+.card:hover,
+.card:focus-within {
+    border-color: rgba(0, 255, 163, 0.65);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.42);
+}
+
+.card-icone img {
+    width: 58px;
+    height: 58px;
+}
+
+.card-inputs input {
+    background-color: #11151b;
+    border-color: #343943;
+}
+
+.btn-editar {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.btn-editar:active {
+    transform: translateY(0) scale(0.98);
+}

@@ -22,7 +22,16 @@ $retorno = [
     'data'     => []
 ];
 
+function garantirColunaComprado($conexao) {
+    $resultado = $conexao->query("SHOW COLUMNS FROM item_lista_compra LIKE 'comprado'");
+    if ($resultado && $resultado->num_rows === 0) {
+        $conexao->query("ALTER TABLE item_lista_compra ADD COLUMN comprado TINYINT(1) NOT NULL DEFAULT 0");
+    }
+}
+
 if (isset($_GET['id_lista'])) {
+    garantirColunaComprado($conexao);
+
     $id_lista = $_GET['id_lista'];
     
     $stmt = $conexao->prepare("SELECT ilc.*, p.nome as nome_produto FROM item_lista_compra ilc LEFT JOIN produto p ON ilc.id_produto = p.id WHERE ilc.id_lista_compra = ?");

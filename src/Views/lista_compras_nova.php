@@ -24,6 +24,14 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
         </div>
 
         <div>
+            <label for="id_estoque">Estoque vinculado</label>
+            <select name="id_estoque" id="id_estoque">
+                <option value="">Selecione um estoque</option>
+            </select>
+            <p id="error-estoque"></p>
+        </div>
+
+        <div>
             <p id="error"></p>
         </div>
 
@@ -31,6 +39,6 @@ include_once(__DIR__ . '/../../config/valida_sessao.php');
     </form>
 
     </section>
-    <script src="/mykeeper/public/js/lista_compras_nova.js"></script>
+    <script src="/mykeeper/public/js/lista_compras_nova.js?v=3"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ include_once(__DIR__ . '/sidebar.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar Produtos da Lista</title>
-    <link rel="stylesheet" href="/mykeeper/public/css/lista_compras_gerenciar_produtos.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/lista_compras_gerenciar_produtos.css?v=11">
 </head>
 <body>
 <section>
@@ -27,7 +27,7 @@ include_once(__DIR__ . '/sidebar.php');
     <div style="display: flex; gap: 10px; margin: 15px 0;">
         <button type="button" id="adicionar_produto" class="addvs">Adicionar Produto</button>
         <button type="button" id="editar_lista" class="addvs">Editar Lista</button>
-        <button type="button" id="deletar_lista" class="addvs" style="background-color: #ff6b6b;">Deletar Lista</button>
+        <button type="button" id="deletar_lista" class="addvs">Deletar Lista</button>
     </div>
 
     <div id="formulario_produto" style="display: none; border: 1px solid #ddd; padding: 15px; margin: 15px 0; border-radius: 5px;">
@@ -56,7 +56,7 @@ include_once(__DIR__ . '/sidebar.php');
     <div id="lista_produtos"></div>
     <div><h4 id="mensagem"></h4></div>
 </section>
-<script src="/mykeeper/public/js/lista_compras_gerenciar_produtos.js"></script>
+<script src="/mykeeper/public/js/lista_compras_gerenciar_produtos.js?v=11"></script>
 <script src="/mykeeper/public/js/sidebar.js"></script>
 </body>
 </html>

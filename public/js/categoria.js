@@ -4,25 +4,33 @@ function e(str) {
     return div.innerHTML;
 }
 
+function mostrarMensagem(texto, tipo = 'info') {
+    const el = document.getElementById('mensagem');
+    el.textContent = texto;
+    el.className = `mensagem-feedback mensagem-${tipo}`;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Primeiro verifica se está logado
     const response = await fetch('/mykeeper/config/check_session.php');
     const data = await response.json();
-    
+
     if (!data.logado) {
         window.location.href = '/mykeeper/src/Views/usuario_login.php';
-        return; // para a execução aqui
+        return;
     }
+
     buscar();
 });
 
 async function buscar() {
     const retorno = await fetch('/mykeeper/src/Controllers/categoria_get.php');
     const resposta = await retorno.json();
+
     if (resposta.status == 'ok') {
         preencherTabela(resposta.data);
-    }else {
-        document.getElementById('mensagem').textContent = 'Não há categorias cadastradas.';
+    } else {
+        document.getElementById('item').innerHTML = '';
+        mostrarMensagem('Nao ha categorias cadastradas.', 'info');
     }
 }
 
@@ -31,9 +39,9 @@ function preencherTabela(tabela) {
         <table class="tabela">
             <tr>
                 <th>ID</th>
-                <th>Ícone</th>
+                <th>Icone</th>
                 <th>Nome</th>
-                <th>Descrição</th>
+                <th>Descricao</th>
                 <th>#</th>
             </tr>
         `;
@@ -41,7 +49,7 @@ function preencherTabela(tabela) {
     for (var i = 0; i < tabela.length; i++) {
         const icone = tabela[i].icone
             ? `<img src="${e(tabela[i].icone)}" style="width:40px; height:40px;">`
-            : 'Sem ícone';
+            : 'Sem icone';
 
         html += `
             <tr>
@@ -63,12 +71,13 @@ function preencherTabela(tabela) {
 async function excluir(id) {
     const retorno = await fetch('/mykeeper/src/Controllers/categoria_excluir.php?id=' + id);
     const resposta = await retorno.json();
+
     if (resposta.status == 'ok') {
-        alert('SUCESSO! ' + resposta.mensagem);
+        mostrarMensagem('Categoria excluida com sucesso!', 'sucesso');
+        await buscar();
     } else {
-        alert('ERRO! ' + resposta.mensagem);
+        mostrarMensagem('Erro ao excluir categoria: ' + resposta.mensagem, 'erro');
     }
-    window.location.reload();
 }
 
 document.getElementById('categoria_nova').addEventListener('click', () => {

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estoque</title>
-    <link rel="stylesheet" href="/mykeeper/public/css/estoque.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/estoque.css?v=2">
 </head>
 <body>
     <section>

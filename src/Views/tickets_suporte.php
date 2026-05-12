@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickets de Suporte</title>
-    <link rel="stylesheet" href="/mykeeper/public/css/tickets_suporte.css">
+    <link rel="stylesheet" href="/mykeeper/public/css/tickets_suporte.css?v=2">
 </head>
 <body>    
     <section>

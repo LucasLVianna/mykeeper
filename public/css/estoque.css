@@ -190,3 +190,72 @@ h2 {
         grid-template-columns: 1fr; /* 1 card por linha no celular */
     }
 }
+
+/* Refinamento da area de listagem */
+section {
+    gap: 18px;
+}
+
+.header-estoque {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #2d3139;
+}
+
+.header-estoque h2 {
+    position: relative;
+    padding-bottom: 14px;
+}
+
+.header-estoque h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 76px;
+    height: 3px;
+    border-radius: 999px;
+    background-color: #00ffa3;
+}
+
+#item {
+    gap: 22px;
+}
+
+.card {
+    min-height: 230px;
+    background: linear-gradient(180deg, #1d2128 0%, #171a20 100%);
+    border-color: #343943;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32);
+}
+
+.card:hover {
+    border-color: rgba(0, 255, 163, 0.65);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.42);
+}
+
+.card-icone img {
+    width: 58px;
+    height: 58px;
+}
+
+.card-data {
+    line-height: 1.5;
+}
+
+.btn-editar,
+.btn-excluir {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.btn-editar:active,
+.btn-excluir:active,
+#criarNovoEstoque:active {
+    transform: translateY(0) scale(0.98);
+}
+
+#mensagem {
+    padding: 18px 20px;
+    background-color: #171a20;
+    border: 1px solid #2d3139;
+    border-radius: 10px;
+}
