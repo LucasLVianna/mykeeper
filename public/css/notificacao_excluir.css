@@ -1,0 +1,72 @@
+#notificacao-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    pointer-events: none;
+    backdrop-filter: blur(0px);
+    transition: backdrop-filter 0.2s;
+}
+
+#notificacao-container.ativo {
+    pointer-events: all;
+    backdrop-filter: blur(4px);
+}
+
+.notificacao {
+    width: 520px;
+    padding: 44px;
+    border-radius: 6px;
+    background: #111;
+    border: 1px solid #1D9E75;
+    pointer-events: all;
+    animation: notificacaoIn 0.2s ease;
+    transition: opacity 0.3s, transform 0.3s;
+    color: #fff;
+    font-size: 14px;
+}
+
+.notificacao.hide {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.notificacao-msg {
+    margin: 0 0 28px;
+    line-height: 1.5;
+    font-size: 17px;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+.notificacao-msg:last-child {
+    margin-bottom: 0;
+}
+
+.notificacao-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.notificacao-btn {
+    padding: 10px 32px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.notificacao-confirmar {
+    background: #E24B4A;
+    border-color: #E24B4A;
+}
+
+@keyframes notificacaoIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

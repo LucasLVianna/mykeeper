@@ -51,7 +51,7 @@ function preencherTabela(tabela) {
                 <td>${e(tabela[i].descricao)}</td>
                 <td class="botoes">
                     <button class="btn-editar"><a href="categoria_alterar.php?id=${tabela[i].id}">Editar</a></button>
-                    <button class="btn-excluir"><a href="#" onclick="excluir(${tabela[i].id})">Excluir</a></button>
+                    <button class="btn-excluir"><a href="#" onclick="event.preventDefault(); excluir(${tabela[i].id});">Excluir</a></button>
                 </td>
             </tr>`;
     }
@@ -61,14 +61,16 @@ function preencherTabela(tabela) {
 }
 
 async function excluir(id) {
-    const retorno = await fetch('/mykeeper/src/Controllers/categoria_excluir.php?id=' + id);
-    const resposta = await retorno.json();
-    if (resposta.status == 'ok') {
-        alert('SUCESSO! ' + resposta.mensagem);
-    } else {
-        alert('ERRO! ' + resposta.mensagem);
-    }
-    window.location.reload();
+    notificacaoExcluir('Tem certeza que deseja excluir esta categoria?', 'confirm', async function() {
+        const retorno = await fetch('/mykeeper/src/Controllers/categoria_excluir.php?id=' + id);
+        const resposta = await retorno.json();
+        if (resposta.status == 'ok') {
+            notificacaoExcluir(resposta.mensagem, 'success');
+            setTimeout(function() { window.location.reload(); }, 1500);
+        } else {
+            notificacaoExcluir(resposta.mensagem, 'error');
+        }
+    });
 }
 
 document.getElementById('categoria_nova').addEventListener('click', () => {
