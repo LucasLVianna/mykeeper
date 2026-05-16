@@ -16,15 +16,21 @@
 }
 
 .notificacao {
-    width: 520px;
-    padding: 44px;
-    border-radius: 6px;
-    background: #111;
-    border: 1px solid #1D9E75;
+    width: 500px;
+    padding: 28px;
+    background-color: #1a1d23;
+    border-radius: 12px;
+    border: 1px solid #2d3139;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     pointer-events: all;
     animation: notificacaoIn 0.2s ease;
     transition: opacity 0.3s, transform 0.3s;
-    color: #fff;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
     font-size: 14px;
 }
 
@@ -34,36 +40,52 @@
 }
 
 .notificacao-msg {
-    margin: 0 0 28px;
-    line-height: 1.5;
-    font-size: 17px;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0;
     text-align: center;
-    letter-spacing: 0.3px;
-}
-
-.notificacao-msg:last-child {
-    margin-bottom: 0;
 }
 
 .notificacao-actions {
     display: flex;
-    gap: 8px;
-    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #2d3139;
 }
 
 .notificacao-btn {
-    padding: 10px 32px;
-    border-radius: 4px;
-    border: 1px solid #444;
-    background: transparent;
-    color: #fff;
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    text-align: center;
+}
+
+.notificacao-btn {
+    background-color: rgba(0, 255, 163, 0.1);
+    color: #00ffa3;
+    border-color: #00ffa3;
+}
+
+.notificacao-btn:hover {
+    background-color: #00ffa3;
+    color: #0b0e11;
 }
 
 .notificacao-confirmar {
-    background: #E24B4A;
-    border-color: #E24B4A;
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff4d4d;
+    border-color: #ff4d4d;
+}
+
+.notificacao-confirmar:hover {
+    background-color: #ff4d4d;
+    color: #ffffff;
 }
 
 @keyframes notificacaoIn {
