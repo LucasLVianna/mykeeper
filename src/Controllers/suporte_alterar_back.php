@@ -10,9 +10,37 @@ $retorno = [
 
 if(isset($_GET['id'])){
 
-    $nome      = $_POST['nome'];
-    $email     = $_POST['email'];
-    $cep      = $_POST['cep'];
+    $nome      = trim($_POST['nome'] ?? '');
+    $email     = trim($_POST['email'] ?? '');
+    $cep       = trim($_POST['cep'] ?? '');
+
+    if ($nome === '' || $email === '' || $cep === '') {
+        echo json_encode([
+            'status' => 'nok',
+            'mensagem' => 'Preencha nome, e-mail e CEP',
+            'data' => []
+        ]);
+        exit;
+    }
+
+    $check = $conexao->prepare("
+        SELECT email FROM suporte WHERE email = ? AND id <> ?
+        UNION
+        SELECT email FROM usuario WHERE email = ?
+    ");
+    $check->bind_param("sis", $email, $_GET['id'], $email);
+    $check->execute();
+
+    if ($check->get_result()->num_rows > 0) {
+        echo json_encode([
+            'status' => 'nok',
+            'mensagem' => 'Este email já está cadastrado',
+            'data' => []
+        ]);
+        exit;
+    }
+
+    $check->close();
 
     $stmt = $conexao->prepare("UPDATE suporte SET nome=?, email=?, cep=? WHERE id=?");
     $stmt->bind_param("sssi", $nome, $email, $cep, $_GET['id']);
