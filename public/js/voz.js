@@ -1,8 +1,11 @@
-const rec = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const rec = SpeechRecognition ? new SpeechRecognition() : null;
 
-rec.lang = 'pt-BR';
-rec.continuous = true;
-rec.interimResults = true;
+if (rec) {
+    rec.lang = 'pt-BR';
+    rec.continuous = true;
+    rec.interimResults = true;
+}
 
 var ouvindo = false;
 
@@ -47,105 +50,119 @@ function toast(msg, tipo = false){
     }, 1800);
 }
 
-document.getElementById('btnVoz').addEventListener('click', ()=>{
-    if(ouvindo){
-        rec.stop();
-        ouvindo = false;
-        document.getElementById('btnVoz').innerHTML = mic;
-        return;
-    }
-    rec.start();
-    ouvindo = true;
-    document.getElementById('btnVoz').innerHTML = '✕';
-});
+const btnVoz = document.getElementById('btnVoz');
 
+if (!btnVoz) {
+    toast('Botão de voz não encontrado.', 'aviso');
+} else if (!rec) {
+    btnVoz.disabled = true;
+    btnVoz.title = 'Comando de voz indisponível neste navegador';
+    btnVoz.style.opacity = '0.5';
+    toast('Comando de voz indisponível neste navegador.', 'aviso');
+} else {
+    btnVoz.addEventListener('click', ()=>{
+        if(ouvindo){
+            rec.stop();
+            ouvindo = false;
+            btnVoz.innerHTML = mic;
+            return;
+        }
 
+        try {
+            rec.start();
+            ouvindo = true;
+            btnVoz.innerHTML = '✕';
+        } catch(e) {
+            toast('Não foi possível iniciar o comando de voz.', true);
+        }
+    });
 
-rec.onresult = async (e) => {
+    rec.onresult = async (e) => {
 
-    var i = e.results.length - 1;
+        var i = e.results.length - 1;
 
-    if(!e.results[i].isFinal) return;
+        if(!e.results[i].isFinal) return;
 
-    var texto = e.results[i][0].transcript.trim().toLowerCase();
+        var texto = e.results[i][0].transcript.trim().toLowerCase();
 
-    if(texto == '') return;
+        if(texto == '') return;
 
-    var nome = texto.charAt(0).toUpperCase() + texto.slice(1);
+        var nome = texto.charAt(0).toUpperCase() + texto.slice(1);
 
-    // verifica se já existe no produto
-    const checkProduto = await fetch(
-        '/mykeeper/src/Controllers/produto_verificar.php?nome=' + 
-        encodeURIComponent(nome)
-    );
+        // verifica se já existe no produto
+        const checkProduto = await fetch(
+            '/mykeeper/src/Controllers/produto_verificar.php?nome=' +
+            encodeURIComponent(nome)
+        );
 
-    const produtoExiste = await checkProduto.json();
+        const produtoExiste = await checkProduto.json();
 
-    if(produtoExiste.status == 'ok'){
-        toast(nome + ' já está cadastrado!', 'aviso');
-        return;
-    }
+        if(produtoExiste.status == 'ok'){
+            toast(nome + ' já está cadastrado!', 'aviso');
+            return;
+        }
 
-    // procura no histórico
-    const checkHistorico = await fetch(
-        '/mykeeper/src/Controllers/produto_historico_get.php?nome=' + 
-        encodeURIComponent(nome)
-    );
+        // procura no histórico
+        const checkHistorico = await fetch(
+            '/mykeeper/src/Controllers/produto_historico_get.php?nome=' +
+            encodeURIComponent(nome)
+        );
 
-    const historico = await checkHistorico.json();
+        const historico = await checkHistorico.json();
 
-    if(historico.status == 'ok'){
+        if(historico.status == 'ok'){
 
-        var fd = new FormData();
+            var fd = new FormData();
 
-        fd.append('nome_produto', nome);
-        fd.append('id_categoria', historico.data?.id_categoria || '');
-        fd.append('und_medida_produto', historico.data?.und_medida || '');
+            fd.append('nome_produto', nome);
+            fd.append('id_categoria', historico.data?.id_categoria || '');
+            fd.append('und_medida_produto', historico.data?.und_medida || '');
 
-        try{
+            try{
 
-            const retorno = await fetch(
-                '/mykeeper/src/Controllers/produto_novo_back.php',
-                {
-                    method: 'POST',
-                    body: fd
+                const retorno = await fetch(
+                    '/mykeeper/src/Controllers/produto_novo_back.php',
+                    {
+                        method: 'POST',
+                        body: fd
+                    }
+                );
+
+                const resposta = await retorno.json();
+
+                if(resposta.status == 'ok'){
+                    toast(nome + ' adicionado!', 'success');
+                } else {
+                    toast('Erro ao adicionar ' + nome, 'error');
                 }
-            );
 
-            const resposta = await retorno.json();
-
-            if(resposta.status == 'ok'){
-                toast(nome + ' adicionado!', 'success');
-            } else {
+            } catch(err){
                 toast('Erro ao adicionar ' + nome, 'error');
             }
 
-        } catch(err){
-            toast('Erro ao adicionar ' + nome, 'error');
+            return;
         }
 
-        return;
-    }
+        // não encontrou em nenhum lugar
+        document.getElementById('nome_produto').value = nome;
 
-    // não encontrou em nenhum lugar
-    document.getElementById('nome_produto').value = nome;
-
-    toast('Complete as informações de ' + nome + '!', 'aviso');
-};
+        toast('Complete as informações de ' + nome + '!', 'aviso');
+    };
 
 
 
-rec.onerror = (evento)=>{
-    ouvindo = false;
-    document.getElementById('btnVoz').innerHTML = mic;
-    toast('Erro: ' + evento.error, true);
-};
+    rec.onerror = (evento)=>{
+        ouvindo = false;
+        btnVoz.innerHTML = mic;
+        toast('Erro: ' + evento.error, true);
+    };
 
-rec.onend = ()=>{
-    if(ouvindo){
-        try{
-            rec.start();
+    rec.onend = ()=>{
+        if(ouvindo){
+            try{
+                rec.start();
+            }
+            catch(e){}
         }
-        catch(e){}
-    }
-};
+    };
+}
