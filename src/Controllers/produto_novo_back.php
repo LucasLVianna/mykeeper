@@ -70,7 +70,7 @@
     if($stmt->affected_rows > 0){
         $retorno = [
             'status'   => 'ok',
-            'mensagem' => 'Produto inserido com sucesso',
+            'mensagem' => 'Produto cadastrado com sucesso',
             'data'     => []
         ];
     } else {

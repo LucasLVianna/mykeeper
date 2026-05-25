@@ -160,6 +160,6 @@ async function compartilhar(id) {
     if(resposta.status === 'ok'){
         await copiarTextoSistema(resposta.link, 'Link da receita copiado com sucesso.');
     } else {
-        notificacaoSistema('ERRO! ' + resposta.mensagem, 'error');
+        notificacaoSistema('Erro: ' + resposta.mensagem, 'error');
     }
 }

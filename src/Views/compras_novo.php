@@ -20,7 +20,7 @@
         </a>
         <form>
             <div>
-                <label for="titulo">Titulo</label>
+                <label for="titulo">Título</label>
                 <input type="text" name="titulo" id="titulo">
                 <p id="error-nome"></p>
             </div>

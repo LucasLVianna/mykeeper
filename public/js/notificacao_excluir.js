@@ -21,7 +21,7 @@ function notificacaoSistema(msg, tipo, opcoes) {
     var temConfirm = tipo === 'confirm' && typeof opcoes.aoConfirmar === 'function';
     var container = criarContainerNotificacao();
     var meta = obterMetaNotificacao(tipo, opcoes.variante);
-    var mensagem = limparTextoNotificacao(msg);
+    var mensagem = formatarTextoNotificacao(msg);
     var titulo = opcoes.titulo || meta.titulo;
 
     var notificacao = document.createElement('div');
@@ -41,7 +41,7 @@ function notificacaoSistema(msg, tipo, opcoes) {
 
     notificacao.innerHTML = `
         <div class="notificacao-header">
-            <span class="notificacao-icone" aria-hidden="true">${meta.icone}</span>
+            <span class="notificacao-icone" aria-hidden="true">${escaparHtml(meta.icone)}</span>
             <div class="notificacao-textos">
                 <strong class="notificacao-titulo">${escaparHtml(titulo)}</strong>
                 <p class="notificacao-msg">${escaparHtml(mensagem)}</p>
@@ -105,7 +105,7 @@ function obterMetaNotificacao(tipo, variante) {
     var metas = {
         success: {
             titulo: 'Sucesso',
-            icone: 'OK'
+            icone: '✓'
         },
         error: {
             titulo: 'Erro',
@@ -137,10 +137,26 @@ function obterMetaNotificacao(tipo, variante) {
 
 function limparTextoNotificacao(msg) {
     return String(msg || '')
-        .replace(/^\s*SUCESSO!\s*/i, '')
-        .replace(/^\s*ERRO!\s*/i, '')
-        .replace(/^\s*ERRO:\s*/i, '')
+        .replace(/^\s*Sucesso!\s*/i, '')
+        .replace(/^\s*Erro:\s*/i, '')
         .trim();
+}
+
+function formatarTextoNotificacao(msg) {
+    var texto = limparTextoNotificacao(msg)
+        .replace(/\s+/g, ' ')
+        .replace(/\s+([,.!?;:])/g, '$1')
+        .replace(/\.Redirecionando/gi, '. Redirecionando')
+        .replace(/\bEmail\b/g, 'E-mail')
+        .replace(/\bemail\b/g, 'e-mail')
+        .replace(/\bexcluido\b/g, 'excluído')
+        .replace(/\bexcluida\b/g, 'excluída');
+
+    if (!texto) {
+        return 'Operação concluída.';
+    }
+
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
 }
 
 function escaparHtml(valor) {

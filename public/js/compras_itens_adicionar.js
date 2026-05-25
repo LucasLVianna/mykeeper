@@ -81,11 +81,11 @@ async function adicionar(id_produto) {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        notificacaoSistema('SUCESSO! ' + resposta.mensagem, 'success');
+        notificacaoSistema('Sucesso! ' + resposta.mensagem, 'success');
         setTimeout(function() {
             window.location.href = `/mykeeper/src/Views/compras_itens.php?id_lista_compra=${id_lista_compra}`;
         }, 1200);
     } else {
-        notificacaoSistema('ERRO! ' + resposta.mensagem, 'error');
+        notificacaoSistema('Erro: ' + resposta.mensagem, 'error');
     }
 }

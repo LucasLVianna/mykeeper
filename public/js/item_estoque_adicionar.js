@@ -85,10 +85,10 @@ async function adicionar(id_produto) {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        notificacaoSistema('SUCESSO! ' + resposta.mensagem, 'success');
+        notificacaoSistema('Sucesso! ' + resposta.mensagem, 'success');
         setTimeout(function() {
         }, 800);
     } else {
-        notificacaoSistema('ERRO! ' + resposta.mensagem, 'error');
+        notificacaoSistema('Erro: ' + resposta.mensagem, 'error');
     }
 }

@@ -46,7 +46,7 @@ if ($usuario && password_verify($_POST['senha'], $usuario['senha'])) {
 } else {
     $retorno = [
         'status'   => 'nok',
-        'mensagem' => 'Email ou senha incorretos'
+        'mensagem' => 'E-mail ou senha incorretos'
     ];
 }
 

@@ -25,13 +25,13 @@
             if($stmt->affected_rows > 0){
                 $retorno = [
                     'status' => 'ok', //ok ou nok
-                    'mensagem' => 'Conta excluida', //mensagem que envio para o front
+                    'mensagem' => 'Conta excluída', //mensagem que envio para o front
                     'data' => []
                 ];
             }else{
                 $retorno = [
                     'status' => 'nok', //ok ou nok
-                    'mensagem' => 'Conta não excluida', //mensagem que envio para o front
+                    'mensagem' => 'Conta não excluída', //mensagem que envio para o front
                     'data' => []
                 ];
             }

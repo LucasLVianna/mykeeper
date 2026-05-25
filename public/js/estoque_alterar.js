@@ -51,7 +51,7 @@ async function buscar(id){
         }
 
     }else{
-        document.getElementById('error').textContent = "ERRO: "+resposta.mensagem;
+        document.getElementById('error').textContent = "Erro: "+resposta.mensagem;
         window.location.href = 'estoque.php';
     }
 }
@@ -66,7 +66,7 @@ async function alterar(){
     let icone_estoque      = document.getElementById('icone_estoque').files[0];
 
     if(!nome_estoque){
-        document.getElementById('error-nome').textContent = 'Nome precisa receber valores';
+        document.getElementById('error-nome').textContent = 'Por favor, preencha o nome.';
         return;
     }
 
@@ -89,13 +89,13 @@ async function alterar(){
     if(resposta.status == 'ok'){
         const msg = document.getElementById('error');
         msg.style.color = '#00ffa3'; // Muda para verde em caso de sucesso
-        msg.textContent = 'SUCESSO! ' + resposta.mensagem + '. Redirecionando...';
+        msg.textContent = 'Sucesso! ' + resposta.mensagem + '. Redirecionando...';
         setTimeout(() => {
             window.location.href = "/mykeeper/src/Views/estoque.php";
         }, 1500);
     }else{
         const msg = document.getElementById('error');
         msg.style.color = '#ff4d4d'; // Muda para vermelho em caso de erro
-        msg.textContent = 'ERRO! ' + resposta.mensagem;
+        msg.textContent = 'Erro: ' + resposta.mensagem;
     }
 }

@@ -41,7 +41,7 @@
         $stmtCheck->close();
         echo json_encode([
             'status'   => 'nok',
-            'mensagem' => 'Este email já está cadastrado'
+            'mensagem' => 'Este e-mail já está cadastrado'
         ]);
         exit;
     }
@@ -57,13 +57,13 @@
         $stmt->execute();
         $retorno = [
             'status'   => 'ok',
-            'mensagem' => 'Registro inserido com sucesso'
+            'mensagem' => 'Registro cadastrado com sucesso'
         ];
     } catch (mysqli_sql_exception $e) {
         $retorno = [
             'status'   => 'nok',
             'mensagem' => $e->getCode() == 1062
-                ? 'Este email já está cadastrado'
+                ? 'Este e-mail já está cadastrado'
                 : 'Falha ao inserir: ' . $e->getMessage()
         ];
     }

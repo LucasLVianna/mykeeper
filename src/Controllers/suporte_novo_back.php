@@ -26,7 +26,7 @@
     if ($check->get_result()->num_rows > 0) {
         echo json_encode([
             'status' => 'nok',
-            'mensagem' => 'Este email já está cadastrado'
+            'mensagem' => 'Este e-mail já está cadastrado'
         ]);
         exit;
     }
@@ -40,7 +40,7 @@
     if ($stmt->execute()) {
         $retorno = [
             'status' => 'ok',
-            'mensagem' => 'Registro inserido com sucesso'
+            'mensagem' => 'Registro cadastrado com sucesso'
         ];
     } else {
         $retorno = [

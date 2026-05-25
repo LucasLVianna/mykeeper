@@ -49,7 +49,7 @@ function preencherTabela(tabela){
     <table class="tabela">
         <tr>
             <th> ID </th>
-            <th> Titulo </th>
+            <th> Título </th>
             <th> Descrição </th>
             <th> Data de Abertura </th>
             <th> Resposta </th>

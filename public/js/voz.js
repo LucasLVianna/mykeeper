@@ -23,31 +23,54 @@ toastBox.style.cssText = `
     position:fixed;
     top:20px;
     right:20px;
+    max-width:320px;
     z-index:9999;
 `;
 document.body.appendChild(toastBox);
 
 function toast(msg, tipo = false){
     var div = document.createElement('div');
-    var bg = '#1D9E75';
-    if(tipo === true) bg = '#E24B4A';
-    if(tipo === 'aviso') bg = '#BA7517';
+    var cor = '#00ffa3';
+    var titulo = 'Sucesso';
+
+    if(tipo === true || tipo === 'error') {
+        cor = '#ff4d4d';
+        titulo = 'Erro';
+    }
+
+    if(tipo === 'aviso') {
+        cor = '#f5a623';
+        titulo = 'Atenção';
+    }
 
     div.style.cssText = `
-        background:${bg};
-        color:#fff;
-        padding:12px 16px;
-        border-radius:6px;
+        background:#171b22;
+        color:#d9e2e7;
+        border:1px solid #303640;
+        border-left:4px solid ${cor};
+        box-shadow:0 12px 32px rgba(0,0,0,0.38);
+        padding:12px 14px;
+        border-radius:8px;
         margin-bottom:10px;
         font-size:14px;
-        font-weight:600;
+        line-height:1.4;
+        transition:opacity 0.2s ease, transform 0.2s ease;
     `;
-    div.innerText = msg;
+    var tituloEl = document.createElement('strong');
+    tituloEl.style.cssText = 'display:block;color:#fff;margin-bottom:3px;';
+    tituloEl.textContent = titulo;
+
+    var textoEl = document.createElement('span');
+    textoEl.textContent = msg;
+
+    div.appendChild(tituloEl);
+    div.appendChild(textoEl);
     toastBox.appendChild(div);
     setTimeout(function(){
         div.style.opacity = '0';
+        div.style.transform = 'translateY(-6px)';
         setTimeout(function(){ div.remove(); }, 200);
-    }, 1800);
+    }, 2600);
 }
 
 const btnVoz = document.getElementById('btnVoz');

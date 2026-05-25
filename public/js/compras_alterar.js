@@ -31,7 +31,7 @@ async function buscar(id){
         document.getElementById('titulo').value       = e(item.titulo);
 
     }else{
-        document.getElementById('error').textContent = "ERRO: "+resposta.mensagem;
+        document.getElementById('error').textContent = "Erro: "+resposta.mensagem;
         window.location.href = 'compras.php';
     }
 }
@@ -45,7 +45,7 @@ async function alterar(){
     let id           = document.getElementById('id').value;
     
     if(!titulo){
-        document.getElementById('error-titulo').textContent = 'Título precisa receber valores';
+        document.getElementById('error-titulo').textContent = 'Por favor, preencha o título.';
         return;
     }
 
@@ -63,13 +63,13 @@ async function alterar(){
     if(resposta.status == 'ok'){
         const msg = document.getElementById('error');
         msg.style.color = '#00ffa3'; // Muda para verde em caso de sucesso
-        msg.textContent = 'SUCESSO! ' + resposta.mensagem + '. Redirecionando...';
+        msg.textContent = 'Sucesso! ' + resposta.mensagem + '. Redirecionando...';
         setTimeout(() => {
             window.location.href = "/mykeeper/src/Views/compras.php";
         }, 1500);
     }else{
         const msg = document.getElementById('error');
         msg.style.color = '#ff4d4d'; // Muda para vermelho em caso de erro
-        msg.textContent = 'ERRO! ' + resposta.mensagem;
+        msg.textContent = 'Erro: ' + resposta.mensagem;
     }
 }

@@ -21,7 +21,7 @@
         
         <div>
             <p><strong>Nome:</strong> <span id="nome"></span></p>
-            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>E-mail:</strong> <span id="email"></span></p>
             <p><strong>CEP:</strong> <span id="cep"></span></p>
         </div>
 

@@ -46,13 +46,13 @@
         if($stmt->affected_rows > 0){
             $retorno = [
                 'status' => 'ok', //ok ou nok
-                'mensagem' => 'Estoque excluido', //mensagem que envio para o front
+                'mensagem' => 'Estoque excluído', //mensagem que envio para o front
                 'data' => []
             ];
         }else{
             $retorno = [
                 'status' => 'nok', //ok ou nok
-                'mensagem' => 'Estoque não excluido', //mensagem que envio para o front
+                'mensagem' => 'Estoque não excluído', //mensagem que envio para o front
                 'data' => []
             ];
         }

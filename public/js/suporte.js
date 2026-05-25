@@ -33,7 +33,7 @@ function preencherTabela(tabela){
         <tr>
             <th> ID </th>
             <th> Nome </th>
-            <th> Email </th>
+            <th> E-mail </th>
             <th> CEP </th>
             <th> # </th>
         </tr>

@@ -12,17 +12,17 @@ async function login() {
     let senha = document.getElementById('senha').value;
 
     if(!email){
-        document.getElementById('error-email').textContent = 'Email precisa receber valores';
+        document.getElementById('error-email').textContent = 'Por favor, preencha o e-mail.';
         return;
     }else if(!email.includes('@') && !email.includes('.')) {
-        document.getElementById('error-email').textContent = 'Digite um email válido, no formato @xxx.xxx';
+        document.getElementById('error-email').textContent = 'Digite um e-mail válido no formato nome@exemplo.com.';
         return;
     }
 
     if(!senha){
-        document.getElementById('error-senha').textContent = 'Senha precisa receber valores'
+        document.getElementById('error-senha').textContent = 'Por favor, preencha a senha.'
     }else if(senha.length < 8) {
-        document.getElementById('error-senha').textContent = 'ERRO! Senha muito curta';
+        document.getElementById('error-senha').textContent = 'A senha precisa ter pelo menos 8 caracteres.';
         return;
     }
 
@@ -38,13 +38,13 @@ async function login() {
     const resposta = await retorno.json();
     if(resposta.status == 'ok'){
         document.getElementById('error').style.color = '#00ffa3';
-        document.getElementById('error').textContent = 'SUCESSO! ' + resposta.mensagem + '. Redirecionando...';
+        document.getElementById('error').textContent = 'Sucesso! ' + resposta.mensagem + '. Redirecionando...';
         setTimeout(() => {
             window.location.href = resposta.redirect;
         }, 1000);
     }else{
         document.getElementById('error').style.color = '#ff6b6b';
-        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
+        document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem;
     };
 }
 

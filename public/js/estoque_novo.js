@@ -42,14 +42,14 @@ async function novo() {
     if (resposta.status == 'ok') {
         const msg = document.getElementById('error');
         msg.style.color = '#00ffa3'; // Muda para verde em caso de sucesso
-        msg.textContent = 'SUCESSO! ' + resposta.mensagem + '. Redirecionando...';
+        msg.textContent = 'Sucesso! ' + resposta.mensagem + '. Redirecionando...';
         setTimeout(() => {
             window.location.href = '/mykeeper/src/Views/estoque.php';
         }, 1500);
     } else {
         const msg = document.getElementById('error');
         msg.style.color = '#ff4d4d'; // Muda para vermelho em caso de erro
-        msg.textContent = 'ERRO! ' + resposta.mensagem;
+        msg.textContent = 'Erro: ' + resposta.mensagem;
     }
 }
     

@@ -22,7 +22,7 @@
     if ($stmt->execute()) {
         $retorno = [
             'status' => 'ok',
-            'mensagem' => 'Ticket inserido com sucesso'
+            'mensagem' => 'Ticket criado com sucesso'
         ];
     } else {
         $retorno = [

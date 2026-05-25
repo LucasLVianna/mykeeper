@@ -41,7 +41,7 @@ async function buscar(id) {
             document.getElementById('data_validade').value  = item.data_validade.split('T')[0];
         }
     } else {
-        document.getElementById('error').textContent = 'ERRO: ' + resposta.mensagem;
+        document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem;
     }
 }
 
@@ -65,12 +65,12 @@ async function alterar() {
 
     if (resposta.status == 'ok') {
         document.getElementById('error').style.color = '#00ffa3';
-        document.getElementById('error').textContent = 'SUCESSO! ' + resposta.mensagem + '. Redirecionando...';
+        document.getElementById('error').textContent = 'Sucesso! ' + resposta.mensagem + '. Redirecionando...';
         setTimeout(() => {
             window.location.href = '/mykeeper/src/Views/estoque_itens.php?id_estoque=' + id_estoque;
         }, 1000);
     } else {
         document.getElementById('error').style.color = '#ff6b6b';
-        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
+        document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem;
     }
 }

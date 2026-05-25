@@ -119,7 +119,7 @@ async function compartilhar(id) {
     if(resposta.status === 'ok'){
         await copiarTextoSistema(resposta.link, 'Link da lista copiado com sucesso.');
     } else {
-        notificacaoSistema('ERRO! ' + resposta.mensagem, 'error');
+        notificacaoSistema('Erro: ' + resposta.mensagem, 'error');
     }
 }
 
@@ -147,9 +147,9 @@ async function salvarStatus(id, novoStatus) {
     const resposta = await retorno.json();
 
     if (resposta.status == 'ok') {
-        notificacaoSistema('SUCESSO! ' + resposta.mensagem, 'success');
+        notificacaoSistema('Sucesso! ' + resposta.mensagem, 'success');
     } else {
-        notificacaoSistema('ERRO! ' + resposta.mensagem, 'error');
+        notificacaoSistema('Erro: ' + resposta.mensagem, 'error');
     }
     window.location.reload();
 }

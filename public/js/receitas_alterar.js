@@ -157,6 +157,6 @@ async function alterar() {
     if (resposta.status == 'ok') {
         window.location.href = '/mykeeper/src/Views/receitas.php';
     } else {
-        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
+        document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem;
     }
 }

@@ -74,7 +74,7 @@ $stmt->execute();
 
 if ($stmt->affected_rows > 0) {
     $retorno['status']   = 'ok';
-    $retorno['mensagem'] = 'Categoria inserida com sucesso';
+    $retorno['mensagem'] = 'Categoria cadastrada com sucesso';
 } else {
     $retorno['status']   = 'nok';
     $retorno['mensagem'] = 'Falha ao inserir a categoria';

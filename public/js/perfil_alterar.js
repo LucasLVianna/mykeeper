@@ -60,11 +60,11 @@ document.getElementById('alterarperfil').addEventListener('click', async () => {
     }
 
     if (!email) {
-        document.getElementById('error-email').textContent = 'Por favor, preencha o email.';
+        document.getElementById('error-email').textContent = 'Por favor, preencha o e-mail.';
         document.getElementById('email').focus();
         return;
     }else if(!email.includes('@') && !email.includes('.')) {
-        document.getElementById('error-email').textContent = 'Por favor, preencha um email válido, no formato xxx@xxx.xxx';
+        document.getElementById('error-email').textContent = 'Digite um e-mail válido no formato nome@exemplo.com.';
         document.getElementById('email').focus();
         return;
     }
@@ -87,7 +87,7 @@ document.getElementById('alterarperfil').addEventListener('click', async () => {
     const resposta = await retorno.json();
     if (resposta.status == 'ok') {
         document.getElementById('error').style.color = '#00ffa3';
-        document.getElementById('error').textContent = 'Perfil atualizado com sucesso!' + '.Redirecionando...';
+        document.getElementById('error').textContent = 'Perfil atualizado com sucesso! Redirecionando...';
         setTimeout(() => {
             window.location.href = '/mykeeper/src/Views/perfil_usuario.php';
         }, 1000);

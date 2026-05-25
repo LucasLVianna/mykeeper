@@ -34,7 +34,7 @@ if(isset($_GET['id'])){
     if ($check->get_result()->num_rows > 0) {
         echo json_encode([
             'status' => 'nok',
-            'mensagem' => 'Este email já está cadastrado',
+            'mensagem' => 'Este e-mail já está cadastrado',
             'data' => []
         ]);
         exit;

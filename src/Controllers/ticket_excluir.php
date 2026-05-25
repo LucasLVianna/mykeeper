@@ -27,7 +27,7 @@
         if($stmt->affected_rows > 0){
             $retorno = [
                 'status' => 'ok', //ok ou nok
-                'mensagem' => 'Ticket excluido', //mensagem que envio para o front
+                'mensagem' => 'Ticket excluído', //mensagem que envio para o front
                 'data' => []
             ];
         }else{

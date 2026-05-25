@@ -56,7 +56,7 @@ async function buscar(id){
         cepInput.value = formatCep(item.cep);
 
     }else{
-        notificacaoSistema('ERRO: ' + resposta.mensagem, 'error');
+        notificacaoSistema('Erro: ' + resposta.mensagem, 'error');
         setTimeout(function() {
             window.location.href = '/mykeeper/src/Views/suporte.php';
         }, 1200);
@@ -74,15 +74,15 @@ async function alterar(){
     const cep = formatCep(cepInput.value);
 
     if(!nome){
-        document.getElementById('error-nome').textContent = 'Nome precisa receber valores';
+        document.getElementById('error-nome').textContent = 'Por favor, preencha o nome.';
         return;
     }
 
     if(!email){
-        document.getElementById('error-email').textContent = 'Email precisa receber valores';
+        document.getElementById('error-email').textContent = 'Por favor, preencha o e-mail.';
         return;
     }else if(!email.includes('@') && !email.includes('.')) {
-        document.getElementById('error-email').textContent = 'Digite um email válido, no formato @xxx.xxx';
+        document.getElementById('error-email').textContent = 'Digite um e-mail válido no formato nome@exemplo.com.';
         return;
     }
     
@@ -107,12 +107,12 @@ async function alterar(){
 
     if(resposta.status == 'ok'){
         document.getElementById('error').style.color = '#00ffa3';
-        document.getElementById('error').innerText = 'SUCESSO! ' + resposta.mensagem + '. Redirecionando...';
+        document.getElementById('error').innerText = 'Sucesso! ' + resposta.mensagem + '. Redirecionando...';
         setTimeout(() => {
             window.location.href = "/mykeeper/src/Views/suporte.php";
         }, 1000);
     }else{
         document.getElementById('error').style.color = '#ff6b6b';
-        document.getElementById('error').innerText = 'ERRO! ' + resposta.mensagem;
+        document.getElementById('error').innerText = 'Erro: ' + resposta.mensagem;
     }
 }

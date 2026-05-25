@@ -43,7 +43,7 @@ async function buscar(id_lista_compra, id_produto) {
         document.getElementById('nome-produto').textContent = item.nome;
         document.getElementById('quantidade').value         = item.quantidade  ?? '';
     } else {
-        document.getElementById('error').textContent = 'ERRO: ' + resposta.mensagem;
+        document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem;
     }
 }
 
@@ -63,12 +63,12 @@ async function alterar() {
 
     if (resposta.status == 'ok') {
         document.getElementById('error').style.color = '#00ffa3';
-        document.getElementById('error').textContent = 'SUCESSO! ' + resposta.mensagem + '. Redirecionando...';
+        document.getElementById('error').textContent = 'Sucesso! ' + resposta.mensagem + '. Redirecionando...';
         setTimeout(() => {
             window.location.href = '/mykeeper/src/Views/compras_itens.php?id_lista_compra=' + id_lista_compra;
         }, 1000);
     } else {
         document.getElementById('error').style.color = '#ff6b6b';
-        document.getElementById('error').textContent = 'ERRO! ' + resposta.mensagem;
+        document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem;
     }
 }

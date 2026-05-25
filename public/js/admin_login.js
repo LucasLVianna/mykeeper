@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (resposta.status === 'ok') {
             window.location.href = '/mykeeper/src/Views/admin_home.php';
         } else {
-            document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem + '. Redirecionando...';
+            document.getElementById('error').textContent = 'Erro: ' + resposta.mensagem;
             setTimeout(() => {
                 window.location.href = '/mykeeper/src/Views/home.php';
             }, 2000);
