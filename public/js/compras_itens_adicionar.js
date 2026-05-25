@@ -39,8 +39,9 @@ function preencherLista(tabela) {
     var html = "";
     for (var i = 0; i < tabela.length; i++) {
         const imagem = tabela[i].imagem
-            ? `<img src="${e(tabela[i].imagem)}" style="width:40px; height:40px;">`
-            : 'Sem imagem';
+            ? `<img src="${e(tabela[i].imagem)}" alt="${e(tabela[i].nome)}">`
+            : '<span>Sem imagem</span>';
+        const categoria = tabela[i].categoria ? e(tabela[i].categoria) : 'Sem categoria';
 
         html += `<div class="card" id="card-${tabela[i].id}">
                     <div class="card-icone">
@@ -53,7 +54,7 @@ function preencherLista(tabela) {
                         ${e(tabela[i].und_medida)}
                     </div>
                     <div class="card-categoria">
-                        <p>Categoria: ${tabela[i].categoria}</p> <br>
+                        Categoria: ${categoria}
                     </div>
                     <div class="card-inputs">
                         <input type="number" id="quantidade-${tabela[i].id}" placeholder="Quantidade" min="0" step="0.01">
