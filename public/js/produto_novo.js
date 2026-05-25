@@ -65,7 +65,6 @@ async function novo() {
         document.getElementById('nome_produto').focus();
         return;
     }
-
     if (!und_medida_produto) {
         document.getElementById('error-unidade').textContent = 'Por favor, preencha a unidade de medida.';
         document.getElementById('und_medida_produto').focus();

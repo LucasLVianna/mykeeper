@@ -1,10 +1,7 @@
 <?php
     include_once(__DIR__ . '/../../config/headers.php');
     include_once(__DIR__ . '/../../config/conexao.php');
-    include_once(__DIR__ . '/../../config/produto_quantidade.php');
     session_start();
-
-    garantir_coluna_quantidade_produto($conexao);
 
     $retorno = [
         'status' => '',
@@ -16,7 +13,7 @@
 
     if(isset($_GET['id'])){
         $stmt = $conexao->prepare("
-            SELECT p.*, c.nome AS categoria 
+            SELECT p.id, p.id_categoria, p.id_usuario, p.nome, p.und_medida, p.imagem, c.nome AS categoria
             FROM produto p
             LEFT JOIN categoria c ON p.id_categoria = c.id
             WHERE p.id = ? AND p.id_usuario = ?
@@ -24,7 +21,7 @@
         $stmt->bind_param('ii', $_GET['id'], $id_usuario);
     } else {
         $stmt = $conexao->prepare("
-            SELECT p.*, c.nome AS categoria 
+            SELECT p.id, p.id_categoria, p.id_usuario, p.nome, p.und_medida, p.imagem, c.nome AS categoria
             FROM produto p
             LEFT JOIN categoria c ON p.id_categoria = c.id
             WHERE p.id_usuario = ?

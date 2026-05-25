@@ -74,23 +74,6 @@ select:hover { background-color: #121922; border-color: #46515e; }
 select[data-empty="true"] { color: #8fa4a1; font-weight: 500; }
 select option { background-color: #161c24; color: #f5fffb; font-weight: 600; }
 
-input[type="number"] {
-    appearance: textfield;
-    -moz-appearance: textfield;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-#quantidade_produto {
-    background-color: #10151b;
-    border: 1px solid #37404b;
-    color: #f5fffb;
-}
-
 input[type="file"] {
     background-color: #24282f;
     padding: 10px;
