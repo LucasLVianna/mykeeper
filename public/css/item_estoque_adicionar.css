@@ -61,6 +61,25 @@ h2 { font-size: 1.4rem; color: #ffffff; font-weight: 600; }
 .card-inputs input:focus { border-color: #00ffa3; }
 input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
 
+.card-inputs input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+    background-color: #0b0e11;
+    border: 1px solid #3d424a;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.card-inputs input[type="number"]::-webkit-outer-spin-button,
+.card-inputs input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.card-inputs input:focus {
+    border-color: #00ffa3;
+}
+
 .btn-editar {
     width: 100%;
     background-color: #00ffa3;
