@@ -55,6 +55,13 @@ h2 { font-size: 1.4rem; color: #ffffff; font-weight: 600; margin-bottom: 20px; }
     font-size: 0.85rem;
 }
 
+.tabela th:nth-child(4),
+.tabela th:nth-child(5),
+.tabela td:nth-child(4),
+.tabela td:nth-child(5) {
+    text-align: center;
+}
+
 .tabela tr:last-child td { border-bottom: none; }
 .tabela tr:hover { background-color: rgba(255,255,255,0.03); }
 
