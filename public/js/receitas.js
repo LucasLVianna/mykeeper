@@ -116,6 +116,15 @@ async function toggleCard(card) {
 
             lista.innerHTML = legendaHtml;
 
+
+            const todosIndisponiveis = r.ingredientes.every(ing => ing.status_estoque === 'indisponivel');
+
+            const avisoHtml = todosIndisponiveis
+                ? `<div class="ingredientes-aviso">⚠️ Nenhum ingrediente disponível em estoque.</div>`
+                : '';
+
+            lista.innerHTML = avisoHtml + legendaHtml;
+
             r.ingredientes.forEach(ing => {
                 const li = document.createElement('li');
                 const cor = cores[ing.status_estoque] || '#888';
