@@ -23,6 +23,12 @@
             <h2>Itens do Estoque</h2>
             <button id="adicionarItem">Novo Item</button>
         </div>
+        <div class="filtros">
+            <input type="text" id="filtro-nome" placeholder="Buscar por nome...">
+            <select id="filtro-categoria">
+                <option value="">Todas as categorias</option>
+            </select>
+        </div>
         <div id="item"></div>
         <p id="mensagem"></p>
     </section>

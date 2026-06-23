@@ -33,21 +33,41 @@
 
     } elseif(isset($_GET['id_estoque'])){
         // Busca todos os itens de um estoque
+        $params = [intval($_GET['id_estoque']), $id_usuario];
+        $types  = 'ii';
+        $extraWhere = '';
+
+        if (!empty($_GET['nome'])) {
+            $extraWhere .= ' AND p.nome LIKE ?';
+            $params[]    = '%' . $_GET['nome'] . '%';
+            $types      .= 's';
+        }
+
+        if (!empty($_GET['id_categoria'])) {
+            $extraWhere .= ' AND p.id_categoria = ?';
+            $params[]    = intval($_GET['id_categoria']);
+            $types      .= 'i';
+        }
+
         $stmt = $conexao->prepare("
-            SELECT 
+            SELECT
                 ie.id,
                 ie.quantidade,
                 ie.data_validade,
                 ie.marca,
                 p.nome,
                 p.und_medida,
-                p.imagem
+                p.imagem,
+                c.nome AS categoria
             FROM item_estoque ie
             INNER JOIN produto p ON p.id = ie.id_produto
+            LEFT JOIN categoria c ON c.id = p.id_categoria
             WHERE ie.id_estoque = ?
             AND p.id_usuario = ?
+            $extraWhere
+            ORDER BY p.nome
         ");
-        $stmt->bind_param('ii', $_GET['id_estoque'], $id_usuario);
+        $stmt->bind_param($types, ...$params);
 
     } else {
         echo json_encode([

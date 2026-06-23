@@ -18,6 +18,12 @@ include_once(__DIR__ . '/sidebar.php');
         <div>
             <h2>Produtos Registrados</h2>
         </div>
+        <div class="filtros">
+            <input type="text" id="filtro-nome" placeholder="Buscar por nome...">
+            <select id="filtro-categoria">
+                <option value="">Todas as categorias</option>
+            </select>
+        </div>
         <div id="item"></div>
         <p id="mensagem"></p>
         <div>

@@ -22,13 +22,31 @@
         ");
         $stmt->bind_param('ii', $_GET['id'], $id_usuario);
     } else {
+        $params = [$id_usuario];
+        $types  = 'i';
+        $extraWhere = '';
+
+        if (!empty($_GET['nome'])) {
+            $extraWhere .= ' AND p.nome LIKE ?';
+            $params[]    = '%' . $_GET['nome'] . '%';
+            $types      .= 's';
+        }
+
+        if (!empty($_GET['id_categoria'])) {
+            $extraWhere .= ' AND p.id_categoria = ?';
+            $params[]    = intval($_GET['id_categoria']);
+            $types      .= 'i';
+        }
+
         $stmt = $conexao->prepare("
-            SELECT p.*, c.nome AS categoria 
+            SELECT p.*, c.nome AS categoria
             FROM produto p
             LEFT JOIN categoria c ON p.id_categoria = c.id
             WHERE p.id_usuario = ?
+            $extraWhere
+            ORDER BY p.nome
         ");
-        $stmt->bind_param('i', $id_usuario);
+        $stmt->bind_param($types, ...$params);
     }
 
     $stmt->execute();
